@@ -9,9 +9,71 @@
 <link rel="apple-touch-icon" sizes="192x192" href="logo-192.png">
 <meta name="theme-color" content="#062754">
 <style>
-:root{--navy:#062754;--navy2:#0b3973;--gold:#e9b83f;--blue:#2e67e8;--green:#14a87a;--red:#e64c59;--orange:#ed9f18;--purple:#6745d8;--bg:#f5f8fc;--card:#fff;--text:#10233f;--muted:#718096;--line:#edf2f7;--shadow:0 14px 38px rgba(8,18,38,.08)}
+:root{--navy:#062754;--navy2:#0b3973;--gold:#e9b83f;--blue:#2e67e8;--green:#14a87a;--red:#e64c59;--orange:#ed9f18;--purple:#6745d8;--bg:#f5f8fc;--card:#fff;--text:#10233f;--muted:#718096;--line:#e7edf5;--shadow:0 12px 30px rgba(16,35,63,.07)}
 *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:"Segoe UI",Tahoma,Arial,sans-serif}
-button,input,select{font:inherit}.app{min-height:100vh}.top{height:72px;background:linear-gradient(90deg,#062754,#0b3d7b);color:#fff;display:flex;align-items:center;justify-content:space-between;padding:0 22px;position:sticky;top:0;z-index:100}.brand-top{display:flex;align-items:center;gap:12px}.brand-top img{width:48px;height:48px;object-fit:cover;border-radius:13px;border:1px solid #f1c95b}.brand-top b{font-size:20px;color:#ffd76c}.brand-top small{display:block;font-size:10px;color:#d9e9ff}.search{width:min(330px,36vw);background:#ffffff18;border:1px solid #ffffff2d;border-radius:24px;padding:11px 17px;color:#fff;outline:none}.search::placeholder{color:#d7e3f2}.user{display:flex;align-items:center;gap:10px}.user-avatar{width:40px;height:40px;border-radius:50%;background:#dbe8f8;color:#153b67;display:grid;place-items:center;font-weight:800}.user small{display:block;color:#d9e9ff}.layout{display:flex;min-height:calc(100vh - 72px)}aside{width:255px;background:linear-gradient(180deg,#062754,#06244a);color:#fff;padding:18px 12px;position:fixed;right:0;top:72px;bottom:0;height:calc(100vh - 72px);overflow-y:auto}.side-brand{padding:12px 13px 20px;border-bottom:1px solid #ffffff16;margin-bottom:12px}.side-brand img{width:54px;height:54px;border-radius:16px;float:right;margin-left:10px}.side-brand b{font-size:14px;color:#f7d778}.side-brand small{display:block;color:#dfe9ff;font-size:10px;margin-top:4px}.nav{display:flex;align-items:center;gap:10px;padding:12px 12px;border:1px solid transparent;border-radius:12px;background:transparent;color:#edf5ff;font-size:12px;font-weight:700;cursor:pointer;width:100%;text-align:right;transition:.18s ease}.nav.active,.nav:hover{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.08)}.nav .ico{width:18px;text-align:center}.side-footer{color:#dfe9ff;text-align:center;font-size:12px;line-height:1.8;padding:14px 8px 4px}.main-wrap{flex:1}.main-inner{margin-right:255px;width:calc(100% - 255px);padding:25px 28px 35px}.head-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}.eyebrow{font-size:10px;color:#8aa0c5;letter-spacing:.03em}.h1-title{font-size:28px;margin:4px 0 0}.hero{background:linear-gradient(100deg,#0a2f5c 0%,#0a427e 55%,#0b376a);border-radius:22px;min-height:185px;color:#fff;padding:25px 28px;display:flex;align-items:center;justify-content:space-between;gap:18px}.hero-copy h2{margin:0;line-height:1.55;font-size:28px}.tag{display:inline-block;padding:6px 11px;border-radius:999px;background:rgba(255,255,255,.12);font-size:10px;font-weight:800;margin-bottom:12px}.stats{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin:16px 0}.stat{background:#fff;border:1px solid var(--line);border-radius:16px;padding:15px;display:flex;gap:11px;align-items:center;box-shadow:var(--shadow)}.stat b{display:block;color:#4b5e7d;font-size:10px}.stat strong{font-size:28px;display:block;line-height:1}.trend{font-size:9px}.trend.up{color:var(--green)}.trend.down{color:var(--red)}.stat-icon{width:42px;height:42px;border-radius:12px;display:grid;place-items:center;font-size:20px}.c-blue{background:#eaf1ff;color:#2e67e8}.c-green{background:#e8fbf5;color:#14a87a}.c-red{background:#feecef;color:#e64c59}.c-orange{background:#fff4dc;color:#ed9f18}.c-purple{background:#f0ebff;color:#6745d8}.grid{display:grid;grid-template-columns:1.45fr .95fr;gap:15px}.card{background:#fff;border:1px solid var(--line);border-radius:17px;padding:18px;box-shadow:var(--shadow)}.card-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}.card-head h3{margin:0;font-size:14px}.card-head small{color:var(--muted);font-size:10px}.quick{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.quick button{border:1px solid var(--line);background:#fbfcff;border-radius:13px;padding:17px 8px;cursor:pointer;color:#173b69}.quick button i{display:block;font-size:22px;margin-bottom:6px}.quick button b{font-size:11px;display:block;line-height:1.4}.bday-list{display:grid;gap:2px}.empty{padding:25px 10px;text-align:center;color:var(--muted)}.big{font-size:30px}.table-wrap{overflow:auto}.table-wrap table{width:100%;border-collapse:collapse;font-size:10px}.table-wrap th{text-align:right;color:#8b98aa;padding:10px 8px;border-bottom:1px solid #edf2f7}.table-wrap td{padding:10px 8px;border-bottom:1px solid #f1f4f8;vertical-align:middle}.page{display:none}.page.active{display:block}.auth-gate{position:fixed;inset:0;background:linear-gradient(135deg,#061d3a,#0b427e);z-index:200;display:flex;align-items:center;justify-content:center;padding:20px}.auth-box{width:min(460px,100%);background:rgba(255,255,255,.96);border-radius:24px;padding:28px 26px;box-shadow:0 30px 80px rgba(0,0,0,.35)}.auth-box img{display:block;margin:0 auto 12px;width:72px;height:72px}.auth-box h2{margin:0;text-align:center;color:#0a2f5c}.auth-box p{margin:10px 0 18px;text-align:center;color:#5b708d;font-size:12px;line-height:1.7}.auth-form{display:grid;gap:12px}.auth-form label{display:grid;gap:6px;color:#24395c;font-size:11px;font-weight:700}.auth-form input{width:100%;border:1px solid #dfe8f6;border-radius:12px;padding:10px 12px;color:#10233f;background:#f8fbff;outline:none}.btn{border:0;border-radius:12px;padding:10px 14px;font-weight:800;cursor:pointer}.btn-primary{background:linear-gradient(135deg,#0a3d7b,#0d58a5);color:#fff}.btn-light{background:#edf4ff;color:#103a74}.wide{width:100%}.auth-error{display:none;min-height:16px;color:#d33558;font-size:10px;font-weight:700}.auth-help{margin-top:12px;text-align:center;color:#627795;font-size:10px;line-height:1.5}.mobile-menu{display:none}.notification-panel{position:fixed;top:72px;left:auto;right:18px;width:min(360px,calc(100vw - 30px));background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:0 30px 60px rgba(5,18,40,.12);padding:12px;display:none;z-index:150}.notification-panel.open{display:block}.np-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}.np-empty{padding:24px 12px;color:var(--muted);text-align:center;font-size:12px}.notification-item{padding:10px 12px;border-radius:10px;background:#f7fafe;margin-top:8px;border:1px solid #edf2f7}.notification-item.unread{border-color:#d7e9ff;background:#edf7ff}.notif-bell{position:relative;border:0;background:#f3f7fc;width:38px;height:38px;border-radius:12px;cursor:pointer;font-size:18px}.notif-badge{position:absolute;top:-4px;right:-4px;min-width:18px;height:18px;border-radius:999px;background:#d62d54;color:#fff;font-size:10px;display:grid;place-items:center;padding:0 4px}.@media(max-width:760px){.top{height:60px;padding:0 10px;gap:8px}.mobile-menu{display:grid!important;place-items:center;width:40px;height:40px;border:0;border-radius:11px;background:#ffffff18;color:#fff;font-size:22px;cursor:pointer;flex:none}.brand-top{gap:7px;min-width:0;flex:1}.brand-top img{width:36px;height:36px}.brand-top b{font-size:12px}.brand-top small{font-size:7px}.search{display:none}.user{gap:6px}.user-avatar{width:32px;height:32px}.layout{display:block}.side-brand{display:flex}.nav{justify-content:flex-start;padding:12px}.nav span{display:block}.main-inner{margin-right:0;width:100%;padding:14px 12px 28px}.aside{display:none}aside{width:min(285px,82vw);padding:14px 10px;right:0;top:60px;bottom:0;height:calc(100vh - 60px);transform:translateX(105%);transition:transform .22s ease;box-shadow:-12px 0 35px #00152f55}.aside.mobile-open{transform:translateX(0)}.stats{grid-template-columns:1fr 1fr}.hero{padding:20px}.hero-copy h2{font-size:20px}.quick{grid-template-columns:1fr 1fr}.grid{grid-template-columns:1fr}.head-row{flex-wrap:wrap}.}
+button,input,select{font:inherit}.app{min-height:100vh}.top{height:72px;background:linear-gradient(90deg,#062754,#0b3d7b);color:#fff;display:flex;align-items:center;justify-content:space-between;padding:0 24px;position:sticky;top:0;z-index:20;box-shadow:0 4px 18px #001d3a22}
+.brand-top{display:flex;align-items:center;gap:12px}.brand-top img{width:48px;height:48px;object-fit:cover;border-radius:13px;border:1px solid #f1c95b}.brand-top b{font-size:20px;color:#ffd76c}.brand-top small{display:block;color:#dce8f8;font-size:10px;margin-top:1px}
+.search{width:min(330px,36vw);background:#ffffff18;border:1px solid #ffffff2d;border-radius:24px;padding:11px 17px;color:#fff;outline:none}.search::placeholder{color:#d7e3f2}
+.user{display:flex;align-items:center;gap:10px}.user-avatar{width:40px;height:40px;border-radius:50%;background:#dbe8f8;color:#153b67;display:grid;place-items:center;font-weight:800}.user small{display:block;color:#cbd9eb;font-size:10px}.user b{font-size:12px}
+.layout{display:flex;min-height:calc(100vh - 72px)}aside{width:255px;background:linear-gradient(180deg,#062754,#06244a);color:#fff;padding:18px 12px;position:fixed;right:0;top:72px;bottom:0;height:calc(100vh - 72px);z-index:10;display:flex;flex-direction:column;overflow:hidden}
+.side-brand{padding:12px 13px 20px;border-bottom:1px solid #ffffff16;margin-bottom:12px}.side-brand img{width:54px;height:54px;border-radius:16px;float:right;margin-left:10px}.side-brand b{font-size:16px;color:#ffd86e}.side-brand small{display:block;color:#bdcee4;font-size:10px;margin-top:4px}
+nav{display:grid;gap:6px;overflow-y:auto;overflow-x:hidden;flex:1;min-height:0;padding:2px 0 12px;scrollbar-width:thin;scrollbar-color:#ffffff35 transparent}nav::-webkit-scrollbar{width:6px}nav::-webkit-scrollbar-thumb{background:#ffffff35;border-radius:10px}.nav{width:100%;border:0;background:transparent;color:#dce8f8;padding:12px 14px;border-radius:13px;text-align:right;cursor:pointer;display:flex;gap:12px;align-items:center;font-size:12px;font-weight:700}.nav .ico{width:28px;height:28px;border-radius:9px;display:grid;place-items:center;background:#ffffff12}.nav.active{background:linear-gradient(90deg,#174c8b,#0e396e);box-shadow:inset -3px 0 var(--gold);color:#fff}.side-footer{position:static;flex:none;text-align:center;color:#9db2cc;font-size:10px;border-top:1px solid #ffffff14;padding:12px 4px 2px;margin-top:2px;background:#06244a}
+main{margin-right:255px;width:calc(100% - 255px);padding:25px 28px 35px}.head-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}.eyebrow{font-size:10px;color:#8a98aa}.head-row h1{font-size:25px;margin:3px 0}.actions{display:flex;gap:9px}.btn{border:0;border-radius:11px;padding:11px 15px;cursor:pointer;font-weight:800;font-size:11px}.btn-primary{background:linear-gradient(135deg,#d99e28,#f1c758);color:#172b49;box-shadow:0 8px 18px #d6a72f33}.btn-light{background:#fff;border:1px solid var(--line);color:#4f6076}
+.hero{background:linear-gradient(100deg,#0a2f5c 0%,#0a427e 55%,#0b376a);border-radius:22px;min-height:185px;color:#fff;padding:25px 28px;display:flex;align-items:center;justify-content:space-between;overflow:hidden;position:relative;box-shadow:var(--shadow)}.hero:after{content:"";position:absolute;width:420px;height:420px;border:1px solid #ffffff18;border-radius:50%;left:-140px;top:-180px}.hero-copy{position:relative;z-index:2}.hero .tag{display:inline-block;background:#ffffff16;border:1px solid #ffffff20;padding:6px 10px;border-radius:18px;font-size:10px;color:#f6d67d}.hero h2{font-size:24px;line-height:1.65;margin:10px 0 3px}.hero p{margin:0;color:#d6e3f2;font-size:12px}.hero-logo{width:105px;height:105px;object-fit:cover;border-radius:25px;border:2px solid #eac04d;box-shadow:0 15px 30px #001d3d55;margin-left:25px;position:relative;z-index:2}
+.stats{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin:16px 0}.stat{background:#fff;border:1px solid var(--line);border-radius:16px;padding:15px;display:flex;gap:11px;align-items:center;box-shadow:var(--shadow)}.stat-icon{width:42px;height:42px;border-radius:13px;display:grid;place-items:center;font-size:18px}.stat b{display:block;font-size:10px;color:#68778c}.stat strong{font-size:23px;display:block;margin:1px 0}.trend{font-size:9px}.up{color:#1aa77b}.down{color:#df4d59}.c-blue{background:#e9efff;color:#2d61dc}.c-green{background:#e3f8f1;color:#0f9a70}.c-red{background:#ffeaed;color:#dc4b59}.c-orange{background:#fff2d8;color:#cf8a10}.c-purple{background:#eee8ff;color:#6845d7}
+.grid{display:grid;grid-template-columns:1.45fr .95fr;gap:15px}.card{background:#fff;border:1px solid var(--line);border-radius:17px;padding:18px;box-shadow:var(--shadow)}.card-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:13px}.card-head h3{font-size:14px;margin:0}.card-head small{font-size:9px;color:var(--muted)}.link{border:0;background:none;color:#275fc8;font-size:10px;font-weight:800;cursor:pointer}
+.quick{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.quick button{border:1px solid var(--line);background:#fbfcff;border-radius:13px;padding:17px 8px;cursor:pointer;color:#173b69}.quick i{display:grid;place-items:center;width:42px;height:42px;margin:auto auto 8px;border-radius:13px;font-style:normal;font-size:18px}.q1 i{background:#e7efff;color:#2c63de}.q2 i{background:#e5f8f1;color:#129d73}.q3 i{background:#fff1da;color:#ce8c12}.q4 i{background:#eee8ff;color:#6a47d7}.quick b{font-size:10px}
+.chart{height:205px;display:flex;align-items:end;gap:10px;padding:15px 6px 0;border-bottom:1px solid #edf1f6}.bar-group{flex:1;height:100%;display:flex;align-items:end;justify-content:center;gap:3px}.bar{width:11px;border-radius:6px 6px 0 0}.present{background:#20a97d}.absent{background:#e95662}.visit{background:#2d73e8}.days{display:flex;justify-content:space-around;font-size:9px;color:#8b97a8;margin-top:8px}
+.bday-list{display:grid;gap:2px}.bday{display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid #f0f2f6}.bday:last-child{border-bottom:0}.avatar{width:36px;height:36px;border-radius:50%;display:grid;place-items:center;font-weight:800;background:#e8eef8;color:#2c5688}.bday div:nth-child(2){flex:1}.bday b{font-size:10px}.bday small{display:block;font-size:9px;color:#8793a4}.cake{font-size:17px}
+.bottom-grid{display:grid;grid-template-columns:1fr 1fr;gap:15px;margin-top:15px}.table-wrap{overflow:auto}table{width:100%;border-collapse:collapse;font-size:10px}th{text-align:right;color:#8b98aa;font-weight:700;padding:9px;border-bottom:1px solid var(--line)}td{padding:10px 9px;border-bottom:1px solid #f0f2f6}.person{display:flex;align-items:center;gap:8px}.person .avatar{width:29px;height:29px;font-size:9px}.badge{padding:4px 8px;border-radius:20px;font-size:8px}.ok{background:#e5f8f0;color:#15966e}.late{background:#fff0d9;color:#b67a0e}.off{background:#ffe9ec;color:#ce4e5d}
+.page{display:none}.page.active{display:block}.note-edit{width:100%;min-height:58px;resize:vertical;border:1px solid var(--line);border-radius:10px;padding:10px;background:#fbfcff;color:var(--text);outline:none;font-family:inherit;font-size:10px}.note-edit:focus{border-color:#9bb8e8;box-shadow:0 0 0 3px #2e67e812}.empty{padding:65px 20px;text-align:center}.empty .big{width:65px;height:65px;margin:auto;background:#edf2ff;color:#2d62da;border-radius:20px;display:grid;place-items:center;font-size:25px}.empty h2{margin:12px 0 5px}.empty p{color:var(--muted);font-size:11px}.toolbar{display:flex;gap:8px;margin:15px 0}.toolbar input,.toolbar select{flex:1;border:1px solid var(--line);border-radius:10px;background:#fff;padding:11px;outline:none;font-size:10px}.modal{display:none;position:fixed;inset:0;background:#061a32aa;backdrop-filter:blur(4px);z-index:50;align-items:center;justify-content:center;padding:20px}.modal.open{display:flex}.modal-box{width:min(620px,100%);background:#fff;border-radius:20px;padding:25px;position:relative}.close{position:absolute;left:15px;top:15px;border:0;background:#f2f5f9;width:34px;height:34px;border-radius:10px;font-size:20px;cursor:pointer}.form textarea{width:100%;resize:vertical;font-family:inherit;border:1px solid #dfe6ef;border-radius:12px;padding:10px;box-sizing:border-box}.form{display:grid;grid-template-columns:1fr 1fr;gap:12px}.form label{font-size:10px;color:#69778a}.form input,.form select{display:block;width:100%;margin-top:5px;padding:11px;border:1px solid var(--line);border-radius:10px}.wide{width:100%;margin-top:18px}
+
+.photo-upload{display:flex;align-items:center;gap:12px}.photo-preview{width:68px;height:68px;border-radius:16px;object-fit:cover;background:#edf2f8;border:1px dashed #cbd7e6;display:grid;place-items:center;color:#8090a4;font-size:22px}.photo-upload input{flex:1}.age-readonly{background:#f7f9fc!important;color:#52647a}.date-hero{display:grid;grid-template-columns:1.15fr .85fr;gap:15px}.coptic-now{background:linear-gradient(135deg,#082d5a,#0b4a88);color:#fff;border-radius:20px;padding:24px;position:relative;overflow:hidden}.coptic-now:after{content:'✝';position:absolute;left:28px;bottom:-22px;font-size:120px;color:#ffffff12}.coptic-now .label{font-size:10px;color:#d5e2f2}.coptic-now h2{font-size:31px;margin:8px 0}.coptic-now p{margin:0;color:#d7e4f3;font-size:11px}.date-tools{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.date-tools select{padding:10px;border:1px solid var(--line);border-radius:10px;background:#fff}.holiday-list{display:grid;gap:8px}.holiday{display:grid;grid-template-columns:110px 1fr auto;gap:10px;align-items:center;padding:11px 12px;border:1px solid var(--line);border-radius:12px;background:#fbfcff}.holiday .cdate{font-weight:800;color:#245da8}.holiday .gdate{font-size:9px;color:var(--muted)}.holiday .hname{font-size:11px;font-weight:800}.holiday .tag{font-size:8px;padding:4px 7px;border-radius:20px;background:#fff2d8;color:#a86c08}.export-row{display:flex;gap:8px;flex-wrap:wrap}.photo-cell img{width:34px;height:34px;border-radius:10px;object-fit:cover}.member-actions{display:flex;gap:5px}.mini-btn{border:1px solid var(--line);background:#fff;border-radius:8px;padding:6px 8px;font-size:9px;cursor:pointer}.mini-btn.danger{color:#c94352}.profile-card{display:grid;grid-template-columns:110px 1fr;gap:18px;align-items:center}.profile-photo{width:110px;height:110px;border-radius:22px;object-fit:cover;background:#edf2f8}.profile-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:15px}.profile-item{padding:12px;border:1px solid var(--line);border-radius:12px;background:#fbfcff}.profile-item small{display:block;color:var(--muted);font-size:8px}.profile-item b{font-size:11px}.notification-box{background:#fff8e7;border:1px solid #f2dfad;color:#755514;border-radius:14px;padding:12px;font-size:10px}
+
+.weekly-summary{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:15px 0}.week-stat{background:#fff;border:1px solid var(--line);border-radius:15px;padding:15px;box-shadow:var(--shadow)}.week-stat small{display:block;color:var(--muted);font-size:9px}.week-stat strong{display:block;font-size:25px;margin-top:4px}.weekly-list{display:grid;gap:8px}.weekly-person{display:flex;align-items:center;gap:10px;padding:11px 12px;border:1px solid var(--line);border-radius:12px;background:#fbfcff}.weekly-person .avatar,.weekly-person img{width:40px;height:40px;border-radius:12px;object-fit:cover}.weekly-person .info{flex:1}.weekly-person .info b{display:block;font-size:11px}.weekly-person .info small{display:block;color:var(--muted);font-size:8px;margin-top:3px}.weekly-person .date{font-size:9px;color:#285ea6;font-weight:800}.week-tools{display:flex;gap:8px;flex-wrap:wrap;align-items:end}.week-tools label{font-size:9px;color:var(--muted);font-weight:700}.week-tools input,.week-tools select{display:block;margin-top:5px;padding:10px;border:1px solid var(--line);border-radius:10px;background:#fff;outline:none;font-size:10px}.week-tools .field{min-width:160px}.weekly-empty{text-align:center;padding:35px;color:var(--muted);font-size:11px}.weekly-note{background:#eef5ff;border:1px solid #dbe8fb;color:#27558d;border-radius:12px;padding:11px;font-size:9px;margin-bottom:12px}@media(max-width:760px){.weekly-summary{grid-template-columns:1fr 1fr}.week-tools .field{min-width:140px}}
+@media(max-width:760px){.date-hero{grid-template-columns:1fr}.profile-card{grid-template-columns:1fr;text-align:center}.profile-photo{margin:auto}.profile-grid{grid-template-columns:1fr 1fr}.holiday{grid-template-columns:1fr}.holiday .tag{justify-self:start}}
+@media(max-width:1050px){.stats{grid-template-columns:repeat(3,1fr)}.grid,.bottom-grid{grid-template-columns:1fr}}@media(max-width:760px){
+  body{overflow-x:hidden}
+  .top{height:60px;padding:0 10px;gap:8px}
+  .mobile-menu{display:grid!important;place-items:center;width:40px;height:40px;border:0;border-radius:11px;background:#ffffff18;color:#fff;font-size:22px;cursor:pointer;flex:none}
+  .brand-top{gap:7px;min-width:0;flex:1}.brand-top img{width:36px;height:36px}.brand-top b{font-size:12px}.brand-top small{font-size:7px}
+  .top-user-text,.search{display:none}.user{gap:6px}.user-avatar{width:32px;height:32px}.logout-btn{padding:6px 8px;font-size:8px}.notif-bell{width:34px;height:34px}
+  aside{width:min(285px,82vw);padding:14px 10px;right:0;top:60px;bottom:0;height:calc(100vh - 60px);transform:translateX(105%);transition:transform .22s ease;box-shadow:-12px 0 35px #00152f55;overflow-y:auto;overflow-x:hidden;z-index:60}
+  aside.mobile-open{transform:translateX(0)}
+  .side-brand{display:flex}.nav{justify-content:flex-start;padding:12px}.nav span{display:block}.side-footer{display:block;margin-top:12px}
+  main{margin-right:0;width:100%;padding:14px 12px 28px;min-width:0}
+  .mobile-overlay{display:none;position:fixed;inset:60px 0 0;background:#061d3a66;z-index:50}.mobile-overlay.open{display:block}
+  .stats{grid-template-columns:1fr 1fr}.hero-logo{width:75px;height:75px}.hero h2{font-size:18px;line-height:1.65}.quick{grid-template-columns:1fr 1fr}.form{grid-template-columns:1fr}
+  .card,.panel{max-width:100%;overflow-x:auto}.table-wrap{overflow-x:auto;max-width:100%}
+  .head-row{align-items:flex-start;gap:10px;flex-wrap:wrap}.head-row h1{font-size:20px}.actions{width:100%;flex-wrap:wrap}
+  .notification-panel{top:66px;right:10px;width:calc(100vw - 20px);max-height:75vh}
+  .manager-grid{grid-template-columns:1fr}.points-row{gap:7px}.points-person{min-width:0}.points-person b{font-size:10px;white-space:normal}.point-btn{width:36px;height:36px}
+}
+@media(max-width:480px){.stats{grid-template-columns:1fr}.hero{min-height:165px;padding:20px}.hero-logo{display:none}.head-row h1{font-size:19px}.actions .btn-light{display:none}.brand-top small{display:none}.top-user-text{display:none}.user-avatar{display:none}.quick{grid-template-columns:1fr}.profile-grid{grid-template-columns:1fr}.grid,.bottom-grid{grid-template-columns:1fr!important}.class-grid{grid-template-columns:1fr!important}.weekly-summary{grid-template-columns:1fr 1fr}.weekly-list,.points-row{width:100%}}
+@media(min-width:761px){.mobile-menu{display:none}.mobile-overlay{display:none!important}}
+
+.class-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:13px}.class-card{border:1px solid var(--line);border-radius:16px;padding:16px;background:linear-gradient(180deg,#fff,#fbfcff);transition:.2s}.class-card:hover{transform:translateY(-2px);box-shadow:0 10px 24px #173b6912}.class-top{display:flex;justify-content:space-between;align-items:center}.class-icon{width:42px;height:42px;border-radius:13px;background:#edf3ff;color:#235fc5;display:grid;place-items:center;font-size:20px}.class-menu-wrap{position:relative}.class-menu-btn{border:0;background:transparent;color:#718096;font-size:18px;line-height:1;padding:5px 7px;border-radius:8px;cursor:pointer}.class-menu-btn:hover,.class-menu-btn:focus{background:#eef4ff;color:#2059a4;outline:none}.class-menu-pop{position:absolute;top:34px;left:0;min-width:120px;background:#fff;border:1px solid var(--line);border-radius:10px;box-shadow:0 12px 28px #173b6920;padding:5px;z-index:20;display:none}.class-menu-pop.open{display:block}.class-menu-pop button{display:block;width:100%;border:0;background:transparent;text-align:right;padding:8px 10px;border-radius:7px;font-size:10px;cursor:pointer}.class-menu-pop button:hover{background:#f2f6fc}.class-menu-pop .danger{color:#d64555}.report-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-bottom:15px}.report-card{background:#fff;border:1px solid var(--line);border-radius:15px;padding:15px}.report-card small{color:var(--muted);font-size:9px}.report-card strong{display:block;font-size:24px;margin-top:5px}.report-bars{display:grid;gap:10px}.report-bar-row{display:grid;grid-template-columns:110px 1fr 55px;gap:10px;align-items:center;font-size:10px}.report-bar{height:9px;background:#edf1f7;border-radius:99px;overflow:hidden}.report-bar span{display:block;height:100%;background:#4b7bec;border-radius:99px}.report-empty{padding:35px;text-align:center;color:var(--muted)}@media(max-width:760px){.report-grid{grid-template-columns:1fr 1fr}.report-bar-row{grid-template-columns:80px 1fr 45px}}@media(max-width:480px){.report-grid{grid-template-columns:1fr}}.class-card h3{margin:12px 0 2px;font-size:15px}.class-card p{margin:0 0 13px;color:var(--muted);font-size:9px}.class-meta{display:grid;grid-template-columns:auto 1fr auto 1fr;gap:3px 7px;align-items:end;border-top:1px solid var(--line);padding-top:12px}.class-meta b{font-size:17px}.class-meta span{font-size:8px;color:var(--muted);align-self:center}.class-btn{margin-top:13px;width:100%;border:1px solid #dfe7f2;background:#f8fbff;color:#2059a4;border-radius:10px;padding:9px;cursor:pointer;font-size:9px;font-weight:800}
+
+.photo-upload{display:flex;align-items:center;gap:12px}.photo-preview{width:68px;height:68px;border-radius:16px;object-fit:cover;background:#edf2f8;border:1px dashed #cbd7e6;display:grid;place-items:center;color:#8090a4;font-size:22px}.photo-upload input{flex:1}.age-readonly{background:#f7f9fc!important;color:#52647a}.date-hero{display:grid;grid-template-columns:1.15fr .85fr;gap:15px}.coptic-now{background:linear-gradient(135deg,#082d5a,#0b4a88);color:#fff;border-radius:20px;padding:24px;position:relative;overflow:hidden}.coptic-now:after{content:'✝';position:absolute;left:28px;bottom:-22px;font-size:120px;color:#ffffff12}.coptic-now .label{font-size:10px;color:#d5e2f2}.coptic-now h2{font-size:31px;margin:8px 0}.coptic-now p{margin:0;color:#d7e4f3;font-size:11px}.date-tools{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.date-tools select{padding:10px;border:1px solid var(--line);border-radius:10px;background:#fff}.holiday-list{display:grid;gap:8px}.holiday{display:grid;grid-template-columns:110px 1fr auto;gap:10px;align-items:center;padding:11px 12px;border:1px solid var(--line);border-radius:12px;background:#fbfcff}.holiday .cdate{font-weight:800;color:#245da8}.holiday .gdate{font-size:9px;color:var(--muted)}.holiday .hname{font-size:11px;font-weight:800}.holiday .tag{font-size:8px;padding:4px 7px;border-radius:20px;background:#fff2d8;color:#a86c08}.export-row{display:flex;gap:8px;flex-wrap:wrap}.photo-cell img{width:34px;height:34px;border-radius:10px;object-fit:cover}.member-actions{display:flex;gap:5px}.mini-btn{border:1px solid var(--line);background:#fff;border-radius:8px;padding:6px 8px;font-size:9px;cursor:pointer}.mini-btn.danger{color:#c94352}.profile-card{display:grid;grid-template-columns:110px 1fr;gap:18px;align-items:center}.profile-photo{width:110px;height:110px;border-radius:22px;object-fit:cover;background:#edf2f8}.profile-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:15px}.profile-item{padding:12px;border:1px solid var(--line);border-radius:12px;background:#fbfcff}.profile-item small{display:block;color:var(--muted);font-size:8px}.profile-item b{font-size:11px}.notification-box{background:#fff8e7;border:1px solid #f2dfad;color:#755514;border-radius:14px;padding:12px;font-size:10px}
+@media(max-width:760px){.date-hero{grid-template-columns:1fr}.profile-card{grid-template-columns:1fr;text-align:center}.profile-photo{margin:auto}.profile-grid{grid-template-columns:1fr 1fr}.holiday{grid-template-columns:1fr}.holiday .tag{justify-self:start}}
+@media(max-width:1050px){.class-grid{grid-template-columns:repeat(2,1fr)}}@media(max-width:600px){.class-grid{grid-template-columns:1fr}}
+
+.att-toolbar{display:grid;grid-template-columns:180px 1fr auto auto;gap:10px;align-items:end}.att-toolbar label{display:grid;gap:6px;font-size:9px;color:var(--muted);font-weight:700}.att-toolbar select,.att-toolbar input{padding:11px;border:1px solid var(--line);border-radius:10px;background:#fff;outline:none}.att-actions{display:flex;gap:8px;flex-wrap:wrap}.att-summary{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:14px 0}.att-summary .mini-stat{padding:14px;border:1px solid var(--line);border-radius:14px;background:#fbfcff}.att-summary b{display:block;font-size:22px;color:#10233f}.att-summary span{font-size:9px;color:var(--muted)}.att-table td{vertical-align:middle}.status-btns{display:flex;gap:5px;flex-wrap:wrap}.status-btn{border:1px solid var(--line);background:#fff;border-radius:9px;padding:7px 10px;font-size:9px;cursor:pointer}.status-btn.active.present{background:#e7f7ef;border-color:#76c99c;color:#167447}.status-btn.active.absent{background:#fff0f0;border-color:#e7a1a1;color:#b12c38}.status-btn.active.excused{background:#fff7df;border-color:#e8c76d;color:#8a6510}.att-note{font-size:9px;color:var(--muted);margin-top:8px}.att-alert{background:#fff4e5;border:1px solid #f0d29c;border-radius:14px;padding:12px;margin-bottom:12px;color:#795a1c}.att-empty{padding:30px;text-align:center;color:var(--muted)}
+.rate-cell{min-width:110px}.rate-bar{height:7px;background:#edf1f6;border-radius:20px;overflow:hidden;margin-top:5px}.rate-bar span{display:block;height:100%;background:linear-gradient(90deg,#2e8b57,#1f6aa5);border-radius:20px}.rate-badge{display:inline-block;padding:5px 8px;border-radius:8px;background:#f2f5fa;color:#42566f;font-size:9px;font-weight:800}@media(max-width:900px){.att-toolbar{grid-template-columns:1fr 1fr}.att-summary{grid-template-columns:repeat(2,1fr)}}.rate-cell{min-width:110px}.rate-bar{height:7px;background:#edf1f6;border-radius:20px;overflow:hidden;margin-top:5px}.rate-bar span{display:block;height:100%;background:linear-gradient(90deg,#2e8b57,#1f6aa5);border-radius:20px}.rate-badge{display:inline-block;padding:5px 8px;border-radius:8px;background:#f2f5fa;color:#42566f;font-size:9px;font-weight:800}
+
+.auth-gate{position:fixed;inset:0;background:linear-gradient(135deg,#061d3a,#0b427e);z-index:200;display:flex;align-items:center;justify-content:center;padding:20px}.auth-box{width:min(460px,100%);background:#fff;border-radius:24px;padding:28px;box-shadow:0 25px 70px #00152f66}.auth-box img{width:78px;height:78px;border-radius:20px;display:block;margin:0 auto 12px;border:2px solid #e8ba43}.auth-box h2{text-align:center;margin:8px 0 4px}.auth-box p{text-align:center;color:#718096;font-size:11px}.auth-tabs{display:flex;gap:6px;background:#f4f7fb;padding:5px;border-radius:12px;margin:18px 0}.auth-tabs button{flex:1;border:0;background:transparent;padding:10px;border-radius:9px;cursor:pointer;font-weight:800;font-size:11px}.auth-tabs button.active{background:#fff;box-shadow:0 3px 12px #183b6815;color:#174d8e}.auth-form{display:grid;gap:10px}.auth-form label{font-size:10px;color:#607086}.auth-form input{width:100%;padding:12px;border:1px solid #dfe7f1;border-radius:11px;margin-top:5px;outline:none}.auth-error{background:#fff0f1;color:#b43b4a;border-radius:10px;padding:9px;font-size:10px;display:none}.remember-row{display:flex;align-items:center;justify-content:flex-start;gap:7px;font-size:10px;color:#607086;direction:rtl}.remember-row input{width:16px;height:16px;margin:0;accent-color:#2059a4}.auth-help{font-size:9px;color:#8a96a6;text-align:center;margin-top:10px}.manager-choice{background:#fff8e6;border:1px solid #f0d79a;border-radius:12px;padding:10px}.manager-option{display:flex;gap:9px;align-items:flex-start;color:#6e520d;font-size:10px}.manager-option input{width:18px;height:18px;margin:0}.manager-option b{display:block}.manager-option small{display:block;color:#8a96a6;font-size:8px;margin-top:3px}.manager-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:15px}.servant-row{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center;padding:12px;border-bottom:1px solid var(--line)}.servant-row:last-child{border-bottom:0}.servant-meta{font-size:9px;color:var(--muted);margin-top:4px}.pill{display:inline-block;padding:4px 8px;border-radius:20px;background:#edf3ff;color:#245da8;font-size:8px;margin:2px}.manager-note{padding:11px;border-radius:12px;background:#fff8e6;border:1px solid #f5dfa0;color:#77560a;font-size:10px;margin-bottom:12px}.logout-btn{border:1px solid #ffffff30;background:#ffffff12;color:#fff;border-radius:9px;padding:7px 9px;cursor:pointer;font-size:9px}.top-user-text{min-width:100px}@media(max-width:900px){.manager-grid{grid-template-columns:1fr}}
+
+.birthday-today{border:2px solid rgba(24,119,242,.35)!important;background:linear-gradient(90deg,rgba(24,119,242,.06),rgba(255,255,255,.98))}
+.birthday-today .pill{font-weight:800}
+.bday-row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 4px;border-bottom:1px solid #eef2f7}.bday-row:last-child{border-bottom:0}.bday-row small{display:block;color:var(--muted);margin-top:4px}
+
+.notif-bell{position:relative;border:0;background:#f3f7fc;width:38px;height:38px;border-radius:12px;cursor:pointer;font-size:18px}.notif-badge{position:absolute;top:-4px;right:-4px;min-width:18px;height:18px;padding:0 4px;border-radius:20px;background:#d83b4b;color:#fff;font-size:9px;font-weight:800;display:grid;place-items:center}.notification-panel{position:fixed;top:76px;right:24px;width:min(390px,calc(100vw - 30px));max-height:70vh;overflow:auto;background:#fff;border:1px solid var(--line);border-radius:18px;box-shadow:0 18px 45px rgba(20,40,70,.18);z-index:1000;display:none}.notification-panel.open{display:block}.notification-panel .np-head{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:14px 16px;border-bottom:1px solid var(--line);position:sticky;top:0;background:#fff}.notification-item{padding:13px 16px;border-bottom:1px solid #edf1f6;cursor:pointer}.notification-item.unread{background:#f7fbff}.notification-item b{display:block;font-size:11px;margin-bottom:5px}.notification-item p{margin:0;color:#58687c;font-size:10px;line-height:1.6}.notification-item small{display:block;color:#98a4b4;font-size:8px;margin-top:6px}.np-empty{padding:30px 16px;text-align:center;color:#8b98aa;font-size:10px}.np-actions{display:flex;gap:6px;flex-wrap:wrap}.np-actions button{border:1px solid var(--line);background:#fff;border-radius:9px;padding:6px 9px;font-size:9px;cursor:pointer}
+.points-row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 8px;border-bottom:1px solid #edf1f6}.points-row:last-child{border-bottom:0}.points-person{display:flex;align-items:center;gap:10px;min-width:0}.points-avatar{width:38px;height:38px;border-radius:12px;background:#eef4ff;display:grid;place-items:center;flex:none}.points-person b{display:block;font-size:11px}.points-person small{display:block;color:#8a96a6;font-size:9px;margin-top:3px}.points-actions{display:flex;align-items:center;gap:8px;flex:none}.points-count{min-width:42px;text-align:center;font-weight:900;font-size:14px;color:#173f70}.point-btn{width:38px;height:38px;border:0;border-radius:12px;color:#fff;font-size:22px;line-height:1;cursor:pointer;box-shadow:0 5px 12px #0f4c8122}.point-btn.minus{background:#8a2d3a}.point-btn.plus{background:#0f4c81}.point-btn:active{transform:scale(.96)}@media(max-width:600px){.points-row{padding:10px 2px}.point-btn{width:36px;height:36px}}
+
+<style>
+.class-menu-wrap{position:relative;display:inline-flex;z-index:5}.class-menu-btn{border:0;background:rgba(255,255,255,.9);border-radius:10px;width:38px;height:38px;cursor:pointer;font-size:22px;line-height:1}.class-menu-pop{display:none;position:absolute;inset-inline-end:0;top:42px;min-width:145px;background:#fff;border:1px solid #e5eaf1;border-radius:12px;padding:6px;box-shadow:0 12px 30px rgba(15,35,63,.14);z-index:30}.class-menu-pop.open{display:grid;gap:4px}.class-menu-pop button{border:0;background:transparent;padding:9px 10px;border-radius:8px;text-align:right;cursor:pointer;font:inherit}.class-menu-pop button:hover{background:#f3f6fa}.class-menu-pop .danger{color:#b42318}.note-save-status{font-size:12px;color:#5d6b7d;margin-inline-start:8px}.note-save-status.ok{color:#16803a}.note-save-status.err{color:#b42318}.attendance-auto-date{font-size:12px;color:#6b7787;padding:8px 0}.class-card .class-top{position:relative}.class-card .class-menu-wrap{margin-inline-start:auto}.class-card .class-menu{margin-inline-start:auto}
+@media(max-width:700px){.class-menu-pop{position:fixed;inset-inline-end:14px;top:auto;min-width:170px}.class-menu-btn{width:42px;height:42px}.note-edit{min-height:86px}.notes-actions{flex-wrap:wrap}}
+</style>
 </style>
 </head>
 <body>
@@ -22,15 +84,15 @@ button,input,select{font:inherit}.app{min-height:100vh}.top{height:72px;backgrou
     <div class="auth-tabs"><button id="loginTab" class="active" type="button" onclick="switchAuth('login')">تسجيل الدخول</button><button id="signupTab" type="button" onclick="switchAuth('signup')">حساب جديد</button></div>
     <form id="authForm" class="auth-form" onsubmit="submitAuth(event)">
       <label id="authNameWrap" style="display:none">الاسم<input id="authName" placeholder="اسم الخادم"></label>
-      <div id="managerChoice" class="manager-choice" style="display:none"><label class="manager-option"><input id="wantsManager" type="checkbox"> <span><b>مدير الخدمة</b><small>اختيار متاح إذا لم يتم تعيين مدير</small></span></label></div>
+      <div id="managerChoice" class="manager-choice" style="display:none"><label class="manager-option"><input id="wantsManager" type="checkbox"> <span><b>مدير الخدمة</b><small>اختيار لمرة واحدة فقط. بعد اختياره لن يظهر لأي تسجيل جديد.</small></span></label></div>
       <label>البريد الإلكتروني<input id="authEmail" type="email" required autocomplete="email" placeholder="example@email.com"></label>
       <label>كلمة المرور<input id="authPassword" type="password" required minlength="6" autocomplete="current-password" placeholder="6 أحرف على الأقل"></label>
       <div id="rememberRow" class="remember-row"><label style="display:flex;align-items:center;gap:7px;cursor:pointer;color:#607086"><input id="rememberMe" type="checkbox"> <span>تذكرني على هذا الجهاز</span></label></div>
-      <button id="forgotPasswordBtn" type="button" onclick="openForgotPassword()" style="border:0;background:transparent;color:#2059a4;cursor:pointer;font-size:10px;font-weight:800;text-align:right">نسيت كلمة المرور؟</button>
+      <button id="forgotPasswordBtn" type="button" onclick="openForgotPassword()" style="border:0;background:transparent;color:#2059a4;cursor:pointer;font-size:10px;font-weight:800;text-align:right;padding:0">نسيت كلمة المرور؟</button>
       <div id="authError" class="auth-error"></div>
       <button class="btn btn-primary wide" type="submit" id="authSubmit">دخول</button>
     </form>
-    <div id="authHelp" class="auth-help">أنشئ حسابك كخادم. وإذا كان منصب مدير الخدمة لم يُحجز بعد، سيظهر لك اختيار مدير الخدمة.</div>
+    <div id="authHelp" class="auth-help">أنشئ حسابك كخادم. وإذا كان منصب مدير الخدمة لم يُحجز بعد، سيظهر لك اختيار مدير الخدمة لمرة واحدة.</div>
   </div>
 </div>
 
@@ -54,10 +116,10 @@ button,input,select{font:inherit}.app{min-height:100vh}.top{height:72px;backgrou
   <button class="mobile-menu" id="mobileMenu" type="button" aria-label="فتح القائمة" onclick="toggleMobileMenu()">☰</button>
   <div class="brand-top"><img src="logo.png" alt="خدمة الأمير"><div><b>خدمة الأمير</b><small>تنظيم .. متابعة .. نمو</small></div></div>
   <input class="search" placeholder="ابحث عن مخدوم ..." id="globalSearch">
-  <div class="user"><div class="user-avatar">أ</div><div class="top-user-text"><b id="currentUserName">—</b><small id="currentUserRole">—</small></div><button class="notif-bell" id="notificationBell" onclick="toggleNotifications()" type="button" aria-label="الإشعارات"><span>🔔</span><span class="notif-badge" id="notificationBadge" hidden>0</span></button></div>
+  <div class="user"><div class="user-avatar">أ</div><div class="top-user-text"><b id="currentUserName">—</b><small id="currentUserRole">—</small></div><span id="dbStatus" title="حالة قاعدة البيانات">⏳</span><button class="notif-bell" id="notificationBell" onclick="toggleNotifications()" title="الإشعارات">🔔<span id="notificationBadge" class="notif-badge" hidden>0</span></button><button class="logout-btn" onclick="openAccountModal()">حسابي</button><button class="logout-btn" onclick="logout()">خروج</button></div>
 </header>
 <div class="notification-panel" id="notificationPanel">
-  <div class="np-head"><b>الإشعارات</b><button class="btn btn-light" onclick="markAllNotificationsRead()" type="button">تحديد الكل كمقروء</button></div>
+  <div class="np-head"><b>الإشعارات</b><div class="np-actions"><button onclick="requestNotificationPermission()">تفعيل إشعارات الجهاز</button><button onclick="markAllNotificationsRead()">قراءة الكل</button></div></div>
   <div id="notificationList"><div class="np-empty">لا توجد إشعارات.</div></div>
 </div>
 <div id="mobileOverlay" class="mobile-overlay" onclick="closeMobileMenu()"></div>
@@ -84,10 +146,10 @@ button,input,select{font:inherit}.app{min-height:100vh}.top{height:72px;backgrou
   <div class="side-footer">✝<br><br>خدمة الأمير<br>محبتنا .. تكمل رسالتنا</div>
 </aside>
 
-<main class="main-wrap">
+<main>
 <section id="home" class="page active">
-  <div class="head-row"><div><div class="eyebrow" id="homeDateLabel">جارٍ تحديث التاريخ...</div><h1 class="h1-title">مرحباً بك في خدمة الأمير 👋</h1></div><div class="actions"><button class="btn btn-light" type="button" onclick="openAccountModal()">حسابي</button><button class="btn btn-primary" type="button" onclick="showPage('attendance')">+ تسجيل حضور</button></div></div>
-  <div class="hero"><div class="hero-copy"><span class="tag">آية الخدمة</span><h2>أُبَارِكُ ٱلرَّبَّ فِي كُلِّ حِينٍ. دَائِمًا تَسْبِيحُهُ.</h2></div><div class="hero-logo">✝</div></div>
+  <div class="head-row"><div><div class="eyebrow">الأحد، 20 سبتمبر 2026</div><h1>مرحباً بك في خدمة الأمير 👋</h1></div><div class="actions"><button class="btn btn-light" onclick="showPage('reports')">التقارير</button><button class="btn btn-primary" onclick="openModal()">+ إضافة مخدوم</button></div></div>
+  <div class="hero"><div class="hero-copy"><span class="tag">آية الخدمة</span><h2>أُبَارِكُ ٱلرَّبَّ فِي كُلِّ حِينٍ. دَائِمًا تَسْبِيحُهُ فِي فَمِي</h2></div><img class="hero-logo" src="logo.png" alt="لوجو خدمة الأمير"></div>
 
   <div class="stats">
     <div class="stat"><span class="stat-icon c-blue">👥</span><div><b>إجمالي المخدومين</b><strong id="homeTotalMembers">0</strong><span class="trend up">من قاعدة البيانات</span></div></div>
@@ -113,38 +175,1014 @@ button,input,select{font:inherit}.app{min-height:100vh}.top{height:72px;backgrou
     </div>
   </div>
 
-  <div class="grid" style="margin-top:15px">
-    <div class="card"><div class="card-head"><h3>إحصائيات مختصرة</h3><small>الحضور والغياب والزيارات خلال الأسبوع</small></div><div class="chart" id="homeChart"><div class="empty" style="padding:35px 10px;width:100%"><div class="big">▥</div><p>ستظهر الإحصائيات بعد تسجيل بيانات الحضور.</p></div></div></div>
-    <div class="card"><div class="card-head"><h3>أحدث المخدومين</h3><button class="link" onclick="showPage('members')">عرض الكل</button></div><div class="table-wrap"><div class="empty" style="padding:35px 10px"><div class="big">👥</div><h2 style="font-size:14px">لا توجد بيانات بعد</h2><p>سيظهر هنا أحدث المخدومين بعد إدخالهم.</p></div></div></div>
+  <div class="bottom-grid">
+    <div class="card"><div class="card-head"><h3>إحصائيات مختصرة</h3><small>الحضور والغياب والزيارات خلال الأسبوع</small></div>
+      <div class="chart" id="homeChart"><div class="empty" style="padding:35px 10px;width:100%"><div class="big">▥</div><p>ستظهر الإحصائيات بعد تسجيل بيانات الحضور والزيارات.</p></div></div><div class="days"><span>البيانات الفعلية ستظهر هنا بعد التسجيل</span></div>
+    </div>
+    <div class="card"><div class="card-head"><h3>أحدث المخدومين</h3><button class="link" onclick="showPage('members')">عرض الكل</button></div>
+      <div class="table-wrap"><div class="empty" style="padding:35px 10px"><div class="big">👥</div><h2 style="font-size:14px">لا توجد بيانات بعد</h2><p>سيظهر هنا أحدث المخدومين بعد إضافة البيانات.</p></div></div>
+    </div>
   </div>
 </section>
-</main>
-</div>
+
+
+<section id="classes" class="page">
+  <div class="head-row">
+    <div><div class="eyebrow">تنظيم الخدمة</div><h1>الفصول</h1><small style="color:var(--muted)">إنشاء الفصول وإسناد الخدام إليها متاحان لمدير الخدمة فقط.</small></div>
+    <button id="addClassBtn" class="btn btn-primary manager-only" onclick="openClassModal()">+ إضافة فصل</button>
+  </div>
+  <div class="stats">
+    <div class="stat"><span class="stat-icon c-blue">▦</span><div><b>إجمالي الفصول</b><strong id="classCount">0</strong><span class="trend up">نشطة</span></div></div>
+    <div class="stat"><span class="stat-icon c-green">👥</span><div><b>إجمالي المخدومين</b><strong id="classTotalMembers">0</strong><span class="trend up">من قاعدة البيانات</span></div></div>
+    <div class="stat"><span class="stat-icon c-orange">✓</span><div><b>متوسط الحضور</b><strong id="classAvgAttendance">—</strong><span class="trend up">بعد تسجيل الحضور</span></div></div>
+  </div>
+  <div class="card">
+    <div class="card-head">
+      <div><h3>فصول الخدمة</h3><small>كل فصل له قائمة مخدومين وحضور وافتقاد وإحصائيات مستقلة</small></div>
+      <input id="classSearch" oninput="filterClasses()" placeholder="بحث عن فصل..." style="border:1px solid var(--line);border-radius:10px;padding:9px 12px;font-size:10px;outline:none">
+    </div>
+    <div id="classGrid" class="class-grid">
+      <div class="class-card"><div class="class-top"><span class="class-icon">🌱</span><span class="class-menu">•••</span></div><h3>الحضانة</h3><p>الأطفال الصغار</p><div class="class-meta"><b>18</b><span>مخدوم</span><b>91%</b><span>حضور</span></div><button onclick="showPage('members')" class="class-btn">عرض المخدومين ←</button></div>
+      <div class="class-card"><div class="class-top"><span class="class-icon">⭐</span><span class="class-menu">•••</span></div><h3>الصف الأول</h3><p>ابتدائي</p><div class="class-meta"><b>22</b><span>مخدوم</span><b>88%</b><span>حضور</span></div><button onclick="showPage('members')" class="class-btn">عرض المخدومين ←</button></div>
+      <div class="class-card"><div class="class-top"><span class="class-icon">📘</span><span class="class-menu">•••</span></div><h3>الصف الثاني</h3><p>ابتدائي</p><div class="class-meta"><b>25</b><span>مخدوم</span><b>86%</b><span>حضور</span></div><button onclick="showPage('members')" class="class-btn">عرض المخدومين ←</button></div>
+      <div class="class-card"><div class="class-top"><span class="class-icon">📚</span><span class="class-menu">•••</span></div><h3>الصف الثالث</h3><p>ابتدائي</p><div class="class-meta"><b>21</b><span>مخدوم</span><b>84%</b><span>حضور</span></div><button onclick="showPage('members')" class="class-btn">عرض المخدومين ←</button></div>
+      <div class="class-card"><div class="class-top"><span class="class-icon">🔥</span><span class="class-menu">•••</span></div><h3>إعدادي</h3><p>المرحلة الإعدادية</p><div class="class-meta"><b>24</b><span>مخدوم</span><b>82%</b><span>حضور</span></div><button onclick="showPage('members')" class="class-btn">عرض المخدومين ←</button></div>
+      <div class="class-card"><div class="class-top"><span class="class-icon">✝</span><span class="class-menu">•••</span></div><h3>ثانوي</h3><p>المرحلة الثانوية</p><div class="class-meta"><b>18</b><span>مخدوم</span><b>89%</b><span>حضور</span></div><button onclick="showPage('members')" class="class-btn">عرض المخدومين ←</button></div>
+    </div>
+  </div>
+</section>
+
+<section id="members" class="page">
+  <div class="head-row"><div><div class="eyebrow">قاعدة بيانات الخدمة</div><h1>إدارة المخدومين</h1><small style="color:var(--muted)">المدير يضيف المخدومين لكل الفصول، والخادم يضيف مخدومين في الفصول المسندة إليه فقط.</small></div><button id="addMemberBtn" class="btn btn-primary" onclick="openModal()">+ إضافة مخدوم</button></div>
+  <div class="card"><div class="toolbar"><input id="memberSearch" placeholder="ابحث بالاسم أو الهاتف أو العنوان..." oninput="renderMembers()"><select id="memberClass" onchange="renderMembers()"><option>كل الفصول</option></select></div>
+  <div class="export-row" style="margin-bottom:14px"><button class="btn btn-light" onclick="exportMembersCSV()">📊 تصدير Excel / CSV</button><button class="btn btn-light" onclick="exportDatabase()">💾 نسخة احتياطية كاملة</button></div>
+  <div class="table-wrap"><table id="membersTable"><thead><tr><th>الصورة</th><th>المخدوم</th><th>الفصل</th><th>تاريخ الميلاد</th><th>السن</th><th>الهاتف</th><th>الحالة</th><th>إجراءات</th></tr></thead><tbody></tbody></table></div></div>
+</section>
+
+<section id="notes" class="page">
+  <div class="head-row">
+    <div><div class="eyebrow">متابعة المخدومين</div><h1>الملاحظات</h1><small style="color:var(--muted)">اكتب ملاحظاتك بجوار اسم كل مخدوم واحفظها مباشرة.</small></div>
+  </div>
+  <div class="card">
+    <div class="toolbar">
+      <input id="notesSearch" placeholder="ابحث باسم المخدوم أو الفصل..." oninput="renderNotes()">
+      <select id="notesClass" onchange="renderNotes()"><option value="all">كل الفصول</option></select>
+    </div>
+    <div class="table-wrap">
+      <table id="notesTable">
+        <thead><tr><th>#</th><th>المخدوم</th><th>الفصل</th><th>الملاحظات</th><th>إجراء</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section id="points" class="page">
+  <div class="head-row"><div><div class="eyebrow">متابعة وتشجيع المخدومين</div><h1>إضافة نقاط</h1><small style="color:var(--muted)">المدير يرى كل المخدومين، والخادم يرى مخدومي الفصول المسندة إليه فقط.</small></div></div>
+  <div class="toolbar"><input id="pointsSearch" placeholder="ابحث باسم المخدوم..." oninput="renderPoints()"><select id="pointsClass" onchange="renderPoints()"><option value="all">كل الفصول</option></select></div>
+  <div class="card"><div class="card-head"><div><h3>قائمة النقاط</h3><small>استخدم + لإضافة نقطة و− لخصم نقطة</small></div><div class="pill">إجمالي النقاط: <b id="pointsTotal">0</b></div></div><div id="pointsList" class="weekly-list"></div></div>
+</section>
+
+<section id="attendance" class="page">
+  <div class="head-row"><div><div class="eyebrow">التسجيل اليومي</div><h1>الحضور والغياب</h1></div><div class="actions"><button class="btn btn-light" onclick="exportAttendanceCSV()">📊 تنزيل كشف الحضور</button><button class="btn btn-primary" onclick="requestNotificationPermission()">🔔 تفعيل الإشعارات</button></div></div>
+  <div id="attendanceAlert"></div>
+  <div class="card">
+    <div class="att-toolbar">
+      <label class="attendance-date-hidden" style="display:none">تاريخ الاجتماع<input type="date" id="attendanceDate"></label><div class="attendance-auto-date">📅 تاريخ الاجتماع يُسجل تلقائيًا بتاريخ اليوم.</div>
+      <label>الفصل<select id="attendanceClass" onchange="loadAttendanceForDate()"><option value="all">كل الفصول</option></select></label>
+      <div class="att-actions"><button class="btn btn-light" onclick="markAllAttendance('present')">✓ الكل حاضر</button><button class="btn btn-light" onclick="markAllAttendance('absent')">✕ الكل غائب</button></div>
+      <button class="btn btn-primary" onclick="saveAttendance()">💾 حفظ الحضور</button>
+    </div>
+    <div class="att-summary"><div class="mini-stat"><b id="attPresent">0</b><span>حاضر</span></div><div class="mini-stat"><b id="attAbsent">0</b><span>غائب</span></div><div class="mini-stat"><b id="attExcused">0</b><span>معتذر</span></div><div class="mini-stat"><b id="attUnmarked">0</b><span>لم يسجل</span></div></div>
+    <div class="table-wrap"><table class="att-table" id="attendanceTable"><thead><tr><th>#</th><th>المخدوم</th><th>الفصل</th><th>الحالة</th><th>ملاحظة</th></tr></thead><tbody></tbody></table></div>
+    <div class="att-note">يتم حفظ سجل الحضور في قاعدة البيانات حسب التاريخ والمخدوم. عند وجود 3 غيابات في 3 أسابيع مختلفة، ينشئ النظام تنبيه متابعة.</div>
+  </div>
+</section>
+<section id="attendanceRate" class="page">
+  <div class="head-row"><div><div class="eyebrow">متابعة أسبوعية</div><h1>نسبة الحضور</h1></div><div class="actions"><button class="btn btn-light" onclick="exportAttendanceRateCSV()">📊 تنزيل القائمة</button><button class="btn btn-primary" onclick="loadAttendanceRates()">🔄 تحديث</button></div></div>
+  <div class="card">
+    <div class="weekly-note">📌 يتم حساب <b>عدد الأسابيع التي حضر فيها كل مخدوم</b> من سجلات الحضور الفعلية. إذا كان هناك أكثر من اجتماع في نفس الأسبوع، يُحسب الأسبوع مرة واحدة فقط.</div>
+    <div class="week-tools">
+      <label class="field">من تاريخ<input type="date" id="rateStart" onchange="loadAttendanceRates()"></label>
+      <label class="field">إلى تاريخ<input type="date" id="rateEnd" onchange="loadAttendanceRates()"></label>
+      <label class="field">الفصل<select id="rateClass" onchange="loadAttendanceRates()"><option value="all">كل الفصول</option></select></label>
+      <button class="btn btn-light" onclick="setRateLast12Weeks()">آخر 12 أسبوع</button>
+    </div>
+    <div class="att-summary" style="margin-top:14px"><div class="mini-stat"><b id="rateMembers">0</b><span>إجمالي المخدومين</span></div><div class="mini-stat"><b id="rateWeeks">0</b><span>عدد الأسابيع</span></div><div class="mini-stat"><b id="rateAvg">0%</b><span>متوسط الحضور</span></div><div class="mini-stat"><b id="rateLow">0</b><span>أقل من 50%</span></div></div>
+    <div class="table-wrap"><table id="attendanceRateTable"><thead><tr><th>#</th><th>المخدوم</th><th>الفصل</th><th>حضر كام أسبوع</th><th>إجمالي الأسابيع المسجلة</th><th>نسبة الحضور</th><th>الحالة</th></tr></thead><tbody></tbody></table></div>
+  </div>
+</section>
+<section id="visits" class="page">
+  <div class="head-row"><div><div class="eyebrow">متابعة الرعاية</div><h1>الافتقاد والزيارات</h1><small style="color:var(--muted)">سجل الزيارات والملاحظات لكل مخدوم في الفصول المسندة إليك.</small></div><button class="btn btn-primary" onclick="openVisitModal()">+ إضافة زيارة</button></div>
+  <div class="att-summary" style="margin-bottom:15px"><div class="mini-stat"><b id="visitCount">0</b><span>إجمالي الزيارات</span></div><div class="mini-stat"><b id="visitMembers">0</b><span>مخدومون تمت زيارتهم</span></div><div class="mini-stat"><b id="visitLastDate">—</b><span>آخر زيارة</span></div></div>
+  <div class="card"><div class="card-head"><h3>سجل الزيارات</h3><button class="btn btn-light" onclick="loadVisits()">🔄 تحديث</button></div><div class="table-wrap"><table id="visitsTable"><thead><tr><th>#</th><th>المخدوم</th><th>الفصل</th><th>تاريخ الزيارة</th><th>القائم بالافتقاد</th><th>الملاحظات</th><th>إجراء</th></tr></thead><tbody></tbody></table></div></div>
+</section>
+<section id="birthdays" class="page">
+  <div class="head-row"><div><div class="eyebrow">مناسبات المخدومين</div><h1>أعياد الميلاد</h1><small style="color:var(--muted)">أضف أو عدّل تاريخ ميلاد أي مخدوم، وستظهر أعياد الميلاد القادمة تلقائيًا.</small></div><button class="btn btn-primary" onclick="openBirthdayModal()">+ إضافة عيد ميلاد</button></div>
+  <div class="att-summary" style="margin-bottom:15px"><div class="mini-stat"><b id="birthdayCount">0</b><span>أعياد الميلاد المسجلة</span></div><div class="mini-stat"><b id="birthdayNext">—</b><span>أقرب عيد ميلاد</span></div></div>
+  <div class="card"><div class="card-head"><h3>أعياد الميلاد القادمة</h3><button class="btn btn-light" onclick="renderBirthdays()">🔄 تحديث</button></div><div id="birthdayList" class="weekly-list"></div></div>
+</section>
+<section id="reports" class="page">
+  <div class="head-row"><div><div class="eyebrow">متابعة الخدمة</div><h1>الإحصائيات والتقارير</h1><small style="color:var(--muted)">إحصائيات فعلية من الحضور والزيارات والمخدومين في الفصول المسموح لك بها.</small></div><div class="actions"><button class="btn btn-light" onclick="loadReports()">🔄 تحديث</button><button class="btn btn-primary" onclick="exportReportsCSV()">⬇️ تصدير التقرير</button></div></div>
+  <div class="report-grid">
+    <div class="report-card"><small>إجمالي المخدومين</small><strong id="reportMembers">0</strong></div>
+    <div class="report-card"><small>إجمالي الخدام</small><strong id="reportServants">0</strong></div>
+    <div class="report-card"><small>حاضر هذا الأسبوع</small><strong id="reportPresent">0</strong></div>
+    <div class="report-card"><small>غائب هذا الأسبوع</small><strong id="reportAbsent">0</strong></div>
+    <div class="report-card"><small>الزيارات هذا الأسبوع</small><strong id="reportVisits">0</strong></div>
+  </div>
+  <div class="grid">
+    <div class="card"><div class="card-head"><div><h3>نسبة الحضور حسب الفصل</h3><small>آخر 7 أيام مسجلة</small></div></div><div id="reportClassStats" class="report-bars"><div class="report-empty">جارٍ تحميل الإحصائيات...</div></div></div>
+    <div class="card"><div class="card-head"><div><h3>ملخص الأسبوع</h3><small>عدد سجلات الحضور والغياب والزيارات</small></div></div><div id="reportWeekSummary" class="report-empty">جارٍ تحميل الإحصائيات...</div></div>
+  </div>
+</section>
+<section id="search" class="page"><div class="card empty"><div class="big">⌕</div><h2>البحث والتقارير</h2><p>ابحث عن أي مخدوم أو تقرير بسرعة من مكان واحد.</p><button class="btn btn-primary" onclick="document.getElementById('globalSearch').focus()">ابدأ البحث</button></div></section>
+<section id="weekly" class="page">
+  <div class="head-row">
+    <div><div class="eyebrow">متابعة أسبوعية</div><h1>المضافين هذا الأسبوع</h1></div>
+    <div class="actions"><button class="btn btn-light" onclick="shareWeeklyList()">📤 مشاركة</button><button class="btn btn-primary" onclick="downloadWeeklyCSV()">⬇️ تنزيل القائمة</button></div>
+  </div>
+  <div class="card">
+    <div class="weekly-note">📌 القائمة تعتمد على <b>تاريخ إضافة المخدوم إلى قاعدة البيانات</b>. الافتراضي أسبوع من السبت إلى الجمعة، ويمكنك تغيير التاريخين للحصول على أي أسبوع سابق.</div>
+    <div class="week-tools">
+      <label class="field">من تاريخ<input type="date" id="weekStart" onchange="renderWeeklyMembers()"></label>
+      <label class="field">إلى تاريخ<input type="date" id="weekEnd" onchange="renderWeeklyMembers()"></label>
+      <label class="field">الفصل<select id="weekClass" onchange="renderWeeklyMembers()"><option value="all">كل الفصول</option></select></label>
+      <button class="btn btn-light" onclick="setCurrentWeek()">الأسبوع الحالي</button>
+      <button class="btn btn-light" onclick="printWeeklyList()">🖨️ طباعة / PDF</button>
+    </div>
+  </div>
+  <div class="weekly-summary">
+    <div class="week-stat"><small>عدد المخدومين الجدد</small><strong id="weeklyCount">0</strong></div>
+    <div class="week-stat"><small>الفصل الأكثر إضافة</small><strong id="weeklyTopClass">—</strong></div>
+    <div class="week-stat"><small>نطاق الأسبوع</small><strong id="weeklyRange" style="font-size:13px">—</strong></div>
+  </div>
+  <div class="card"><div class="card-head"><div><h3>قائمة الأسماء الجديدة</h3><small>مرتبة من الأحدث إلى الأقدم</small></div><button class="link" onclick="copyWeeklyNames()">نسخ الأسماء</button></div><div id="weeklyList" class="weekly-list"></div></div>
+</section>
+
+<section id="managers" class="page">
+  <div class="head-row"><div><div class="eyebrow">صلاحيات ومشاركة الفصول</div><h1>إدارة الخدام</h1></div><button class="btn btn-primary manager-only" id="addServantBtn" onclick="focusAddServant()">+ إضافة خادم</button></div>
+  <div class="manager-note">المدير يرى كل الفصول. الخادم يرى فقط الفصول المسندة إليه، ولن تظهر له أي فصول أخرى. وكل تعديل على مخدومي الفصل والحضور يظهر فورًا لباقي خدام نفس الفصل.</div>
+  <div class="manager-grid">
+    <div class="card"><div class="card-head"><div><h3>الخدام المسجلون</h3><small>يمكنك إعطاء الخادم دور مدير أو إدارة حالته</small></div><button class="btn btn-light" onclick="loadManagers()">تحديث</button></div><div id="servantsList">جارٍ التحميل...</div></div>
+    <div class="card"><div class="card-head"><div><h3>إسناد خادم لفصل</h3><small>الخادم يجب أن يكون لديه حساب أولاً</small></div></div>
+      <form class="form" onsubmit="assignServant(event)">
+        <label>بريد الخادم<input id="assignEmail" type="email" required placeholder="email@example.com"></label>
+        <label>الفصل<select id="assignClass" required></select></label>
+        <button class="btn btn-primary wide" type="submit">+ إسناد الخادم للفصل</button>
+      </form>
+      <div style="margin-top:18px"><h3 style="font-size:12px">الفصول الحالية</h3><div id="assignmentsList"></div></div>
+    </div>
+  </div>
+</section>
+<section id="settings" class="page"><div class="card empty"><div class="big">⚙</div><h2>الإعدادات</h2><p>إدارة قاعدة البيانات والنسخ الاحتياطي وإعدادات الخدمة.</p><div class="notification-box" style="max-width:560px;margin:15px auto;text-align:right">🟢 الموقع متصل بقاعدة بيانات Supabase. يتم حفظ الفصول والمخدومين على قاعدة البيانات، مع الاحتفاظ بنسخة محلية مؤقتة للعمل عند انقطاع الاتصال.</div><div class="export-row" style="justify-content:center"><button class="btn btn-primary" onclick="exportDatabase()">💾 تصدير نسخة احتياطية كاملة</button><label class="btn btn-light" style="cursor:pointer">📥 استرجاع نسخة احتياطية<input id="restoreFile" type="file" accept="application/json,.json" style="display:none" onchange="restoreDatabase(event)"></label></div><p style="font-size:9px;color:#8a96a6;margin-top:12px">النسخة الاحتياطية تشمل الفصول والمخدومين والحضور والزيارات والتنبيهات. يفضّل أن يحتفظ مدير الخدمة بنسخة دورية.</p></div></section>
+
+<section id="date" class="page">
+  <div class="head-row"><div><div class="eyebrow">التقويم القبطي</div><h1>التاريخ</h1></div><div class="date-tools"><label style="font-size:10px;color:var(--muted)">السنة القبطية</label><select id="copticYearSelect" onchange="renderCopticYear()"></select></div></div>
+  <div class="date-hero">
+    <div class="coptic-now"><div class="label">التاريخ القبطي اليوم</div><h2 id="todayCoptic">—</h2><p id="todayGregorian">—</p></div>
+    <div class="card"><div class="card-head"><h3>المناسبة القادمة</h3><small>من أعياد ومناسبات التقويم</small></div><div id="nextHoliday">—</div></div>
+  </div>
+  <div class="card" style="margin-top:15px"><div class="card-head"><h3>الأعياد والمناسبات القبطية</h3><small>الأعياد الثابتة والمتحركة للسنة المختارة</small></div><div id="holidayList" class="holiday-list"></div></div>
+  <div class="card" style="margin-top:15px"><div class="card-head"><h3>ملاحظة عن دقة التقويم</h3></div><p style="font-size:10px;color:var(--muted);line-height:1.9;margin:0">يتم حساب التاريخ القبطي من قواعد التقويم القبطي، والأعياد المتحركة من تاريخ القيامة القبطي. تواريخ الأعياد المعروضة مخصصة للاستخدام التنظيمي في الخدمة.</p></div>
+</section>
+</main></div></div>
+
+
+<div class="modal" id="accountModal"><div class="modal-box">
+<button class="close" onclick="closeAccountModal()">×</button>
+<div class="eyebrow">إدارة الحساب</div><h2>حسابي</h2>
+<div class="card" style="margin-top:14px;background:#f8fafc">
+<div style="display:grid;gap:10px;font-size:12px">
+<div><b>الاسم:</b> <span id="accountName">—</span></div>
+<div><b>البريد الإلكتروني:</b> <span id="accountEmail">—</span></div>
+<div><b>الصلاحية:</b> <span id="accountRole">—</span></div>
+</div></div>
+<div style="margin-top:18px"><h3>تغيير كلمة المرور</h3>
+<div class="form" style="margin-top:10px">
+<label>كلمة المرور الجديدة<input id="accountNewPassword" type="password" minlength="6" placeholder="6 أحرف على الأقل"></label>
+<label>تأكيد كلمة المرور<input id="accountConfirmPassword" type="password" minlength="6" placeholder="أعد كتابة كلمة المرور"></label>
+</div><button class="btn btn-primary wide" onclick="changeAccountPassword()">حفظ كلمة المرور</button></div>
+</div></div>
+
+<div class="modal" id="classModal"><div class="modal-box">
+  <button class="close" onclick="closeClassModal()">×</button><input type="hidden" id="editingClassId">
+  <div class="eyebrow">تنظيم الخدمة</div><h2 id="classModalTitle">إضافة فصل جديد</h2>
+  <div class="form">
+    <label>اسم الفصل<input id="newClassName" placeholder="مثال: ابتدائي بنين"></label>
+    <label>المرحلة / الوصف<input id="newClassDesc" placeholder="مثال: المرحلة الابتدائية"></label>
+  </div>
+  <button id="classSaveBtn" class="btn btn-primary wide" onclick="saveClass()">حفظ الفصل</button>
+</div></div>
+
+<div class="modal" id="visitModal"><div class="modal-box">
+  <button class="close" onclick="closeVisitModal()">×</button><div class="eyebrow">متابعة الرعاية</div><h2>إضافة زيارة / افتقاد</h2>
+  <div class="form">
+    <label>المخدوم<select id="visitMember" required></select></label>
+    <label>تاريخ الزيارة<input id="visitDate" type="date" required></label>
+    <label>القائم بالافتقاد<input id="visitVisitor" placeholder="اسم الخادم"></label>
+    <label style="grid-column:1/-1">ملاحظات الزيارة<textarea id="visitNotes" rows="4" placeholder="اكتب ما تم في الزيارة أو ما يحتاج إلى متابعة"></textarea></label>
+  </div><button class="btn btn-primary wide" onclick="addVisit()">حفظ الزيارة</button>
+</div></div>
+<div class="modal" id="birthdayModal"><div class="modal-box">
+  <button class="close" onclick="closeBirthdayModal()">×</button><div class="eyebrow">مناسبات المخدومين</div><h2>إضافة / تعديل عيد ميلاد</h2>
+  <div class="form">
+    <label>المخدوم<select id="birthdayMember" required></select></label>
+    <label>تاريخ الميلاد<input id="birthdayDate" type="date" required></label>
+  </div><button class="btn btn-primary wide" onclick="saveBirthday()">حفظ تاريخ الميلاد</button>
+</div></div>
+
+<div class="modal" id="modal"><div class="modal-box"><button class="close" onclick="closeModal()">×</button><input type="hidden" id="editingMemberId"><div class="eyebrow">قاعدة بيانات الخدمة</div><h2 id="memberModalTitle">إضافة مخدوم</h2><div class="form">
+<label>الاسم الكامل<input id="newName" placeholder="مثال: مينا فؤاد"></label>
+<label>رقم الهاتف<input id="newPhone" inputmode="tel" placeholder="01xxxxxxxxx"></label>
+<label>الفصل<select id="newClass"></select></label>
+<label>تاريخ الميلاد<input id="newDob" type="date" oninput="updateAge()"></label>
+<label>السن<input id="newAge" class="age-readonly" readonly placeholder="يُحسب تلقائيًا"></label>
+<label>العنوان<input id="newAddress" placeholder="العنوان"></label>
+<label style="grid-column:1/-1">الصورة الشخصية<div class="photo-upload"><img id="photoPreview" class="photo-preview" alt=""><input id="newPhoto" type="file" accept="image/*" onchange="previewPhoto(event)"></div></label>
+</div><button id="memberSaveBtn" class="btn btn-primary wide" onclick="saveMember()">حفظ البيانات</button></div></div>
+
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
-function formatArabicDate(date) {
-  return new Intl.DateTimeFormat('ar-EG', {
-    weekday: 'long',
-    day: 'numeric',
-    month: 'long',
-    year: 'numeric'
-  }).format(date);
+function toggleMobileMenu(){const a=document.querySelector('aside'),o=document.getElementById('mobileOverlay');if(!a||!o)return;a.classList.toggle('mobile-open');o.classList.toggle('open')}
+function closeMobileMenu(){const a=document.querySelector('aside'),o=document.getElementById('mobileOverlay');if(a)a.classList.remove('mobile-open');if(o)o.classList.remove('open')}
+document.addEventListener('click',e=>{if(e.target.closest('.nav')) closeMobileMenu()});
+</script>
+<script>
+
+
+const SUPABASE_URL = "https://ovdmxziqmhjnlmoyhwfj.supabase.co";
+const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_Ltv6nv4w8SViGx1G-sOlvg_STVV-lye";
+let sb = null;
+function createAuthClient(persistSession){
+  return window.supabase.createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY, {auth:{persistSession, autoRefreshToken:true, detectSessionInUrl:true}});
 }
-function localToday() {
-  const d = new Date();
-  const y = d.getFullYear();
-  const m = String(d.getMonth() + 1).padStart(2, '0');
-  const day = String(d.getDate()).padStart(2, '0');
-  return `${y}-${m}-${day}`;
+sb = createAuthClient(localStorage.getItem('kha_remember_me') !== '0');
+let dbReady = false;
+
+const pages=[...document.querySelectorAll('.page')], navs=[...document.querySelectorAll('.nav')];
+const defaultClasses=[
+ {name:'الحضانة',desc:'الأطفال الصغار'},{name:'الصف الأول',desc:'ابتدائي'},{name:'الصف الثاني',desc:'ابتدائي'},{name:'الصف الثالث',desc:'ابتدائي'},{name:'إعدادي',desc:'المرحلة الإعدادية'},{name:'ثانوي',desc:'المرحلة الثانوية'}
+];
+let classes=[];
+let members=[];
+let attendanceRecords=[];
+let attendanceStatus={};
+let visits=[];
+let memberPoints={};
+let realtimeChannel=null;
+let realtimeTimer=null;
+let realtimeBusy=false;
+
+function setDbStatus(ok,msg){
+ const el=document.getElementById('dbStatus');
+ if(!el)return;
+ el.textContent=ok?'🟢':'🔴';
+ el.title=msg||'';
 }
-function updateHomeDate() {
-  const el = document.getElementById('homeDateLabel');
-  if (el) el.textContent = formatArabicDate(new Date());
+function localSave(){
+ localStorage.setItem('kea_classes',JSON.stringify(classes));
+ localStorage.setItem('kea_members',JSON.stringify(members));
+ localStorage.setItem('kea_visits',JSON.stringify(visits));
+ localStorage.setItem('kea_member_points',JSON.stringify(memberPoints));
+}
+function localLoad(){
+ try{classes=JSON.parse(localStorage.getItem('kea_classes')||'[]')||[];members=JSON.parse(localStorage.getItem('kea_members')||'[]')||[];visits=JSON.parse(localStorage.getItem('kea_visits')||'[]')||[];memberPoints=JSON.parse(localStorage.getItem('kea_member_points')||'{}')||{};}catch(e){classes=[];members=[]}
+ if(!classes.length) classes=defaultClasses.map(c=>({...c,localOnly:true}));
+}
+function scheduleRealtimeRefresh(){
+  if(!currentProfile || !dbReady) return;
+  clearTimeout(realtimeTimer);
+  realtimeTimer=setTimeout(async()=>{
+    if(realtimeBusy)return;
+    realtimeBusy=true;
+    try{
+      await loadFromDatabase();
+      renderClasses();populateClassSelects();renderMembers();initPoints();
+      if(document.getElementById('visits')?.classList.contains('active')) await loadVisits();
+      renderBirthdays();
+      await showBirthdayNotificationsForCurrentDevice();
+      if(document.getElementById('attendance')?.classList.contains('active')) await loadAttendanceForDate();
+      if(document.getElementById('attendanceRate')?.classList.contains('active')) await loadAttendanceRates();
+      if(currentProfile?.role==='manager' && document.getElementById('managers')?.classList.contains('active')) await loadManagers();
+    }catch(e){console.error('Realtime refresh:',e)}
+    finally{realtimeBusy=false}
+  },350);
+}
+function startRealtime(){
+  if(realtimeChannel) sb.removeChannel(realtimeChannel);
+  realtimeChannel=sb.channel('kea-shared-data')
+    .on('postgres_changes',{event:'*',schema:'public',table:'classes'},scheduleRealtimeRefresh)
+    .on('postgres_changes',{event:'*',schema:'public',table:'members'},scheduleRealtimeRefresh)
+    .on('postgres_changes',{event:'*',schema:'public',table:'attendance'},scheduleRealtimeRefresh)
+    .on('postgres_changes',{event:'*',schema:'public',table:'visits'},scheduleRealtimeRefresh)
+    .on('postgres_changes',{event:'*',schema:'public',table:'notifications'},()=>{scheduleRealtimeRefresh();refreshNotificationCenter();})
+    .on('postgres_changes',{event:'*',schema:'public',table:'class_servants'},scheduleRealtimeRefresh)
+    .on('postgres_changes',{event:'*',schema:'public',table:'profiles'},scheduleRealtimeRefresh)
+    .on('postgres_changes',{event:'*',schema:'public',table:'member_points'},scheduleRealtimeRefresh)
+    .on('postgres_changes',{event:'*',schema:'public',table:'member_notes'},()=>{scheduleRealtimeRefresh();if(document.getElementById('notes')?.classList.contains('active'))loadNotesMembers();})
+    .subscribe((status)=>{ if(status==='SUBSCRIBED') setDbStatus(true,'متصل وقاعدة البيانات تتحدث لحظيًا'); });
+}
+function stopRealtime(){
+  if(realtimeChannel){sb.removeChannel(realtimeChannel);realtimeChannel=null;}
+  clearTimeout(realtimeTimer);
+}
+async function loadMemberPoints(){
+ memberPoints={};
+ if(!dbReady)return;
+ try{
+   const {data,error}=await sb.from('member_points').select('member_id,points');
+   if(error)throw error;
+   (data||[]).forEach(r=>{memberPoints[String(r.member_id)]=Number(r.points)||0});
+ }catch(e){
+   console.warn('تعذر تحميل النقاط — شغّل POINTS_SETUP.sql مرة واحدة:',e);
+ }
+ members.forEach(m=>{if(memberPoints[String(m.id)]==null)memberPoints[String(m.id)]=0});
+ localSave();
+}
+function initPoints(){populatePointsClass();renderPoints()}
+function populatePointsClass(){const el=document.getElementById('pointsClass');if(!el)return;const old=el.value||'all';el.innerHTML='<option value="all">كل الفصول</option>'+classes.map(c=>`<option value="${esc(c.id)}">${esc(c.name)}</option>`).join('');el.value=[...el.options].some(o=>o.value===old)?old:'all'}
+function renderPoints(){
+ const el=document.getElementById('pointsList');if(!el)return;
+ populatePointsClass();
+ const q=(document.getElementById('pointsSearch')?.value||'').trim().toLowerCase();
+ const cl=document.getElementById('pointsClass')?.value||'all';
+ const list=members.filter(m=>(!q||m.name.toLowerCase().includes(q))&&(cl==='all'||String(m.classId)===String(cl))).sort((a,b)=>a.name.localeCompare(b.name,'ar'));
+ const total=list.reduce((sum,m)=>sum+(Number(memberPoints[String(m.id)])||0),0);
+ const totalEl=document.getElementById('pointsTotal');if(totalEl)totalEl.textContent=total;
+ el.innerHTML=list.map(m=>{const pts=Number(memberPoints[String(m.id)])||0;return `<div class="points-row"><div class="points-person"><div class="points-avatar">⭐</div><div><b>${esc(m.name)}</b><small>${esc(m.className||'—')}</small></div></div><div class="points-actions"><button class="point-btn minus" onclick="changePoint('${m.id}',-1)" title="خصم نقطة" aria-label="خصم نقطة">−</button><span class="points-count" id="points_${m.id}">${pts}</span><button class="point-btn plus" onclick="changePoint('${m.id}',1)" title="إضافة نقطة" aria-label="إضافة نقطة">+</button></div></div>`}).join('')||'<div class="empty" style="padding:35px 10px"><div class="big">⭐</div><p>لا يوجد مخدومون متاحون في الفصول المسندة إليك.</p></div>';
+}
+async function changePoint(memberId, delta){
+ if(!dbReady){alert('قاعدة البيانات غير متصلة الآن.');return}
+ const m=members.find(x=>String(x.id)===String(memberId));if(!m)return;
+ const buttons=[...document.querySelectorAll(`button.point-btn[onclick*="${memberId}"]`)];buttons.forEach(b=>b.disabled=true);
+ try{
+   const fn=delta>0?'add_member_point':'remove_member_point';
+   const {data,error}=await sb.rpc(fn,{p_member_id:memberId});
+   if(error)throw error;
+   memberPoints[String(memberId)]=Number(data)||0;
+   localSave();renderPoints();
+ }catch(e){console.error('changePoint:',e);alert(e.message||'تعذر تعديل النقاط. تأكد من تشغيل ملف POINTS_SETUP.sql في Supabase.')}
+ finally{buttons.forEach(b=>b.disabled=false)}
+}
+async function addPoint(memberId){return changePoint(memberId,1)}
+
+async function loadFromDatabase(){
+ setDbStatus(false,'جارٍ الاتصال بقاعدة البيانات...');
+ const isManager=currentProfile?.role==='manager';
+ let allowedClassIds=null;
+ if(!isManager){
+   const userId=currentProfile?.id;
+   if(!userId){ throw new Error('تعذر تحديد حساب الخادم.'); }
+   const ar=await sb.from('class_servants').select('class_id').eq('user_id',userId);
+   if(ar.error){
+     console.error('تعذر تحميل فصول الخادم:', ar.error);
+     classes=[];
+     members=[];
+     dbReady=true;
+     updateRoleUI();
+     return;
+   }
+   allowedClassIds=[...new Set((ar.data||[]).map(x=>x.class_id).filter(Boolean))];
+ }
+ const classQuery=sb.from('classes').select('id,name,description,created_at').order('created_at',{ascending:true});
+ const memberQuery=sb.from('members').select('id,class_id,full_name,birth_date,address,phone,photo_url,notes,active,created_at,updated_at').order('created_at',{ascending:false});
+ if(!isManager){
+   if(!allowedClassIds.length){
+     classes=[];
+     members=[];
+   }else{
+     classQuery.in('id',allowedClassIds);
+     memberQuery.in('class_id',allowedClassIds);
+     const [cr,mr]=await Promise.all([classQuery,memberQuery]);
+     if(cr.error) throw cr.error;
+     if(mr.error) throw mr.error;
+     classes=(cr.data||[]).map(c=>({id:c.id,name:c.name,desc:c.description||''}));
+     members=(mr.data||[]).map(m=>{const c=classes.find(x=>String(x.id)===String(m.class_id));return {id:m.id,name:m.full_name,phone:m.phone||'',classId:m.class_id,className:c?.name||'—',dob:m.birth_date||'',age:calcAge(m.birth_date||''),address:m.address||'',photo:m.photo_url||'',notes:m.notes||'',active:m.active!==false,createdAt:m.created_at};});
+   }
+ }else{
+   const [cr,mr]=await Promise.all([classQuery,memberQuery]);
+   if(cr.error) throw cr.error;
+   if(mr.error) throw mr.error;
+   classes=(cr.data||[]).map(c=>({id:c.id,name:c.name,desc:c.description||''}));
+   members=(mr.data||[]).map(m=>{const c=classes.find(x=>String(x.id)===String(m.class_id));return {id:m.id,name:m.full_name,phone:m.phone||'',classId:m.class_id,className:c?.name||'—',dob:m.birth_date||'',age:calcAge(m.birth_date||''),address:m.address||'',photo:m.photo_url||'',notes:m.notes||'',active:m.active!==false,createdAt:m.created_at};});
+ }
+ // الزيارات اختيارية في التحميل حتى لا تمنع بقية التطبيق من العمل إذا كانت سياسة/جدول الزيارات بحاجة لإعداد.
+ try{
+   const vr=await sb.from('visits').select('id,member_id,visit_date,visitor_name,notes,created_at').order('visit_date',{ascending:false}).order('created_at',{ascending:false});
+   if(vr.error) throw vr.error;
+   visits=(vr.data||[]).map(v=>{const m=members.find(x=>String(x.id)===String(v.member_id));return {id:v.id,memberId:v.member_id,memberName:m?.name||'—',className:m?.className||'—',visitDate:v.visit_date||'',visitorName:v.visitor_name||'',notes:v.notes||'',createdAt:v.created_at};});
+ }catch(e){ console.warn('تعذر تحميل الزيارات:',e); visits=[]; }
+ dbReady=true;await loadMemberPoints();localSave();setDbStatus(true,'متصل بقاعدة البيانات');updateRoleUI();await checkThreeWeekAbsenceAlerts();await showBirthdayNotificationsForCurrentDevice();await refreshNotificationCenter();
+}
+async function initializeApp(){
+ if(!currentProfile)return;
+ localLoad();renderClasses();populateClassSelects();renderMembers();initWeeklyPage();initAttendance();initAttendanceRate();initPoints();showPage('home');
+ try{await loadFromDatabase();renderClasses();populateClassSelects();renderMembers();await loadNotesMembers();initWeeklyPage();initPoints();}
+ catch(err){dbReady=false;setDbStatus(false,'تعذر الاتصال بقاعدة البيانات — تم استخدام النسخة المحلية مؤقتًا');console.error('Supabase:',err);renderAbsenceAlert();}
+}
+async function loadReports(){
+ const now=new Date();
+ const end=localDateInputValue(now);
+ const startD=new Date(now);startD.setDate(startD.getDate()-6);
+ const start=localDateInputValue(startD);
+ const reportMembers=document.getElementById('reportMembers');
+ const reportServants=document.getElementById('reportServants');
+ const reportPresent=document.getElementById('reportPresent');
+ const reportAbsent=document.getElementById('reportAbsent');
+ const reportVisits=document.getElementById('reportVisits');
+ if(reportMembers)reportMembers.textContent=members.length;
+ if(reportServants){
+   reportServants.textContent='—';
+   if(currentProfile?.role==='manager' && dbReady){
+     try{
+       const sr=await sb.from('profiles').select('id').eq('role','servant');
+       if(!sr.error)reportServants.textContent=(sr.data||[]).length;
+     }catch(e){console.error('reports servants:',e)}
+   }
+ }
+ let att=[];
+ if(dbReady){
+   try{
+     const r=await sb.from('attendance').select('member_id,attendance_date,status').gte('attendance_date',start).lte('attendance_date',end);
+     if(r.error)throw r.error;att=r.data||[];
+   }catch(e){console.error('reports attendance:',e)}
+ }else{
+   try{att=JSON.parse(localStorage.getItem('kea_attendance')||'[]').filter(r=>r.attendance_date>=start&&r.attendance_date<=end)}catch(e){att=[]}
+ }
+ const visibleMemberIds=new Set(members.map(m=>String(m.id)));
+ att=att.filter(r=>visibleMemberIds.has(String(r.member_id)));
+ const present=att.filter(r=>r.status==='present').length;
+ const absent=att.filter(r=>r.status==='absent').length;
+ if(reportPresent)reportPresent.textContent=present;
+ if(reportAbsent)reportAbsent.textContent=absent;
+ const weekVisits=(visits||[]).filter(v=>String(v.visitDate||'')>=start&&String(v.visitDate||'')<=end && (!v.memberId || visibleMemberIds.has(String(v.memberId))));
+ if(reportVisits)reportVisits.textContent=weekVisits.length;
+ const byClass={};
+ classes.forEach(c=>byClass[String(c.id)]={name:c.name,present:0,absent:0});
+ att.forEach(r=>{
+   const m=members.find(x=>String(x.id)===String(r.member_id));if(!m)return;
+   const k=String(m.classId);
+   if(!byClass[k])byClass[k]={name:m.className||'—',present:0,absent:0};
+   if(r.status==='present')byClass[k].present++;
+   if(r.status==='absent')byClass[k].absent++;
+ });
+ const classRows=Object.values(byClass).filter(x=>x.present+x.absent>0).map(x=>{const total=x.present+x.absent,pct=Math.round(x.present/total*100);return {...x,total,pct}}).sort((a,b)=>b.pct-a.pct);
+ const bars=document.getElementById('reportClassStats');
+ if(bars)bars.innerHTML=classRows.map(x=>`<div class="report-bar-row"><b>${esc(x.name)}</b><div class="report-bar"><span style="width:${x.pct}%"></span></div><strong>${x.pct}%</strong></div>`).join('')||'<div class="report-empty">لا توجد سجلات حضور في آخر 7 أيام.</div>';
+ const summary=document.getElementById('reportWeekSummary');
+ if(summary)summary.innerHTML=`<div style="display:grid;gap:10px;text-align:right"><div>إجمالي سجلات الحضور: <b>${att.length}</b></div><div>حاضر: <b>${present}</b></div><div>غائب: <b>${absent}</b></div><div>معتذر: <b>${att.filter(r=>r.status==='excused').length}</b></div><div>زيارات مسجلة: <b>${weekVisits.length}</b></div></div>`;
+ window.__reportsData={start,end,classRows,att,weekVisits};
+}
+function exportReportsCSV(){
+ const d=window.__reportsData;if(!d){loadReports().then(exportReportsCSV);return}
+ const rows=[['الفصل','الحضور','الغياب','نسبة الحضور'],...d.classRows.map(x=>[x.name,x.present,x.absent,x.pct+'%'])];
+ const csv='\ufeff'+rows.map(r=>r.map(csvCell).join(',')).join('\r\n');
+ downloadBlob(csv,`خدمة_الأمير_الإحصائيات_${d.start}_${d.end}.csv`,'text/csv;charset=utf-8');
 }
 
-window.addEventListener('DOMContentLoaded', () => {
-  updateHomeDate();
-});
+let notesMembers=[];
+async function loadNotesMembers(){
+  notesMembers=[];
+  if(dbReady){
+    try{
+      const {data,error}=await sb.rpc('get_members_for_notes');
+      if(error) throw error;
+      notesMembers=(data||[]).map(m=>({id:m.id,name:m.full_name,phone:m.phone||'',classId:m.class_id,className:m.class_name||'—',dob:m.birth_date||'',age:calcAge(m.birth_date||''),address:m.address||'',photo:m.photo_url||'',notes:m.notes||'',active:m.active!==false,createdAt:m.created_at}));
+    }catch(e){
+      console.error('تعذر تحميل أسماء الملاحظات:',e);
+      notesMembers=[...members];
+    }
+  }else{
+    notesMembers=[...members];
+  }
+  populateNotesClass();
+  renderNotes();
+}
+function populateNotesClass(){
+  const el=document.getElementById('notesClass'); if(!el)return;
+  const old=el.value||'all'; const seen=new Set();
+  el.innerHTML='<option value="all">كل الفصول</option>'+(notesMembers||[]).filter(m=>m.classId&&!seen.has(String(m.classId))&&seen.add(String(m.classId))).map(m=>`<option value="${esc(m.classId)}">${esc(m.className||'—')}</option>`).join('');
+  el.value=[...el.options].some(o=>o.value===old)?old:'all';
+}
+function renderNotes(){
+  const tb=document.querySelector('#notesTable tbody'); if(!tb)return;
+  const source=notesMembers||[];
+  const q=(document.getElementById('notesSearch')?.value||'').trim().toLowerCase();
+  const cl=document.getElementById('notesClass')?.value||'all';
+  const list=source.filter(m=>(!q||`${m.name||''} ${m.className||''}`.toLowerCase().includes(q))&&(cl==='all'||String(m.classId)===String(cl))).sort((a,b)=>(a.name||'').localeCompare(b.name||'','ar'));
+  if(!list.length){tb.innerHTML='<tr><td colspan="5" style="text-align:center;color:#8b98aa;padding:30px">لا توجد أسماء مخدومين ظاهرة. تأكد من تشغيل NOTES_SETUP.sql في Supabase.</td></tr>';return;}
+  tb.innerHTML=list.map((m,i)=>`<tr><td>${i+1}</td><td><div class="person">${m.photo?`<img class="photo-cell" src="${esc(m.photo)}" alt="" style="width:34px;height:34px;border-radius:10px;object-fit:cover">`:`<span class="avatar">${esc((m.name||'؟').charAt(0))}</span>`}<b>${esc(m.name||'—')}</b></div></td><td>${esc(m.className||'—')}</td><td style="min-width:280px"><textarea id="note_${esc(m.id)}" class="note-edit" placeholder="اكتب الملاحظة هنا...">${esc(m.notes||'')}</textarea></td><td><button class="btn btn-primary" type="button" onclick="saveServiceNote('${esc(m.id)}')">حفظ</button><span id="note_status_${esc(m.id)}" class="note-save-status" aria-live="polite"></span></td></tr>`).join('');
+}
+async function saveServiceNote(memberId){
+  const m=notesMembers.find(x=>String(x.id)===String(memberId)); if(!m)return;
+  const el=document.getElementById(`note_${CSS.escape(String(memberId))}`); if(!el)return;
+  const status=document.getElementById(`note_status_${CSS.escape(String(memberId))}`);
+  const value=el.value.trim();
+  if(status){status.textContent='جارٍ الحفظ…';status.className='note-save-status';}
+  try{
+    if(dbReady){
+      const {error}=await sb.from('member_notes').upsert({member_id:memberId,note_text:value||null,updated_at:new Date().toISOString(),updated_by:currentProfile?.id||null},{onConflict:'member_id'});
+      if(error)throw error;
+    }
+    m.notes=value;
+    const base=members.find(x=>String(x.id)===String(memberId)); if(base)base.notes=value;
+    localSave();
+    if(status){status.textContent='تم الحفظ ✓';status.className='note-save-status ok';}
+    setTimeout(()=>{if(status)status.textContent=''},1800);
+  }catch(e){
+    console.error('saveServiceNote:',e);
+    if(status){status.textContent='فشل الحفظ';status.className='note-save-status err';}
+    alert('تعذر حفظ الملاحظة: '+(e.message||'تأكد من تشغيل FINAL_SUPABASE_PATCH.sql'));
+  }
+}
+
+function showPage(id){if(id==='managers' && currentProfile?.role!=='manager'){alert('إدارة الخدام متاحة لمدير الخدمة فقط.');return}pages.forEach(p=>p.classList.toggle('active',p.id===id));navs.forEach(n=>n.classList.toggle('active',n.dataset.page===id));if(id==='members')renderMembers();if(id==='notes'){loadNotesMembers();}if(id==='points'){populatePointsClass();renderPoints();}if(id==='classes')renderClasses();if(id==='date')renderDatePage();if(id==='managers')loadManagers();if(id==='weekly')renderWeeklyMembers();if(id==='attendance')loadAttendanceForDate();if(id==='visits')loadVisits();if(id==='birthdays')renderBirthdays();if(id==='attendanceRate'){initAttendanceRate();loadAttendanceRates();}if(id==='reports'){loadReports();}window.scrollTo({top:0,behavior:'smooth'})}
+navs.forEach(n=>n.addEventListener('click',()=>showPage(n.dataset.page)));
+function openAccountModal(){
+  if(!currentProfile)return;
+  document.getElementById('accountName').textContent=currentProfile.full_name||'—';
+  document.getElementById('accountEmail').textContent=currentProfile.email||'—';
+  document.getElementById('accountRole').textContent=currentProfile.role==='manager'?'مدير الخدمة':'خادم فصل';
+  document.getElementById('accountNewPassword').value='';
+  document.getElementById('accountConfirmPassword').value='';
+  document.getElementById('accountModal').classList.add('open');
+}
+function closeAccountModal(){document.getElementById('accountModal').classList.remove('open')}
+async function changeAccountPassword(){
+  const p=document.getElementById('accountNewPassword').value;
+  const c=document.getElementById('accountConfirmPassword').value;
+  if(p.length<6){alert('كلمة المرور يجب أن تكون 6 أحرف على الأقل.');return}
+  if(p!==c){alert('كلمتا المرور غير متطابقتين.');return}
+  const {error}=await sb.auth.updateUser({password:p});
+  if(error){alert(error.message||'تعذر تغيير كلمة المرور.');return}
+  document.getElementById('accountNewPassword').value='';document.getElementById('accountConfirmPassword').value='';
+  alert('تم تغيير كلمة المرور بنجاح.');
+}
+document.getElementById('accountModal')?.addEventListener('click',e=>{if(e.target.id==='accountModal')closeAccountModal()});
+
+function openModal(){if(currentProfile?.role!=='manager' && classes.length===0){alert('لا يمكنك إضافة مخدوم قبل إسنادك إلى فصل من مدير الخدمة.');return}populateClassSelects();resetMemberForm();document.getElementById('modal').classList.add('open')}
+function closeModal(){document.getElementById('modal').classList.remove('open')}
+document.getElementById('modal').addEventListener('click',e=>{if(e.target.id==='modal')closeModal()});
+document.getElementById('visitModal').addEventListener('click',e=>{if(e.target.id==='visitModal')closeVisitModal()});
+document.getElementById('birthdayModal').addEventListener('click',e=>{if(e.target.id==='birthdayModal')closeBirthdayModal()});
+function populateClassSelects(){
+ const memberClass=document.getElementById('memberClass');
+ const currentMemberClass=memberClass?.value||'كل الفصول';
+ const opts=classes.map(c=>`<option value="${esc(c.id||c.name)}">${esc(c.name)}</option>`).join('');
+ document.getElementById('newClass').innerHTML=opts||'<option value="">لا يوجد فصل</option>';
+ memberClass.innerHTML='<option value="كل الفصول">كل الفصول</option>'+opts;
+ if([...memberClass.options].some(o=>String(o.value)===String(currentMemberClass))) memberClass.value=currentMemberClass;
+}
+function resetMemberForm(){['newName','newPhone','newDob','newAge','newAddress'].forEach(id=>document.getElementById(id).value='');document.getElementById('newPhoto').value='';document.getElementById('editingMemberId').value='';document.getElementById('memberModalTitle').textContent='إضافة مخدوم';document.getElementById('memberSaveBtn').textContent='حفظ البيانات';document.getElementById('photoPreview').removeAttribute('src');document.getElementById('photoPreview').alt='📷'}
+function updateAge(){const v=document.getElementById('newDob').value;document.getElementById('newAge').value=calcAge(v)}
+function calcAge(v){if(!v)return '';const d=new Date(v+'T00:00:00'),n=new Date();let a=n.getFullYear()-d.getFullYear();if(n.getMonth()<d.getMonth()||(n.getMonth()===d.getMonth()&&n.getDate()<d.getDate()))a--;return a>=0?a+' سنة':''}
+function compressImage(file){return new Promise((resolve,reject)=>{const r=new FileReader();r.onerror=reject;r.onload=()=>{const img=new Image();img.onload=()=>{const max=700,scale=Math.min(1,max/Math.max(img.width,img.height)),c=document.createElement('canvas');c.width=Math.round(img.width*scale);c.height=Math.round(img.height*scale);const ctx=c.getContext('2d');ctx.drawImage(img,0,0,c.width,c.height);resolve(c.toDataURL('image/jpeg',.78))};img.onerror=reject;img.src=r.result};r.readAsDataURL(file)})}
+async function previewPhoto(e){const f=e.target.files[0];if(!f)return;try{document.getElementById('photoPreview').src=await compressImage(f)}catch(err){alert('تعذر قراءة الصورة')}}
+function editMember(id){if(currentProfile?.role!=='manager')return;const m=members.find(x=>String(x.id)===String(id));if(!m)return;document.getElementById('editingMemberId').value=m.id;document.getElementById('newName').value=m.name||'';document.getElementById('newPhone').value=m.phone||'';document.getElementById('newDob').value=m.dob||'';document.getElementById('newAge').value=calcAge(m.dob||'');document.getElementById('newAddress').value=m.address||'';populateClassSelects();document.getElementById('newClass').value=String(m.classId||'');document.getElementById('newPhoto').value='';document.getElementById('photoPreview').src=m.photo||'';document.getElementById('memberModalTitle').textContent='تعديل بيانات المخدوم';document.getElementById('memberSaveBtn').textContent='حفظ التعديل';document.getElementById('modal').classList.add('open')}
+async function saveMember(){
+ const editingId=document.getElementById('editingMemberId').value.trim();
+ if(editingId && currentProfile?.role!=='manager'){alert('تعديل المخدوم متاح لمدير الخدمة فقط.');return}
+ if(!editingId && currentProfile?.role!=='manager' && classes.length===0){alert('لا يمكنك إضافة مخدوم قبل إسنادك إلى فصل من مدير الخدمة.');return}
+ const name=document.getElementById('newName').value.trim(); if(!name){alert('اكتب اسم المخدوم أولاً');return}
+ const classId=document.getElementById('newClass').value||null, dob=document.getElementById('newDob').value||null, address=document.getElementById('newAddress').value.trim()||null, phone=document.getElementById('newPhone').value.trim()||null;
+ const file=document.getElementById('newPhoto').files[0]; let photo=null;
+ if(file){try{photo=await compressImage(file)}catch(e){alert('تعذر تجهيز الصورة');return}}
+ try{
+   if(editingId){
+     if(dbReady){const {data,error}=await sb.rpc('manager_update_member',{p_member_id:editingId,p_full_name:name,p_class_id:classId,p_birth_date:dob,p_address:address,p_phone:phone,p_photo_url:photo});if(error)throw error;const c=classes.find(x=>String(x.id)===String(data.class_id));const m=members.find(x=>String(x.id)===String(editingId));if(m){Object.assign(m,{name:data.full_name,phone:data.phone||'',classId:data.class_id,className:c?.name||'—',dob:data.birth_date||'',age:calcAge(data.birth_date||''),address:data.address||'',photo:data.photo_url||m.photo||''})}}else{const m=members.find(x=>String(x.id)===String(editingId));if(m)Object.assign(m,{name,phone:phone||'',classId,className:classes.find(x=>String(x.id)===String(classId))?.name||'—',dob:dob||'',age:calcAge(dob||''),address:address||'',photo:photo||m.photo||''})}
+   }else{
+     if(dbReady){const {data,error}=await sb.from('members').insert({full_name:name,phone,class_id:classId,birth_date:dob,address,photo_url:photo,active:true}).select('id,class_id,full_name,birth_date,address,phone,photo_url,notes,active,created_at').single();if(error)throw error;const c=classes.find(x=>String(x.id)===String(data.class_id));members.unshift({id:data.id,name:data.full_name,phone:data.phone||'',classId:data.class_id,className:c?.name||'—',dob:data.birth_date||'',age:calcAge(data.birth_date||''),address:data.address||'',photo:data.photo_url||'',notes:data.notes||'',active:data.active!==false,createdAt:data.created_at})}else{const c=classes.find(x=>String(x.id)===String(classId));members.unshift({id:crypto.randomUUID?crypto.randomUUID():Date.now(),name,phone:phone||'',classId,className:c?.name||'—',dob:dob||'',age:calcAge(dob||''),address:address||'',photo:photo||'',active:true,createdAt:new Date().toISOString()})}
+   }
+   localSave();closeModal();renderMembers();renderBirthdays();
+ }catch(err){console.error(err);alert('تعذر حفظ بيانات المخدوم: '+(err.message||''))}
+}
+function renderMembers(){
+ const memberClass=document.getElementById('memberClass');
+ const selectedClass=memberClass?.value||'كل الفصول';
+ populateClassSelects();
+ if(memberClass&&[...memberClass.options].some(o=>String(o.value)===String(selectedClass))) memberClass.value=selectedClass;
+ const q=(document.getElementById('memberSearch')?.value||'').trim().toLowerCase(),cl=memberClass?.value||'كل الفصول',tbody=document.querySelector('#membersTable tbody');
+ if(!tbody)return;
+ const list=members.filter(m=>(!q||[m.name,m.phone,m.address,m.className].join(' ').toLowerCase().includes(q))&&(cl==='كل الفصول'||String(m.classId)===String(cl)));
+ tbody.innerHTML=list.map(m=>`<tr><td class="photo-cell">${m.photo?`<img src="${m.photo}" alt="">`:'<span class="avatar">👤</span>'}</td><td><div class="person"><div><b>${esc(m.name)}</b><small style="display:block;color:#8a98aa;font-size:8px">${esc(m.address||'بدون عنوان')}</small></div></div></td><td>${esc(m.className||'—')}</td><td>${m.dob||'—'}</td><td>${esc(calcAge(m.dob)||'—')}</td><td>${esc(m.phone||'—')}</td><td><span class="badge ${m.active===false?'off':'ok'}">${m.active===false?'غير نشط':'نشط'}</span></td><td><div class="member-actions"><button class="mini-btn" onclick="exportMember('${m.id}')">ملف</button>${currentProfile?.role==='manager'?`<button class="mini-btn" onclick="editMember('${m.id}')">تعديل</button><button class="mini-btn danger" onclick="deleteMember('${m.id}')">حذف</button>`:''}</div></td></tr>`).join('')||'<tr><td colspan="8" style="text-align:center;color:#8b98aa;padding:30px">لا توجد بيانات مطابقة</td></tr>';
+}async function deleteMember(id){const m=members.find(x=>String(x.id)===String(id));if(!m)return;if(!confirm('هل تريد حذف '+m.name+'؟'))return;try{if(dbReady){const {error}=await sb.from('members').delete().eq('id',id);if(error)throw error}members=members.filter(x=>String(x.id)!==String(id));localSave();renderMembers();}catch(err){console.error(err);alert('تعذر حذف المخدوم من قاعدة البيانات.')}}
+function exportMembersCSV(){const rows=[['الاسم','الفصل','تاريخ الميلاد','السن','الهاتف','العنوان'],...members.map(m=>[m.name,m.className,m.dob,calcAge(m.dob)||m.age,m.phone,m.address])];const csv='\ufeff'+rows.map(r=>r.map(csvCell).join(',')).join('\r\n');downloadBlob(csv,'خدمة_الأمير_المخدومين.csv','text/csv;charset=utf-8');}
+function csvCell(v){return '"'+String(v??'').replace(/"/g,'""')+'"'}
+async function exportDatabase(){let data={app:'خدمة الأمير',version:3,exportedAt:new Date().toISOString(),classes,members};if(dbReady){try{const [a,v,n,p]=await Promise.all([sb.from('attendance').select('*'),sb.from('visits').select('*'),sb.from('notifications').select('*'),sb.from('member_points').select('*')]);data.attendance=a.data||[];data.visits=v.data||[];data.notifications=n.data||[];data.member_points=p.data||[]}catch(e){}}downloadBlob(JSON.stringify(data,null,2),'خدمة_الأمير_نسخة_احتياطية.json','application/json;charset=utf-8')}
+function exportMember(id){const m=members.find(x=>String(x.id)===String(id));if(!m)return;const html=`<!doctype html><html lang="ar" dir="rtl"><meta charset="utf-8"><title>ملف ${esc(m.name)}</title><style>body{font-family:Arial,sans-serif;padding:30px;color:#10233f}h1{color:#062754}.box{max-width:700px;margin:auto;border:1px solid #ddd;border-radius:18px;padding:25px}.photo{width:140px;height:140px;border-radius:20px;object-fit:cover;border:1px solid #ddd}.row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:20px}.item{padding:12px;background:#f7f9fc;border-radius:10px}.item small{display:block;color:#718096}.print{margin-top:20px;padding:10px 15px}@media print{.print{display:none}}</style><div class="box"><h1>خدمة الأمير — ملف مخدوم</h1>${m.photo?`<img class="photo" src="${m.photo}">`:''}<h2>${esc(m.name)}</h2><div class="row"><div class="item"><small>الفصل</small>${esc(m.className||'—')}</div><div class="item"><small>تاريخ الميلاد</small>${esc(m.dob||'—')}</div><div class="item"><small>السن</small>${esc(calcAge(m.dob)||m.age||'—')}</div><div class="item"><small>رقم الهاتف</small>${esc(m.phone||'—')}</div><div class="item" style="grid-column:1/-1"><small>العنوان</small>${esc(m.address||'—')}</div></div><button class="print" onclick="window.print()">طباعة / حفظ PDF</button></div></html>`;downloadBlob(html,'ملف_'+m.name.replace(/\s+/g,'_')+'.html','text/html;charset=utf-8')}
+function downloadBlob(content,name,type){const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([content],{type}));a.download=name;document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},500)}
+function esc(s){return String(s??'').replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]))}
+
+document.getElementById('globalSearch').addEventListener('keydown',e=>{if(e.key==='Enter'){showPage('members');document.getElementById('memberSearch').value=e.target.value;renderMembers()}})
+
+function openClassModal(){if(currentProfile?.role!=='manager'){alert('إنشاء الفصول متاح لمدير الخدمة فقط.');return}document.getElementById('editingClassId').value='';document.getElementById('newClassName').value='';document.getElementById('newClassDesc').value='';document.getElementById('classModalTitle').textContent='إضافة فصل جديد';document.getElementById('classSaveBtn').textContent='حفظ الفصل';document.getElementById('classModal').classList.add('open')}
+function closeClassModal(){document.getElementById('classModal').classList.remove('open')}
+document.getElementById('classModal').addEventListener('click',e=>{if(e.target.id==='classModal')closeClassModal()})
+function filterClasses(){const q=document.getElementById('classSearch').value.trim().toLowerCase();document.querySelectorAll('.class-card').forEach(c=>c.style.display=c.innerText.toLowerCase().includes(q)?'':'')}
+function toggleClassMenu(id){const menu=document.getElementById('classMenu_'+id);if(!menu)return;document.querySelectorAll('.class-menu-pop.open').forEach(x=>{if(x!==menu)x.classList.remove('open')});menu.classList.toggle('open')}
+document.addEventListener('click',e=>{if(!e.target.closest('.class-menu-wrap'))document.querySelectorAll('.class-menu-pop.open').forEach(x=>x.classList.remove('open'))});
+function editClass(id){if(currentProfile?.role!=='manager')return;const c=classes.find(x=>String(x.id)===String(id));if(!c)return;document.getElementById('editingClassId').value=c.id;document.getElementById('newClassName').value=c.name||'';document.getElementById('newClassDesc').value=c.desc||'';document.getElementById('classModalTitle').textContent='تعديل الفصل';document.getElementById('classSaveBtn').textContent='حفظ التعديل';document.getElementById('classModal').classList.add('open')}
+async function saveClass(){if(currentProfile?.role!=='manager'){alert('مدير الخدمة فقط.');return}const id=document.getElementById('editingClassId').value.trim(),name=document.getElementById('newClassName').value.trim(),desc=document.getElementById('newClassDesc').value.trim()||'فصل جديد';if(!name){alert('اكتب اسم الفصل أولاً');return}if(classes.some(c=>c.name===name&&String(c.id)!==String(id))){alert('الفصل موجود بالفعل');return}try{if(id){if(dbReady){const {error}=await sb.rpc('manager_update_class',{p_class_id:id,p_name:name,p_description:desc});if(error)throw error}const c=classes.find(x=>String(x.id)===String(id));if(c){c.name=name;c.desc=desc}}else{let c;if(dbReady){const {data,error}=await sb.from('classes').insert({name,description:desc}).select('id,name,description').single();if(error)throw error;c={id:data.id,name:data.name,desc:data.description||''}}else c={id:crypto.randomUUID?crypto.randomUUID():Date.now(),name,desc,localOnly:true};classes.push(c)}localSave();closeClassModal();populateClassSelects();renderClasses();renderMembers()}catch(err){console.error(err);alert('تعذر حفظ الفصل: '+(err.message||''))}}
+async function deleteClass(id){if(currentProfile?.role!=='manager')return;const c=classes.find(x=>String(x.id)===String(id));if(!c)return;const count=members.filter(m=>String(m.classId)===String(id)).length;if(count){alert('لا يمكن حذف فصل به مخدومون. انقل المخدومين أولاً ثم احذفه.');return}if(!confirm('هل تريد حذف فصل '+c.name+'؟'))return;try{if(dbReady){const {error}=await sb.rpc('manager_delete_class',{p_class_id:id});if(error)throw error}classes=classes.filter(x=>String(x.id)!==String(id));localSave();populateClassSelects();renderClasses()}catch(e){console.error(e);alert('تعذر حذف الفصل: '+(e.message||''))}}
+function renderClasses(){const grid=document.getElementById('classGrid');if(!grid)return;document.getElementById('classCount').textContent=classes.length;grid.innerHTML=classes.map((c,i)=>{const count=members.filter(m=>String(m.classId)===String(c.id)).length;const menuId=String(c.id).replace(/[^a-zA-Z0-9_-]/g,'_');const actions=currentProfile?.role==='manager'?`<div class="class-menu-wrap"><button type="button" class="class-menu-btn" aria-label="خيارات الفصل" onclick="event.stopPropagation();toggleClassMenu('${menuId}')">⋯</button><div id="classMenu_${menuId}" class="class-menu-pop"><button type="button" onclick="event.stopPropagation();editClass('${esc(c.id)}')">تعديل الاسم</button><button type="button" class="danger" onclick="event.stopPropagation();deleteClass('${esc(c.id)}')">حذف الفصل</button></div></div>`:'';return `<div class="class-card" role="button" tabindex="0" onclick="openClassMembers('${esc(c.id)}')" onkeydown="if(event.key==='Enter'||event.key===' ')openClassMembers('${esc(c.id)}')"><div class="class-top"><span class="class-icon">${['🌱','⭐','📘','📚','🔥','✝','🕊️'][i%7]}</span>${actions}</div><h3>${esc(c.name)}</h3><p>${esc(c.desc)}</p><div class="class-meta"><b>${count}</b><span>مخدوم</span><b>—</b><span>حضور</span></div><button onclick="event.stopPropagation();openClassMembers('${esc(c.id)}')" class="class-btn">عرض المخدومين ←</button></div>`}).join('')}
+function openClassMembers(id){showPage('members');const select=document.getElementById('memberClass');if(!select)return;select.value=String(id);renderMembers();window.scrollTo({top:0,behavior:'smooth'})}
+
+// ---- Attendance ----
+function todayInput(){const d=new Date();return `${d.getFullYear()}-${pad2(d.getMonth()+1)}-${pad2(d.getDate())}`}
+function initAttendance(){const d=document.getElementById('attendanceDate');if(d&&!d.value)d.value=todayInput();populateAttendanceClass();}
+function populateAttendanceClass(){const el=document.getElementById('attendanceClass');if(!el)return;const old=el.value||'all';el.innerHTML='<option value="all">كل الفصول</option>'+classes.map(c=>`<option value="${esc(c.id)}">${esc(c.name)}</option>`).join('');el.value=[...el.options].some(o=>o.value===old)?old:'all'}
+async function loadAttendanceForDate(){
+ const date=document.getElementById('attendanceDate')?.value||todayInput();
+ populateAttendanceClass();
+ const classId=document.getElementById('attendanceClass')?.value||'all';
+ const list=members.filter(m=>classId==='all'||String(m.classId)===String(classId));
+ attendanceStatus={};
+ if(dbReady){
+   let q=sb.from('attendance').select('id,member_id,attendance_date,status,notes').eq('attendance_date',date);
+   const {data,error}=await q;
+   if(!error){attendanceRecords=data||[];attendanceRecords.forEach(r=>{attendanceStatus[r.member_id]=r.status;});}
+   else {console.error(error);attendanceRecords=[];}
+ }else{try{attendanceRecords=JSON.parse(localStorage.getItem('kea_attendance')||'[]').filter(r=>r.attendance_date===date);attendanceRecords.forEach(r=>attendanceStatus[r.member_id]=r.status)}catch(e){attendanceRecords=[]}}
+ // أي مخدوم بلا سجل اليوم يُعتبر حاضرًا افتراضيًا؛ المستخدم يغيّر الغائب فقط.
+ list.forEach(m=>{if(!attendanceStatus[m.id])attendanceStatus[m.id]='present'});
+ renderAttendanceRows(list);updateAttendanceSummary();
+}
+function renderAttendanceRows(list){const tb=document.querySelector('#attendanceTable tbody');if(!tb)return;if(!list.length){tb.innerHTML='<tr><td colspan="5" class="att-empty">لا يوجد مخدومون في الفصل المحدد.</td></tr>';return}tb.innerHTML=list.map((m,i)=>{const st=attendanceStatus[m.id]||'';return `<tr data-member-id="${esc(m.id)}"><td>${i+1}</td><td><div class="person">${m.photo?`<img class="photo-cell" src="${m.photo}" style="width:34px;height:34px;border-radius:10px;object-fit:cover">`:`<span class="avatar">${esc((m.name||'؟').charAt(0))}</span>`}<b>${esc(m.name)}</b></div></td><td>${esc(m.className||'—')}</td><td><div class="status-btns"><button class="status-btn ${st==='present'?'active present':''}" onclick="setAttendanceStatus('${esc(m.id)}','present')">✓ حاضر</button><button class="status-btn ${st==='absent'?'active absent':''}" onclick="setAttendanceStatus('${esc(m.id)}','absent')">✕ غائب</button><button class="status-btn ${st==='excused'?'active excused':''}" onclick="setAttendanceStatus('${esc(m.id)}','excused')">معتذر</button></div></td><td><input class="att-note-input" data-note-for="${esc(m.id)}" value="${esc((attendanceRecords.find(r=>String(r.member_id)===String(m.id))||{}).notes||'')}" placeholder="ملاحظة" style="width:100%;padding:8px;border:1px solid var(--line);border-radius:8px"></td></tr>`}).join('')}
+function setAttendanceStatus(id,status){attendanceStatus[id]=status;const row=document.querySelector(`tr[data-member-id="${CSS.escape(String(id))}"]`);if(row){row.querySelectorAll('.status-btn').forEach(b=>b.classList.remove('active','present','absent','excused'));const idx={present:0,absent:1,excused:2}[status];if(idx!==undefined){const b=row.querySelectorAll('.status-btn')[idx];b.classList.add('active',status)}}updateAttendanceSummary()}
+function markAllAttendance(status){document.querySelectorAll('#attendanceTable tbody tr[data-member-id]').forEach(r=>setAttendanceStatus(r.dataset.memberId,status));}
+function updateAttendanceSummary(){const vals=Object.values(attendanceStatus);document.getElementById('attPresent').textContent=vals.filter(x=>x==='present').length;document.getElementById('attAbsent').textContent=vals.filter(x=>x==='absent').length;document.getElementById('attExcused').textContent=vals.filter(x=>x==='excused').length;document.getElementById('attUnmarked').textContent=document.querySelectorAll('#attendanceTable tbody tr[data-member-id]').length-vals.length}
+async function saveAttendance(){
+ const date=document.getElementById('attendanceDate').value||todayInput();const rows=[...document.querySelectorAll('#attendanceTable tbody tr[data-member-id]')];if(!rows.length){alert('لا يوجد مخدومون للحفظ.');return}
+ const payload=rows.filter(r=>attendanceStatus[r.dataset.memberId]).map(r=>({member_id:r.dataset.memberId,attendance_date:date,status:attendanceStatus[r.dataset.memberId],notes:r.querySelector('.att-note-input')?.value.trim()||null}));
+ if(!payload.length){alert('سجل حالة مخدوم واحد على الأقل.');return}
+ try{
+   if(dbReady){const {error}=await sb.from('attendance').upsert(payload,{onConflict:'member_id,attendance_date'});if(error)throw error;}
+   else {let all=[];try{all=JSON.parse(localStorage.getItem('kea_attendance')||'[]')}catch(e){}payload.forEach(x=>{const i=all.findIndex(r=>r.member_id===x.member_id&&r.attendance_date===x.attendance_date);if(i>=0)all[i]=x;else all.push({...x,id:crypto.randomUUID?crypto.randomUUID():Date.now()});});localStorage.setItem('kea_attendance',JSON.stringify(all));}
+   await checkThreeWeekAbsenceAlerts();
+   alert('تم حفظ الحضور والغياب بنجاح.');
+   await loadAttendanceForDate();
+ }catch(err){console.error(err);alert('تعذر حفظ الحضور والغياب. تأكد من اتصال قاعدة البيانات.');}
+}
+function getWeekStartForDate(s){const d=parseLocalDate(s);if(!d)return null;const day=d.getDay();d.setDate(d.getDate()-((day+1)%7));d.setHours(0,0,0,0);return d}
+async function checkThreeWeekAbsenceAlerts(){
+ const end=new Date();end.setHours(23,59,59,999);const start=new Date(end);start.setDate(start.getDate()-20);const from=localDateInputValue(start),to=localDateInputValue(end);
+ let rows=[];
+ if(dbReady){const {data,error}=await sb.from('attendance').select('member_id,attendance_date,status').gte('attendance_date',from).lte('attendance_date',to).eq('status','absent');if(error)throw error;rows=data||[]}
+ else {try{rows=JSON.parse(localStorage.getItem('kea_attendance')||'[]').filter(r=>r.status==='absent'&&r.attendance_date>=from&&r.attendance_date<=to)}catch(e){rows=[]}}
+ const grouped={};rows.forEach(r=>{const ws=localDateInputValue(getWeekStartForDate(r.attendance_date));(grouped[r.member_id]??=new Set()).add(ws)});
+ for(const [memberId,weeks] of Object.entries(grouped)){
+   if(weeks.size>=3){const m=members.find(x=>String(x.id)===String(memberId));if(!m)continue;const sorted=[...weeks].sort();const key=`absence3:${memberId}:${sorted.slice(-3).join('|')}`;const title=`تنبيه غياب: ${m.name}`;const message=`${m.name} لديه غياب في 3 أسابيع مختلفة خلال آخر 21 يومًا.`;
+     if(dbReady){const {error}=await sb.from('notifications').upsert({member_id:memberId,class_id:m.classId||null,type:'absence_3_weeks',title,message,notification_key:key,is_read:false},{onConflict:'notification_key'});if(error)console.error(error)}
+     else {let ns=[];try{ns=JSON.parse(localStorage.getItem('kea_notifications')||'[]')}catch(e){}if(!ns.some(n=>n.notification_key===key))ns.unshift({id:Date.now()+Math.random(),member_id:memberId,class_id:m.classId,type:'absence_3_weeks',title,message,notification_key:key,is_read:false,created_at:new Date().toISOString()});localStorage.setItem('kea_notifications',JSON.stringify(ns));}
+   }
+ }
+ renderAbsenceAlert();
+}
+async function renderAbsenceAlert(){const box=document.getElementById('attendanceAlert');if(!box)return;let ns=[];if(dbReady){const {data,error}=await sb.from('notifications').select('id,member_id,class_id,title,message,is_read,created_at').eq('type','absence_3_weeks').eq('is_read',false).order('created_at',{ascending:false}).limit(20);if(!error)ns=data||[]}else{try{ns=JSON.parse(localStorage.getItem('kea_notifications')||'[]').filter(n=>n.type==='absence_3_weeks'&&!n.is_read)}catch(e){}}
+ box.innerHTML=ns.length?`<div class="att-alert"><b>🔔 تنبيهات متابعة</b>${ns.map(n=>`<div style="display:flex;justify-content:space-between;gap:10px;align-items:center;margin-top:8px"><span>${esc(n.message||n.title)}</span><button class="mini-btn" onclick="markNotificationRead('${esc(n.id)}')">تمت المتابعة</button></div>`).join('')}</div>`:''}
+async function markNotificationRead(id){if(dbReady){const {error}=await sb.from('notifications').update({is_read:true}).eq('id',id);if(error){alert('تعذر تحديث التنبيه');return}}else{let ns=JSON.parse(localStorage.getItem('kea_notifications')||'[]');ns=ns.map(n=>String(n.id)===String(id)?{...n,is_read:true}:n);localStorage.setItem('kea_notifications',JSON.stringify(ns));}renderAbsenceAlert()}
+function toggleNotifications(){
+ const p=document.getElementById('notificationPanel'); if(!p)return; p.classList.toggle('open'); if(p.classList.contains('open')) refreshNotificationCenter();
+}
+document.addEventListener('click',e=>{const p=document.getElementById('notificationPanel'),b=document.getElementById('notificationBell');if(p&&p.classList.contains('open')&&!p.contains(e.target)&&!b?.contains(e.target))p.classList.remove('open')});
+function notificationDateLabel(v){try{return new Date(v).toLocaleString('ar-EG',{dateStyle:'short',timeStyle:'short'})}catch(e){return ''}}
+async function refreshNotificationCenter(){
+ const list=document.getElementById('notificationList'), badge=document.getElementById('notificationBadge'); if(!list||!dbReady)return;
+ try{
+   const {data,error}=await sb.from('notifications').select('id,title,message,type,is_read,created_at,class_id,member_id').order('created_at',{ascending:false}).limit(60);
+   if(error)throw error;
+   const rows=data||[]; const unread=rows.filter(x=>!x.is_read);
+   badge.textContent=unread.length>99?'99+':String(unread.length); badge.hidden=unread.length===0;
+   list.innerHTML=rows.length?rows.map(n=>`<div class="notification-item ${n.is_read?'':'unread'}" onclick="markNotificationRead('${String(n.id).replace(/'/g,'')}')"><b>${esc(n.title||'إشعار')}</b><p>${esc(n.message||'')}</p><small>${notificationDateLabel(n.created_at)}</small></div>`).join(''):'<div class="np-empty">لا توجد إشعارات حاليًا.</div>';
+ }catch(e){console.error('notification center:',e);list.innerHTML='<div class="np-empty">تعذر تحميل الإشعارات. تأكد من صلاحيات جدول notifications.</div>';badge.hidden=true;}
+}
+async function markAllNotificationsRead(){
+ if(!dbReady)return;
+ try{const {error}=await sb.from('notifications').update({is_read:true}).eq('is_read',false);if(error)throw error;await refreshNotificationCenter();}catch(e){alert('تعذر تحديث الإشعارات: '+(e.message||''))}
+}
+async function requestNotificationPermission(){if(!('Notification' in window)){alert('المتصفح لا يدعم إشعارات سطح المكتب.');return}const p=await Notification.requestPermission();if(p==='granted'){new Notification('خدمة الأمير',{body:'تم تفعيل إشعارات المتابعة.'});alert('تم تفعيل الإشعارات على هذا الجهاز.')}else alert('لم يتم السماح بالإشعارات. يمكنك تفعيلها من إعدادات المتصفح.')}
+function exportAttendanceCSV(){const date=document.getElementById('attendanceDate')?.value||todayInput();const rows=[['الاسم','الفصل','التاريخ','الحالة','ملاحظة'],...members.filter(m=>attendanceStatus[m.id]).map(m=>[m.name,m.className,date,attendanceStatus[m.id]==='present'?'حاضر':attendanceStatus[m.id]==='absent'?'غائب':'معتذر',document.querySelector(`[data-note-for="${CSS.escape(String(m.id))}"]`)?.value||''])];const csv='\ufeff'+rows.map(r=>r.map(csvCell).join(',')).join('\r\n');downloadBlob(csv,`خدمة_الأمير_حضور_${date}.csv`,'text/csv;charset=utf-8')}
+
+// ---- Attendance rate by weeks ----
+function initAttendanceRate(){
+ const a=document.getElementById('rateStart'),b=document.getElementById('rateEnd');
+ if(!a||!b)return;
+ if(!a.value||!b.value)setRateLast12Weeks();
+ populateRateClassSelect();
+}
+function populateRateClassSelect(){
+ const el=document.getElementById('rateClass');if(!el)return;
+ const old=el.value||'all';el.innerHTML='<option value="all">كل الفصول</option>'+classes.map(c=>`<option value="${esc(c.id)}">${esc(c.name)}</option>`).join('');el.value=[...el.options].some(o=>o.value===old)?old:'all';
+}
+function setRateLast12Weeks(){
+ const end=new Date();end.setHours(0,0,0,0);const start=new Date(end);start.setDate(start.getDate()-83);
+ const a=document.getElementById('rateStart'),b=document.getElementById('rateEnd');if(a)a.value=localDateInputValue(start);if(b)b.value=localDateInputValue(end);populateRateClassSelect();
+}
+function weekKeyFromDate(s){const d=parseLocalDate(s);if(!d)return '';return localDateInputValue(getWeekStartForDate(s));}
+async function loadAttendanceRates(){
+ const tb=document.querySelector('#attendanceRateTable tbody');if(!tb)return;
+ initAttendanceRate();
+ const start=document.getElementById('rateStart')?.value,end=document.getElementById('rateEnd')?.value,classId=document.getElementById('rateClass')?.value||'all';
+ if(!start||!end){tb.innerHTML='<tr><td colspan="7" class="att-empty">حدد الفترة أولاً.</td></tr>';return;}
+ const list=members.filter(m=>classId==='all'||String(m.classId)===String(classId));
+ let rows=[];
+ if(dbReady){const {data,error}=await sb.from('attendance').select('member_id,attendance_date,status').gte('attendance_date',start).lte('attendance_date',end);if(error){console.error(error);tb.innerHTML='<tr><td colspan="7" class="att-empty">تعذر قراءة سجلات الحضور.</td></tr>';return;}rows=data||[];}
+ else {try{rows=JSON.parse(localStorage.getItem('kea_attendance')||'[]').filter(r=>r.attendance_date>=start&&r.attendance_date<=end)}catch(e){rows=[]}}
+ const map={};
+ rows.forEach(r=>{
+   if(!map[r.member_id])map[r.member_id]={present:new Set(),recorded:new Set()};
+   const wk=weekKeyFromDate(r.attendance_date);if(!wk)return;
+   map[r.member_id].recorded.add(wk);if(r.status==='present')map[r.member_id].present.add(wk);
+ });
+ let totalPct=0,low=0;
+ const output=list.map((m,i)=>{
+   const x=map[m.id]||{present:new Set(),recorded:new Set()};
+   const attended=x.present.size, recorded=x.recorded.size, pct=recorded?Math.round(attended/recorded*100):0;
+   totalPct+=pct;if(pct<50&&recorded)low++;
+   const badge=recorded===0?'لم يسجل':pct>=80?'ممتاز':pct>=60?'جيد':pct>=50?'متوسط':'يحتاج متابعة';
+   return `<tr><td>${i+1}</td><td><div class="person">${m.photo?`<img class="photo-cell" src="${esc(m.photo)}" style="width:34px;height:34px;border-radius:10px;object-fit:cover">`:`<span class="avatar">${esc((m.name||'؟').charAt(0))}</span>`}<b>${esc(m.name)}</b></div></td><td>${esc(m.className||'—')}</td><td><strong>${attended}</strong></td><td>${recorded}</td><td><div class="rate-cell"><strong>${pct}%</strong><div class="rate-bar"><span style="width:${pct}%"></span></div></div></td><td><span class="rate-badge">${badge}</span></td></tr>`;
+ }).join('');
+ tb.innerHTML=output||'<tr><td colspan="7" class="att-empty">لا يوجد مخدومون في الفترة أو الفصل المحدد.</td></tr>';
+ document.getElementById('rateMembers').textContent=list.length;document.getElementById('rateWeeks').textContent=Math.max(1,Math.floor((parseLocalDate(end)-parseLocalDate(start))/604800000)+1);document.getElementById('rateAvg').textContent=list.length?Math.round(totalPct/list.length)+'%':'0%';document.getElementById('rateLow').textContent=low;
+ window.__attendanceRateData=list.map(m=>{const x=map[m.id]||{present:new Set(),recorded:new Set()};const attended=x.present.size,recorded=x.recorded.size,pct=recorded?Math.round(attended/recorded*100):0;return [m.name,m.className||'',attended,recorded,pct+'%'];});
+}
+function exportAttendanceRateCSV(){
+ const data=window.__attendanceRateData||[];const rows=[['الاسم','الفصل','حضر كام أسبوع','إجمالي الأسابيع المسجلة','نسبة الحضور'],...data];const csv='\ufeff'+rows.map(r=>r.map(csvCell).join(',')).join('\r\n');const s=document.getElementById('rateStart')?.value||'',e=document.getElementById('rateEnd')?.value||'';downloadBlob(csv,`خدمة_الأمير_نسبة_الحضور_${s}_${e}.csv`,'text/csv;charset=utf-8');}
+
+// ---- Weekly New Members ----
+function pad2(n){return String(n).padStart(2,'0')}
+function localDateInputValue(d){return `${d.getFullYear()}-${pad2(d.getMonth()+1)}-${pad2(d.getDate())}`}
+function parseLocalDate(s){if(!s)return null;const [y,m,d]=s.split('-').map(Number);return new Date(y,m-1,d,0,0,0,0)}
+function startOfCurrentWeek(){const d=new Date();const day=d.getDay();const diff=(day+1)%7;d.setHours(0,0,0,0);d.setDate(d.getDate()-diff);return d}
+function endOfCurrentWeek(){const d=startOfCurrentWeek();d.setDate(d.getDate()+6);d.setHours(23,59,59,999);return d}
+function setCurrentWeek(){const a=startOfCurrentWeek(),b=endOfCurrentWeek();document.getElementById('weekStart').value=localDateInputValue(a);document.getElementById('weekEnd').value=localDateInputValue(b);renderWeeklyMembers()}
+function initWeeklyPage(){if(!document.getElementById('weekStart'))return;const a=startOfCurrentWeek(),b=endOfCurrentWeek();if(!document.getElementById('weekStart').value)document.getElementById('weekStart').value=localDateInputValue(a);if(!document.getElementById('weekEnd').value)document.getElementById('weekEnd').value=localDateInputValue(b);populateWeeklyClassSelect();renderWeeklyMembers()}
+function populateWeeklyClassSelect(){const el=document.getElementById('weekClass');if(!el)return;const old=el.value||'all';el.innerHTML='<option value="all">كل الفصول</option>'+classes.map(c=>`<option value="${esc(c.id)}">${esc(c.name)}</option>`).join('');el.value=[...el.options].some(o=>o.value===old)?old:'all'}
+function weeklyMembersList(){const start=parseLocalDate(document.getElementById('weekStart').value),end=parseLocalDate(document.getElementById('weekEnd').value);if(!start||!end)return[];end.setHours(23,59,59,999);const cl=document.getElementById('weekClass').value;return members.filter(m=>{if(cl!=='all'&&String(m.classId)!==String(cl))return false;if(!m.createdAt)return false;const d=new Date(m.createdAt);return d>=start&&d<=end}).sort((a,b)=>new Date(b.createdAt)-new Date(a.createdAt))}
+function renderWeeklyMembers(){if(!document.getElementById('weeklyList'))return;populateWeeklyClassSelect();const list=weeklyMembersList(),el=document.getElementById('weeklyList');const start=document.getElementById('weekStart').value,end=document.getElementById('weekEnd').value;document.getElementById('weeklyCount').textContent=list.length;document.getElementById('weeklyRange').textContent=start&&end?`${start} → ${end}`:'—';const counts={};list.forEach(m=>counts[m.className||'بدون فصل']=(counts[m.className||'بدون فصل']||0)+1);const top=Object.entries(counts).sort((a,b)=>b[1]-a[1])[0];document.getElementById('weeklyTopClass').textContent=top?`${top[0]} (${top[1]})`:'—';el.innerHTML=list.length?list.map(m=>{const initial=esc((m.name||'؟').trim().charAt(0));const date=m.createdAt?new Intl.DateTimeFormat('ar-EG',{day:'numeric',month:'short',year:'numeric'}).format(new Date(m.createdAt)):'—';return `<div class="weekly-person">${m.photo?`<img src="${m.photo}" alt="">`:`<span class="avatar">${initial}</span>`}<div class="info"><b>${esc(m.name)}</b><small>${esc(m.className||'بدون فصل')} • ${esc(m.phone||'بدون هاتف')}</small></div><span class="date">${date}</span></div>`}).join(''):'<div class="weekly-empty">لا يوجد مخدومون جدد في الفترة المحددة.</div>'}
+function weeklyRows(){return [['الاسم','الفصل','تاريخ الإضافة','الهاتف','العنوان','تاريخ الميلاد'],...weeklyMembersList().map(m=>[m.name,m.className,m.createdAt?new Date(m.createdAt).toLocaleString('ar-EG'): '',m.phone,m.address,m.dob])]}
+function downloadWeeklyCSV(){const rows=weeklyRows();const csv='\ufeff'+rows.map(r=>r.map(csvCell).join(',')).join('\r\n');const start=document.getElementById('weekStart').value||'week',end=document.getElementById('weekEnd').value||'';downloadBlob(csv,`خدمة_الأمير_مضافين_${start}_${end}.csv`,'text/csv;charset=utf-8');}
+function weeklyPlainText(){const list=weeklyMembersList();const start=document.getElementById('weekStart').value,end=document.getElementById('weekEnd').value;let t=`خدمة الأمير\nالمخدومون الجدد من ${start} إلى ${end}\n\n`;t+=list.map((m,i)=>`${i+1}. ${m.name} — ${m.className||'بدون فصل'} — ${m.phone||'بدون هاتف'}`).join('\n');return t}
+async function copyWeeklyNames(){const t=weeklyPlainText();try{await navigator.clipboard.writeText(t);alert('تم نسخ قائمة الأسماء.')}catch(e){alert('تعذر النسخ تلقائيًا، استخدم زر تنزيل القائمة.')}}
+async function shareWeeklyList(){const t=weeklyPlainText();if(navigator.share){try{await navigator.share({title:'المخدومون الجدد — خدمة الأمير',text:t});return}catch(e){}}downloadWeeklyCSV();alert('تم تنزيل القائمة على الجهاز. يمكنك إرسال ملف CSV من الهاتف.')}
+function printWeeklyList(){const list=weeklyMembersList(),start=document.getElementById('weekStart').value,end=document.getElementById('weekEnd').value;const rows=list.map((m,i)=>`<tr><td>${i+1}</td><td>${esc(m.name)}</td><td>${esc(m.className||'—')}</td><td>${esc(m.phone||'—')}</td><td>${esc(m.address||'—')}</td><td>${m.createdAt?new Date(m.createdAt).toLocaleString('ar-EG'):'—'}</td></tr>`).join('');const html=`<!doctype html><html lang="ar" dir="rtl"><meta charset="utf-8"><title>المخدومون الجدد</title><style>body{font-family:Arial,sans-serif;padding:25px;color:#10233f}h1{color:#062754}p{color:#66758a}table{width:100%;border-collapse:collapse}th,td{border:1px solid #ddd;padding:9px;text-align:right;font-size:12px}th{background:#f2f5f9}.print{margin:15px 0;padding:10px 16px}@media print{.print{display:none}}</style><h1>خدمة الأمير — المخدومون الجدد</h1><p>الفترة: ${start} إلى ${end} — العدد: ${list.length}</p><button class="print" onclick="window.print()">طباعة / حفظ PDF</button><table><thead><tr><th>#</th><th>الاسم</th><th>الفصل</th><th>الهاتف</th><th>العنوان</th><th>تاريخ الإضافة</th></tr></thead><tbody>${rows}</tbody></table></html>`;downloadBlob(html,`مضافين_خدمة_الأمير_${start}_${end}.html`,'text/html;charset=utf-8')}
+
+// ---- Visits & Birthdays ----
+function localToday(){return new Date().toISOString().slice(0,10)}
+function populateCareSelects(){
+ const vm=document.getElementById('visitMember'), bm=document.getElementById('birthdayMember');
+ const opts=members.filter(m=>m.active!==false).sort((a,b)=>a.name.localeCompare(b.name,'ar')).map(m=>`<option value="${esc(m.id)}">${esc(m.name)} — ${esc(m.className||'بدون فصل')}</option>`).join('');
+ if(vm)vm.innerHTML=opts||'<option value="">لا يوجد مخدومون</option>';
+ if(bm)bm.innerHTML=opts||'<option value="">لا يوجد مخدومون</option>';
+}
+function openVisitModal(){
+ if(!members.length){alert('أضف مخدومًا أولًا ثم سجّل الزيارة.');return}
+ populateCareSelects();document.getElementById('visitDate').value=localToday();document.getElementById('visitVisitor').value=currentProfile?.full_name||'';document.getElementById('visitNotes').value='';document.getElementById('visitModal').classList.add('open')
+}
+function closeVisitModal(){document.getElementById('visitModal').classList.remove('open')}
+async function addVisit(){
+ const memberId=document.getElementById('visitMember').value;if(!memberId){alert('اختر المخدوم أولًا');return}
+ const base={member_id:memberId,visit_date:document.getElementById('visitDate').value||localToday(),visitor_name:document.getElementById('visitVisitor').value.trim()||null,notes:document.getElementById('visitNotes').value.trim()||null};
+ try{
+  if(dbReady){const {data,error}=await sb.from('visits').insert(base).select('id,member_id,visit_date,visitor_name,notes,created_at').single();if(error)throw error;const m=members.find(x=>String(x.id)===String(data.member_id));visits.unshift({id:data.id,memberId:data.member_id,memberName:m?.name||'—',className:m?.className||'—',visitDate:data.visit_date||'',visitorName:data.visitor_name||'',notes:data.notes||'',createdAt:data.created_at});}
+  else {const m=members.find(x=>x.id===memberId);visits.unshift({id:crypto.randomUUID?crypto.randomUUID():String(Date.now()),memberId,memberName:m?.name||'—',className:m?.className||'—',visitDate:base.visit_date,visitorName:base.visitor_name||'',notes:base.notes||'',createdAt:new Date().toISOString()})}
+  localSave();closeVisitModal();renderVisits();alert('تم حفظ الزيارة بنجاح.');
+ }catch(err){console.error(err);alert('تعذر حفظ الزيارة: '+(err.message||'تأكد أن لديك صلاحية الافتقاد وأن جدول visits مُعد في Supabase.'))}
+}
+async function loadVisits(){
+ if(!dbReady){renderVisits();return}
+ try{
+   const {data,error}=await sb.from('visits').select('id,member_id,visit_date,visitor_name,notes,created_at').order('visit_date',{ascending:false}).order('created_at',{ascending:false});
+   if(error) throw error;
+   visits=(data||[]).map(v=>{const m=members.find(x=>String(x.id)===String(v.member_id));return {id:v.id,memberId:v.member_id,memberName:m?.name||'—',className:m?.className||'—',visitDate:v.visit_date||'',visitorName:v.visitor_name||'',notes:v.notes||'',createdAt:v.created_at};});
+   localSave();renderVisits();
+ }catch(err){console.error('loadVisits:',err);renderVisits();alert('تعذر تحميل الافتقاد والزيارات. إذا كان جدول visits جديدًا، شغّل ملف إعداد الصلاحيات المرفق مرة واحدة.');}
+}
+function renderVisits(){
+ const body=document.querySelector('#visitsTable tbody');if(!body)return;const sorted=[...visits].sort((a,b)=>String(b.visitDate).localeCompare(String(a.visitDate))||String(b.createdAt).localeCompare(String(a.createdAt)));
+ document.getElementById('visitCount').textContent=sorted.length;document.getElementById('visitMembers').textContent=new Set(sorted.map(v=>v.memberId)).size;document.getElementById('visitLastDate').textContent=sorted[0]?.visitDate||'—';
+ body.innerHTML=sorted.map((v,i)=>`<tr><td>${i+1}</td><td><b>${esc(v.memberName)}</b></td><td>${esc(v.className||'—')}</td><td>${esc(v.visitDate||'—')}</td><td>${esc(v.visitorName||'—')}</td><td>${esc(v.notes||'—')}</td><td><button class="mini-btn danger" onclick="deleteVisit('${v.id}')">حذف</button></td></tr>`).join('')||'<tr><td colspan="7" style="text-align:center;color:#8b98aa;padding:30px">لا توجد زيارات مسجلة بعد.</td></tr>';
+}
+async function deleteVisit(id){if(!confirm('هل تريد حذف سجل الزيارة؟'))return;try{if(dbReady){const {error}=await sb.from('visits').delete().eq('id',id);if(error)throw error}visits=visits.filter(v=>String(v.id)!==String(id));localSave();renderVisits()}catch(err){console.error(err);alert('تعذر حذف الزيارة.')}}
+function openBirthdayModal(){if(!members.length){alert('أضف مخدومًا أولًا ثم سجّل تاريخ ميلاده.');return}populateCareSelects();const id=document.getElementById('birthdayMember').value;const m=members.find(x=>String(x.id)===String(id));document.getElementById('birthdayDate').value=m?.dob||'';document.getElementById('birthdayModal').classList.add('open');document.getElementById('birthdayMember').onchange=()=>{const x=members.find(z=>String(z.id)===String(document.getElementById('birthdayMember').value));document.getElementById('birthdayDate').value=x?.dob||''}}
+function closeBirthdayModal(){document.getElementById('birthdayModal').classList.remove('open')}
+async function saveBirthday(){
+ const id=document.getElementById('birthdayMember').value,date=document.getElementById('birthdayDate').value;
+ if(!id||!date){alert('اختر المخدوم واكتب تاريخ الميلاد.');return}
+ try{
+   if(dbReady){
+     const {error}=await sb.from('members').update({birth_date:date}).eq('id',id);
+     if(error) throw error;
+   }
+   members=members.map(m=>String(m.id)===String(id)?{...m,dob:date,age:calcAge(date)}:m);
+   localSave();closeBirthdayModal();renderMembers();renderBirthdays();
+   alert('تم حفظ تاريخ الميلاد بنجاح.');
+ }catch(err){console.error('saveBirthday:',err);alert('تعذر حفظ تاريخ الميلاد: '+(err.message||'تأكد أن لديك صلاحية تعديل المخدوم.'))}
+}
+function birthdayInfo(m){
+ if(!m?.dob)return null;
+ const d=parseLocalDate(m.dob); if(!d||Number.isNaN(d.getTime()))return null;
+ const now=new Date(); const today=new Date(now.getFullYear(),now.getMonth(),now.getDate());
+ let next=new Date(now.getFullYear(),d.getMonth(),d.getDate());
+ if(next<today) next=new Date(now.getFullYear()+1,d.getMonth(),d.getDate());
+ const days=Math.round((next-today)/86400000);
+ const ageAtNext=next.getFullYear()-d.getFullYear();
+ const currentAge=now.getFullYear()-d.getFullYear()-(today<new Date(now.getFullYear(),d.getMonth(),d.getDate())?1:0);
+ const isToday=days===0;
+ return {date:next,days,day:d.getDate(),month:d.getMonth(),age: isToday?currentAge:ageAtNext,currentAge,birthDate:d};
+}
+function birthdayList(){return members.map(m=>({m,bi:birthdayInfo(m)})).filter(x=>x.bi).sort((a,b)=>a.bi.date-b.bi.date || a.m.name.localeCompare(b.m.name,'ar'))}
+function birthdayStatus(x){if(x.bi.days===0)return `🎉 اليوم — أتم ${x.bi.age} ${x.bi.age===1?'سنة':'سنة'}`;if(x.bi.days===1)return `غدًا — سيُتم ${x.bi.age} سنة`;return `بعد ${x.bi.days} يوم — سيُتم ${x.bi.age} سنة`}
+function renderBirthdays(){
+ const el=document.getElementById('birthdayList');if(!el)return;
+ const list=birthdayList();
+ const today=list.filter(x=>x.bi.days===0);
+ document.getElementById('birthdayCount').textContent=list.length;
+ document.getElementById('birthdayNext').textContent=list[0]?`${list[0].m.name} (${list[0].bi.days===0?'اليوم':`بعد ${list[0].bi.days} يوم`})`:'—';
+ el.innerHTML=list.map(x=>`<div class="weekly-item ${x.bi.days===0?'birthday-today':''}"><div><b>${esc(x.m.name)}</b><small>${esc(x.m.className||'—')} • ${String(x.bi.day).padStart(2,'0')}/${String(x.bi.month+1).padStart(2,'0')} • السن: ${x.bi.age} سنة</small></div><div><span class="pill">${birthdayStatus(x)}</span><button class="mini-btn" onclick="editBirthday('${x.m.id}')">تعديل</button></div></div>`).join('')||'<div class="empty" style="padding:25px 10px"><div class="big">🎂</div><p>لا توجد أعياد ميلاد مسجلة بعد.</p></div>';
+ renderHomeBirthdays(list);
+ scheduleBirthdayRollover();
+ notifyTodaysBirthdays(today);
+}
+function renderHomeBirthdays(list=birthdayList()){
+ const el=document.getElementById('homeBirthdayList'); const count=document.getElementById('homeBirthdays');
+ if(count)count.textContent=list.length; if(!el)return;
+ const top=list.slice(0,5);
+ el.innerHTML=top.length?top.map(x=>`<div class="bday-row ${x.bi.days===0?'birthday-today':''}"><div><b>🎂 ${esc(x.m.name)}</b><small>${esc(x.m.className||'—')} • ${x.bi.days===0?`اليوم — أتم ${x.bi.age} سنة`:`${String(x.bi.day).padStart(2,'0')}/${String(x.bi.month+1).padStart(2,'0')} — بعد ${x.bi.days} يوم — سيُتم ${x.bi.age} سنة`}</small></div></div>`).join(''):'<div class="empty" style="padding:25px 10px"><div class="big">🎂</div><p>لا توجد أعياد ميلاد مسجلة بعد.</p></div>';
+}
+let birthdayMidnightTimer=null;
+function scheduleBirthdayRollover(){
+ if(birthdayMidnightTimer)clearTimeout(birthdayMidnightTimer);
+ const now=new Date(); const next=new Date(now.getFullYear(),now.getMonth(),now.getDate()+1,0,0,2,0);
+ birthdayMidnightTimer=setTimeout(()=>{renderBirthdays();loadFromDatabase().then(()=>renderBirthdays()).catch(()=>{});},Math.max(1000,next-now));
+}
+async function publishBirthdayNotifications(todayList){
+ if(!dbReady || !todayList?.length)return;
+ const byClass=new Map();
+ todayList.forEach(x=>{const cid=x.m.classId;if(!cid)return;if(!byClass.has(String(cid)))byClass.set(String(cid),[]);byClass.get(String(cid)).push(x)});
+ for(const [classId,list] of byClass){
+   const names=list.map(x=>`${x.m.name} — أتم ${x.bi.age} سنة`).join('، ');
+   const title='🎂 عيد ميلاد اليوم';
+   const message=list.length===1?`اليوم عيد ميلاد ${names}.`:`اليوم أعياد ميلاد: ${names}.`;
+   const key=`birthday_today_${localToday()}_${classId}`;
+   const {error}=await sb.from('notifications').upsert({member_id:list[0].m.id,class_id:classId,type:'birthday_today',title,message,notification_key:key,is_read:false},{onConflict:'notification_key'});
+   if(error)console.error('Birthday notification:',error);
+ }
+}
+async function showBirthdayNotificationsForCurrentDevice(){
+ if(!dbReady)return;
+ const {data,error}=await sb.from('notifications').select('id,title,message,notification_key,created_at,class_id').eq('type','birthday_today').order('created_at',{ascending:false}).limit(50);
+ if(error||!data?.length)return;
+ const today=localToday();
+ const todays=data.filter(n=>String(n.notification_key||'').includes(`birthday_today_${today}_`));
+ for(const n of todays){
+   const localKey=`kea_birthday_seen_${n.notification_key}`;
+   let seen=false;try{seen=localStorage.getItem(localKey)==='1'}catch(e){}
+   if(seen)continue;
+   try{localStorage.setItem(localKey,'1')}catch(e){}
+   if('Notification' in window && Notification.permission==='granted'){
+     try{new Notification(n.title||'خدمة الأمير — أعياد الميلاد اليوم',{body:n.message||'يوجد عيد ميلاد اليوم.',icon:'logo-192.png',tag:n.notification_key})}catch(e){}
+   }
+ }
+}
+async function notifyTodaysBirthdays(todayList){
+ if(!todayList?.length)return;
+ await publishBirthdayNotifications(todayList);
+ const key=`kea_birthday_notified_${localToday()}`;
+ let sent=false; try{sent=localStorage.getItem(key)==='1'}catch(e){}
+ const names=todayList.map(x=>`${x.m.name} — أتم ${x.bi.age} سنة`).join('، ');
+ const body=todayList.length===1?`🎂 اليوم عيد ميلاد ${names}.`:`🎂 اليوم أعياد ميلاد: ${names}.`;
+ const title='خدمة الأمير — أعياد الميلاد اليوم';
+ if(!sent){
+   try{localStorage.setItem(key,'1')}catch(e){}
+   if('Notification' in window && Notification.permission==='granted'){try{new Notification(title,{body,icon:'logo-192.png',tag:`birthday-${localToday()}`})}catch(e){}}
+ }
+ await showBirthdayNotificationsForCurrentDevice();
+}
+function editBirthday(id){populateCareSelects();document.getElementById('birthdayMember').value=id;document.getElementById('birthdayDate').value=members.find(m=>m.id===id)?.dob||'';document.getElementById('birthdayModal').classList.add('open')}
+
+// ---- Coptic Calendar ----
+const cMonths=['توت','بابه','هاتور','كيهك','طوبة','أمشير','برمهات','برمودة','بشنس','بؤونة','أبيب','مسرى','النسي'];
+function isLeap(y){return y%4===0&&(y%100!==0||y%400===0)}
+function copticStartGregorian(cy){const gy=cy+283;return new Date(Date.UTC(gy,isLeap(gy)?8:8,isLeap(gy)?12:11))}
+function copticToGregorian(cy,month,day){const start=copticStartGregorian(cy);const offset=(month-1)*30+(day-1);return new Date(start.getTime()+offset*86400000)}
+function gregorianToCoptic(date){const y=date.getUTCFullYear();let startYear=y;let start=new Date(Date.UTC(startYear,isLeap(startYear)?8:8,isLeap(startYear)?12:11));if(date<start){startYear=y-1;start=new Date(Date.UTC(startYear,isLeap(startYear)?8:8,isLeap(startYear)?12:11))}const cy=startYear-283;const diff=Math.floor((date-start)/86400000);const month=Math.floor(diff/30)+1;const day=diff%30+1;return {year:cy,month,day,name:cMonths[month-1]||'النسي'} }
+function fmtDate(d){return new Intl.DateTimeFormat('ar-EG',{day:'numeric',month:'long',year:'numeric'}).format(d)}
+function julianOrthodoxEaster(y){const a=y%4,b=y%7,c=y%19,d=(19*c+15)%30,e=(2*a+4*b-d+34)%7,m=Math.floor((d+e+114)/31),day=((d+e+114)%31)+1;const jul=new Date(Date.UTC(y,m-1,day));return new Date(jul.getTime()+13*86400000)}
+function holidaysForCopticYear(cy){const arr=[];const fixed=[
+ [1,1,'عيد النيروز — رأس السنة القبطية','عيد قبطي'],[2,17,'تذكار ظهور الصليب المجيد','تذكار'],[4,(cy%4===0?28:29),'عيد الميلاد المجيد','عيد سيدي كبير'],[5,6,'عيد الختان المجيد','عيد سيدي صغير'],[5,11,'عيد الغطاس المجيد','عيد سيدي كبير'],[5,13,'عيد قانا الجليل','عيد سيدي صغير'],[6,8,'دخول السيد المسيح الهيكل','عيد سيدي صغير'],[7,29,'عيد البشارة المجيد','عيد سيدي كبير'],[8,30,'شهادة القديس مارمرقس الرسول','تذكار'],[9,1,'ميلاد السيدة العذراء مريم','تذكار'],[9,24,'دخول السيد المسيح أرض مصر','عيد سيدي صغير'],[11,5,'عيد الرسولين بطرس وبولس','عيد رسولي'],[12,13,'عيد التجلي','عيد سيدي صغير'],[12,16,'عيد إصعاد جسد السيدة العذراء','عيد']
+];
+ fixed.forEach(x=>{const d=copticToGregorian(cy,x[0],x[1]);arr.push({date:d, coptic:`${x[1]} ${cMonths[x[0]-1]}`,name:x[2],tag:x[3]})});
+ const gy=cy+284,e=julianOrthodoxEaster(gy);const mov=[[-7,'أحد الشعانين','عيد سيدي كبير'],[-3,'خميس العهد','عيد سيدي صغير'],[-2,'الجمعة العظيمة','عيد سيدي كبير'],[-1,'سبت النور','مناسبة'],[0,'عيد القيامة المجيد','عيد سيدي كبير'],[1,'شم النسيم','مناسبة'],[7,'أحد توما','عيد سيدي صغير'],[39,'عيد الصعود','عيد سيدي كبير'],[49,'عيد العنصرة','عيد سيدي كبير'],[50,'بدء صوم الرسل','صوم']];
+ mov.forEach(([off,name,tag])=>{const d=new Date(e.getTime()+off*86400000);const c=gregorianToCoptic(d);arr.push({date:d,coptic:`${c.day} ${c.name}`,name,tag})});
+ arr.push({date:new Date(Date.UTC(gy,1,2)),coptic:'25 طوبة',name:'بدء صوم يونان',tag:'صوم'});
+ arr.push({date:new Date(Date.UTC(gy,1,16)),coptic:'9 أمشير',name:'بدء الصوم الكبير',tag:'صوم'});
+ arr.push({date:new Date(Date.UTC(gy,10,25)),coptic:'16 هاتور',name:'بدء صوم الميلاد',tag:'صوم'});
+ arr.sort((a,b)=>a.date-b.date);return arr}
+function renderDatePage(){const now=new Date(),c=gregorianToCoptic(new Date(Date.UTC(now.getFullYear(),now.getMonth(),now.getDate())));document.getElementById('todayCoptic').textContent=`${c.day} ${c.name} ${c.year} ش.`;document.getElementById('todayGregorian').textContent=fmtDate(now);const sel=document.getElementById('copticYearSelect');if(!sel.options.length){for(let y=c.year-3;y<=c.year+5;y++){const o=document.createElement('option');o.value=y;o.textContent=y+' ش.';sel.appendChild(o)}sel.value=c.year}renderCopticYear()}
+function renderCopticYear(){const cy=Number(document.getElementById('copticYearSelect').value),list=holidaysForCopticYear(cy),el=document.getElementById('holidayList');el.innerHTML=list.map(h=>`<div class="holiday"><div><div class="cdate">${h.coptic}</div><div class="gdate">${fmtDate(h.date)}</div></div><div class="hname">${h.name}</div><span class="tag">${h.tag}</span></div>`).join('');const next=list.find(h=>h.date>=new Date(new Date().setHours(0,0,0,0)));document.getElementById('nextHoliday').innerHTML=next?`<div style="font-size:20px;font-weight:800">${next.name}</div><div style="color:#718096;font-size:10px;margin-top:5px">${next.coptic} — ${fmtDate(next.date)}</div>`:'لا توجد مناسبة قادمة في القائمة'}
+
+async function restoreDatabase(e){const f=e.target.files?.[0];if(!f)return;if(currentProfile?.role!=='manager'){alert('استرجاع النسخة الاحتياطية متاح لمدير الخدمة فقط.');return}if(!confirm('سيتم دمج/تحديث البيانات الموجودة من النسخة الاحتياطية. هل تريد المتابعة؟')){e.target.value='';return}try{const data=JSON.parse(await f.text());if(!data||data.app!=='خدمة الأمير')throw new Error('ملف غير صالح');if(Array.isArray(data.classes)&&data.classes.length){const rows=data.classes.map(c=>({id:c.id,name:c.name,description:c.description??c.desc??null,created_at:c.created_at??c.createdAt??new Date().toISOString()}));const r=await sb.from('classes').upsert(rows,{onConflict:'id'});if(r.error)throw r.error}if(Array.isArray(data.members)&&data.members.length){const rows=data.members.map(m=>({id:m.id,class_id:m.class_id??m.classId??null,full_name:m.full_name??m.name,birth_date:m.birth_date??m.dob??null,address:m.address??null,phone:m.phone??null,photo_url:m.photo_url??m.photo??null,notes:m.notes??null,active:m.active!==false,created_at:m.created_at??m.createdAt??new Date().toISOString()}));const r=await sb.from('members').upsert(rows,{onConflict:'id'});if(r.error)throw r.error}if(Array.isArray(data.member_points)&&data.member_points.length){const r=await sb.from('member_points').upsert(data.member_points,{onConflict:'member_id'});if(r.error)throw r.error}for(const table of ['attendance','visits','notifications']){if(Array.isArray(data[table])&&data[table].length){const r=await sb.from(table).upsert(data[table],{onConflict:table==='attendance'?'member_id,attendance_date':undefined});if(r.error)throw r.error}}await loadFromDatabase();renderClasses();populateClassSelects();renderMembers();alert('تم استرجاع النسخة الاحتياطية بنجاح.')}catch(err){console.error(err);alert('تعذر استرجاع النسخة: '+(err.message||''))}finally{e.target.value=''}}
+
+// ---- Authentication & roles ----
+let currentProfile=null;
+let authMode='login';
+async function refreshManagerChoice(){const box=document.getElementById('managerChoice');if(!box)return;if(authMode!=='signup'){box.style.display='none';return}try{const {data,error}=await sb.rpc('manager_slot_available');box.style.display=(!error&&data===true)?'block':'none';if(data!==true)document.getElementById('wantsManager').checked=false}catch(e){box.style.display='none'}}
+function switchAuth(mode){authMode=mode;document.getElementById('loginTab').classList.toggle('active',mode==='login');document.getElementById('signupTab').classList.toggle('active',mode==='signup');document.getElementById('authNameWrap').style.display=mode==='signup'?'block':'none';document.getElementById('rememberRow').style.display=mode==='login'?'flex':'none';document.getElementById('forgotPasswordBtn').style.display=mode==='login'?'block':'none';document.getElementById('authSubmit').textContent=mode==='signup'?'إنشاء الحساب':'دخول';document.getElementById('authError').style.display='none';refreshManagerChoice()}
+function authMessage(msg){const el=document.getElementById('authError');el.textContent=msg;el.style.display='block'}
+function resetMessage(msg){const el=document.getElementById('resetError');el.textContent=msg;el.style.display='block'}
+function clearAuthMessage(){const el=document.getElementById('authError');el.textContent='';el.style.display='none'}
+async function openForgotPassword(){
+  clearAuthMessage();
+  const email=document.getElementById('authEmail').value.trim();
+  if(!email){authMessage('اكتب بريدك الإلكتروني أولًا ثم اضغط «نسيت كلمة المرور؟».');document.getElementById('authEmail').focus();return}
+  if(location.protocol==='file:'){authMessage('استعادة كلمة المرور تحتاج فتح الموقع من رابط ويب (http/https)، وليس ملفًا محليًا.');return}
+  const btn=document.getElementById('forgotPasswordBtn');btn.disabled=true;btn.textContent='جاري إرسال الرابط...';
+  try{
+    const redirectTo=window.location.origin+window.location.pathname;
+    const {error}=await sb.auth.resetPasswordForEmail(email,{redirectTo});
+    if(error)throw error;
+    authMessage('تم إرسال رابط تغيير كلمة المرور إلى بريدك الإلكتروني. افتح الرابط ثم اكتب كلمة المرور الجديدة.');
+  }catch(err){authMessage(err.message||'تعذر إرسال رابط استعادة كلمة المرور.')}
+  finally{btn.disabled=false;btn.textContent='نسيت كلمة المرور؟'}
+}
+async function submitPasswordReset(e){
+  e.preventDefault();
+  const password=document.getElementById('newPassword').value;
+  const confirm=document.getElementById('confirmPassword').value;
+  resetMessage('');
+  if(password!==confirm){resetMessage('كلمتا المرور غير متطابقتين.');return}
+  const btn=document.getElementById('resetSubmit');btn.disabled=true;
+  try{
+    const {error}=await sb.auth.updateUser({password});
+    if(error)throw error;
+    document.getElementById('resetGate').style.display='none';
+    document.getElementById('authGate').style.display='flex';
+    document.getElementById('authPassword').value='';
+    clearAuthMessage();
+    authMessage('تم تغيير كلمة المرور بنجاح. سجّل الدخول الآن بالكلمة الجديدة.');
+    history.replaceState({},document.title,window.location.pathname+window.location.search);
+    await sb.auth.signOut();
+  }catch(err){resetMessage(err.message||'تعذر تغيير كلمة المرور.')}
+  finally{btn.disabled=false}
+}
+async function submitAuth(e){e.preventDefault();const email=document.getElementById('authEmail').value.trim(),password=document.getElementById('authPassword').value,name=document.getElementById('authName').value.trim(),wantsManager=authMode==='signup'&&document.getElementById('wantsManager').checked;authMessage('');document.getElementById('authSubmit').disabled=true;try{let r;if(authMode==='signup'){if(!sb)sb=createAuthClient(true);r=await sb.auth.signUp({email,password,options:{data:{full_name:name,wants_manager:wantsManager}}})}else{const remember=document.getElementById('rememberMe').checked;localStorage.setItem('kha_remember_me',remember?'1':'0');sb=createAuthClient(remember);r=await sb.auth.signInWithPassword({email,password})}if(r.error)throw r.error;if(authMode==='signup'&&!r.data.session){authMessage('تم إنشاء الحساب. لو تأكيد البريد مفعّل في Supabase، افتح رسالة التأكيد ثم ارجع وسجّل الدخول. اختيار مدير الخدمة محفوظ مع الحساب.')}else if(r.data.session){await afterLogin(r.data.session.user)}}catch(err){authMessage(err.message||'تعذر تنفيذ العملية')}finally{document.getElementById('authSubmit').disabled=false}}
+async function afterLogin(user){document.getElementById('authGate').style.display='none';try{await ensureProfile(user);if(user.user_metadata?.wants_manager===true){const {data,error}=await sb.rpc('claim_first_manager');if(error)throw error;if(data!==true){await loadProfile();if(currentProfile?.role!=='manager')throw new Error('اختيار مدير الخدمة لم يعد متاحًا لأنه تم حجزه بواسطة حساب آخر.')}}await loadProfile();await loadFromDatabase();renderClasses();populateClassSelects();renderMembers();initWeeklyPage();renderBirthdays();await updateRoleUI();startRealtime();showPage('home')}catch(err){console.error(err);authMessage(err.message||'تعذر تحميل بيانات الحساب');document.getElementById('authGate').style.display='flex'}}
+async function ensureProfile(user){const {data}=await sb.from('profiles').select('id').eq('id',user.id).maybeSingle();if(!data){await sb.from('profiles').insert({id:user.id,full_name:user.user_metadata?.full_name||'',email:user.email||''})}}
+async function loadProfile(){const {data,error}=await sb.from('profiles').select('id,full_name,email,role,active').eq('id',(await sb.auth.getUser()).data.user.id).single();if(error)throw error;if(!data.active)throw new Error('هذا الحساب غير مفعل حاليًا.');currentProfile=data;document.getElementById('currentUserName').textContent=data.full_name||data.email||'خادم';document.getElementById('currentUserRole').textContent=data.role==='manager'?'مدير الخدمة':'خادم فصل'}
+async function updateRoleUI(){
+  // صلاحية الواجهة تعتمد فقط على الدور المحمّل من profiles للحساب الحالي.
+  // لا نرفع خادمًا إلى مدير اعتمادًا على RPC عام؛ هذا يمنع ظهور أدوات المدير لكل المستخدمين.
+  const isManager=currentProfile?.role==='manager';
+  document.querySelectorAll('.manager-only').forEach(el=>{
+    el.style.display=isManager?'flex':'none';
+    el.setAttribute('aria-hidden',isManager?'false':'true');
+  });
+  const addMemberBtn=document.getElementById('addMemberBtn');
+  if(addMemberBtn)addMemberBtn.style.display=(isManager||classes.length>0)?'inline-flex':'none';
+  const roleEl=document.getElementById('currentUserRole');
+  if(roleEl) roleEl.textContent=isManager?'مدير الخدمة':'خادم فصل';
+  if(!isManager&&document.getElementById('managers')?.classList.contains('active')){
+    pages.forEach(p=>p.classList.toggle('active',p.id==='home'));
+    navs.forEach(n=>n.classList.toggle('active',n.dataset.page==='home'));
+  }
+}
+async function claimFirstManager(){const {data,error}=await sb.rpc('claim_first_manager');if(error){alert(error.message);return}if(data){await loadProfile();await updateRoleUI();alert('تم تعيين حسابك كمدير الخدمة.')}else alert('يوجد مدير خدمة بالفعل.')} 
+async function logout(){stopRealtime();await sb.auth.signOut();location.reload()}
+async function initializeAuth(){
+  const recoveryMode=new URLSearchParams(window.location.hash.replace(/^#/,'')).get('type')==='recovery';
+  sb.auth.onAuthStateChange((event,session)=>{
+    if(event==='SIGNED_OUT'){document.getElementById('resetGate').style.display='none';location.reload()}
+    else if(event==='PASSWORD_RECOVERY'){
+      document.getElementById('authGate').style.display='none';
+      document.getElementById('resetGate').style.display='flex';
+      setTimeout(()=>document.getElementById('newPassword')?.focus(),0);
+    }
+  });
+  const {data:{session}}=await sb.auth.getSession();
+  if(recoveryMode){
+    document.getElementById('authGate').style.display='none';
+    document.getElementById('resetGate').style.display='flex';
+    setTimeout(()=>document.getElementById('newPassword')?.focus(),0);
+  }else if(session){
+    try{await afterLogin(session)}catch(e){console.error(e)}
+  }else{
+    document.getElementById('authGate').style.display='flex';
+  }
+}
+function focusAddServant(){if(currentProfile?.role!=='manager'){alert('إضافة وإسناد الخدام متاحان لمدير الخدمة فقط.');return}const input=document.getElementById('assignEmail');if(input){input.scrollIntoView({behavior:'smooth',block:'center'});setTimeout(()=>input.focus(),350)}}
+async function loadManagers(){if(currentProfile?.role!=='manager')return;const {data:profiles,error}=await sb.from('profiles').select('id,full_name,email,role,active,created_at').order('created_at',{ascending:true});if(error){alert(error.message);return}const {data:assignments}=await sb.from('class_servants').select('id,user_id,class_id,classes(name)');const byUser={};(assignments||[]).forEach(a=>(byUser[a.user_id]??=[]).push(a));document.getElementById('servantsList').innerHTML=(profiles||[]).map(p=>`<div class="servant-row"><div><b>${esc(p.full_name||p.email||'—')}</b><div class="servant-meta">${esc(p.email||'')} • ${p.role==='manager'?'مدير':'خادم'} ${p.active?'':'• غير مفعل'}</div><div>${(byUser[p.id]||[]).map(a=>`<span class="pill">${esc(a.classes?.name||'فصل')}</span>`).join('')}</div></div><div style="display:flex;gap:5px"><button class="mini-btn" onclick="toggleUserRole('${p.id}','${p.role}')">${p.role==='manager'?'جعله خادم':'جعله مدير'}</button><button class="mini-btn" onclick="toggleUserActive('${p.id}',${p.active})">${p.active?'تعطيل':'تفعيل'}</button></div></div>`).join('')||'<div class="empty">لا يوجد خدام مسجلون.</div>';document.getElementById('assignClass').innerHTML=classes.map(c=>`<option value="${esc(c.id)}">${esc(c.name)}</option>`).join('');document.getElementById('assignmentsList').innerHTML=(assignments||[]).map(a=>`<div class="servant-row"><div><b>${esc((profiles||[]).find(p=>p.id===a.user_id)?.full_name||'خادم')}</b><div class="servant-meta">${esc((profiles||[]).find(p=>p.id===a.user_id)?.email||'')}</div></div><div><span class="pill">${esc(a.classes?.name||'—')}</span><button class="mini-btn danger" onclick="removeAssignment('${a.id}')">إزالة</button></div></div>`).join('')||'<div class="servant-meta">لا توجد إسنادات بعد.</div>'}
+async function toggleUserRole(id,role){if(id===(currentProfile?.id)){alert('لا يمكن تغيير دور حسابك بنفسك.');return}const next=role==='manager'?'servant':'manager';const {error}=await sb.rpc('manager_set_user_role',{p_user_id:id,p_role:next});if(error)alert(error.message);else loadManagers()}
+async function toggleUserActive(id,active){if(id===(currentProfile?.id)){alert('لا يمكن تعطيل حسابك بنفسك.');return}const {error}=await sb.rpc('manager_set_user_active',{p_user_id:id,p_active:!active});if(error)alert(error.message);else loadManagers()}
+async function removeAssignment(id){if(!confirm('إزالة الخادم من هذا الفصل؟'))return;const {error}=await sb.from('class_servants').delete().eq('id',id);if(error)alert(error.message);else loadManagers()}
+async function assignServant(e){e.preventDefault();const email=document.getElementById('assignEmail').value.trim().toLowerCase(),classId=document.getElementById('assignClass').value;const {data:user,error}=await sb.from('profiles').select('id,full_name,email').ilike('email',email).maybeSingle();if(error) {alert(error.message);return}if(!user){alert('لا يوجد حساب بهذا البريد. اطلب من الخادم إنشاء حساب أولًا.');return}const {error:er}=await sb.from('class_servants').insert({user_id:user.id,class_id:classId});if(er){alert(er.message);return}document.getElementById('assignEmail').value='';alert('تم إسناد الخادم للفصل.');loadManagers()}
+
+// initialize
+if("serviceWorker" in navigator) navigator.serviceWorker.register("sw.js").catch(()=>{});
+initializeAuth();
+switchAuth('login');
+
 </script>
 </body>
 </html>
