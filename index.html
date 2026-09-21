@@ -1065,7 +1065,7 @@ function editBirthday(id){populateCareSelects();document.getElementById('birthda
 // ---- Coptic Calendar ----
 const cMonths=['توت','بابه','هاتور','كيهك','طوبة','أمشير','برمهات','برمودة','بشنس','بؤونة','أبيب','مسرى','النسي'];
 function isLeap(y){return y%4===0&&(y%100!==0||y%400===0)}
-function copticStartGregorian(cy){const gy=cy+283;return new Date(Date.UTC(gy,8,isLeap(gy+1)?12:11))}
+function copticStartGregorian(cy){const gy=cy+283;return new Date(Date.UTC(gy,8,isLeap(gy)?12:11))}
 function copticToGregorian(cy,month,day){const start=copticStartGregorian(cy);const offset=(month-1)*30+(day-1);return new Date(start.getTime()+offset*86400000)}
 function gregorianToCoptic(date){const y=date.getUTCFullYear();let startYear=y;let start=new Date(Date.UTC(startYear,isLeap(startYear)?8:8,isLeap(startYear)?12:11));if(date<start){startYear=y-1;start=new Date(Date.UTC(startYear,isLeap(startYear)?8:8,isLeap(startYear)?12:11))}const cy=startYear-283;const diff=Math.floor((date-start)/86400000);const month=Math.floor(diff/30)+1;const day=diff%30+1;return {year:cy,month,day,name:cMonths[month-1]||'النسي'} }
 function fmtDate(d){return new Intl.DateTimeFormat('ar-EG',{day:'numeric',month:'long',year:'numeric'}).format(d)}
