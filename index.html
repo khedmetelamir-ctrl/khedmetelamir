@@ -755,22 +755,46 @@ function calcAge(v){if(!v)return '';const d=new Date(v+'T00:00:00'),n=new Date()
 function compressImage(file){return new Promise((resolve,reject)=>{const r=new FileReader();r.onerror=reject;r.onload=()=>{const img=new Image();img.onload=()=>{const max=700,scale=Math.min(1,max/Math.max(img.width,img.height)),c=document.createElement('canvas');c.width=Math.round(img.width*scale);c.height=Math.round(img.height*scale);const ctx=c.getContext('2d');ctx.drawImage(img,0,0,c.width,c.height);resolve(c.toDataURL('image/jpeg',.78))};img.onerror=reject;img.src=r.result};r.readAsDataURL(file)})}
 async function previewPhoto(e){const f=e.target.files[0];if(!f)return;try{document.getElementById('photoPreview').src=await compressImage(f)}catch(err){alert('تعذر قراءة الصورة')}}
 function editMember(id){if(currentProfile?.role!=='manager')return;const m=members.find(x=>String(x.id)===String(id));if(!m)return;document.getElementById('editingMemberId').value=m.id;document.getElementById('newName').value=m.name||'';document.getElementById('newPhone').value=m.phone||'';document.getElementById('newDob').value=m.dob||'';document.getElementById('newAge').value=calcAge(m.dob||'');document.getElementById('newAddress').value=m.address||'';populateClassSelects();document.getElementById('newClass').value=String(m.classId||'');document.getElementById('newPhoto').value='';document.getElementById('photoPreview').src=m.photo||'';document.getElementById('memberModalTitle').textContent='تعديل بيانات المخدوم';document.getElementById('memberSaveBtn').textContent='حفظ التعديل';document.getElementById('modal').classList.add('open')}
+async function uploadMemberPhoto(file,memberId){
+ if(!dbReady)throw new Error('قاعدة البيانات غير متصلة الآن.');
+ if(!file||!memberId)return null;
+ const ext=(file.name.split('.').pop()||'jpg').toLowerCase().replace(/[^a-z0-9]/g,'')||'jpg';
+ const path='members/'+String(memberId)+'/'+Date.now()+'.'+ext;
+ const {error}=await sb.storage.from('member-photos').upload(path,file,{cacheControl:'31536000',upsert:false,contentType:file.type||'image/jpeg'});
+ if(error)throw error;
+ const {data}=sb.storage.from('member-photos').getPublicUrl(path);
+ return data?.publicUrl||null;
+}
 async function saveMember(){
  const editingId=document.getElementById('editingMemberId').value.trim();
  if(editingId && currentProfile?.role!=='manager'){alert('تعديل المخدوم متاح لمدير الخدمة فقط.');return}
  if(!editingId && currentProfile?.role!=='manager' && classes.length===0){alert('لا يمكنك إضافة مخدوم قبل إسنادك إلى فصل من مدير الخدمة.');return}
- const name=document.getElementById('newName').value.trim(); if(!name){alert('اكتب اسم المخدوم أولاً');return}
- const classId=document.getElementById('newClass').value||null, dob=document.getElementById('newDob').value||null, address=document.getElementById('newAddress').value.trim()||null, phone=document.getElementById('newPhone').value.trim()||null;
- const file=document.getElementById('newPhoto').files[0]; let photo=null;
- if(file){try{photo=await compressImage(file)}catch(e){alert('تعذر تجهيز الصورة');return}}
+ if(!dbReady){alert('قاعدة البيانات غير متصلة الآن. لم يتم حفظ بيانات المخدوم محليًا.');return}
+ const name=document.getElementById('newName').value.trim();if(!name){alert('اكتب اسم المخدوم أولاً');return}
+ const classId=document.getElementById('newClass').value||null,dob=document.getElementById('newDob').value||null,address=document.getElementById('newAddress').value.trim()||null,phone=document.getElementById('newPhone').value.trim()||null;
+ const file=document.getElementById('newPhoto').files[0]||null;
  try{
    if(editingId){
-     if(dbReady){const {data,error}=await sb.rpc('manager_update_member',{p_member_id:editingId,p_full_name:name,p_class_id:classId,p_birth_date:dob,p_address:address,p_phone:phone,p_photo_url:photo});if(error)throw error;const c=classes.find(x=>String(x.id)===String(data.class_id));const m=members.find(x=>String(x.id)===String(editingId));if(m){Object.assign(m,{name:data.full_name,phone:data.phone||'',classId:data.class_id,className:c?.name||'—',dob:data.birth_date||'',age:calcAge(data.birth_date||''),address:data.address||'',photo:data.photo_url||m.photo||''})}}else{const m=members.find(x=>String(x.id)===String(editingId));if(m)Object.assign(m,{name,phone:phone||'',classId,className:classes.find(x=>String(x.id)===String(classId))?.name||'—',dob:dob||'',age:calcAge(dob||''),address:address||'',photo:photo||m.photo||''})}
+     let photoUrl=null;
+     if(file){photoUrl=await uploadMemberPhoto(file,editingId)}
+     const {data,error}=await sb.rpc('manager_update_member',{p_member_id:editingId,p_full_name:name,p_class_id:classId,p_birth_date:dob,p_address:address,p_phone:phone,p_photo_url:photoUrl});
+     if(error)throw error;
+     const c=classes.find(x=>String(x.id)===String(data.class_id));const m=members.find(x=>String(x.id)===String(editingId));
+     if(m)Object.assign(m,{name:data.full_name,phone:data.phone||'',classId:data.class_id,className:c?.name||'—',dob:data.birth_date||'',age:calcAge(data.birth_date||''),address:data.address||'',photo:data.photo_url||m.photo||''});
    }else{
-     if(dbReady){const {data,error}=await sb.from('members').insert({full_name:name,phone,class_id:classId,birth_date:dob,address,photo_url:photo,active:true}).select('id,class_id,full_name,birth_date,address,phone,photo_url,notes,active,created_at').single();if(error)throw error;const c=classes.find(x=>String(x.id)===String(data.class_id));members.unshift({id:data.id,name:data.full_name,phone:data.phone||'',classId:data.class_id,className:c?.name||'—',dob:data.birth_date||'',age:calcAge(data.birth_date||''),address:data.address||'',photo:data.photo_url||'',notes:data.notes||'',active:data.active!==false,createdAt:data.created_at})}else{const c=classes.find(x=>String(x.id)===String(classId));members.unshift({id:crypto.randomUUID?crypto.randomUUID():Date.now(),name,phone:phone||'',classId,className:c?.name||'—',dob:dob||'',age:calcAge(dob||''),address:address||'',photo:photo||'',active:true,createdAt:new Date().toISOString()})}
+     const {data,error}=await sb.from('members').insert({full_name:name,phone,class_id:classId,birth_date:dob,address,photo_url:null,active:true}).select('id,class_id,full_name,birth_date,address,phone,photo_url,notes,active,created_at').single();
+     if(error)throw error;
+     let row=data;
+     if(file){
+       const photoUrl=await uploadMemberPhoto(file,data.id);
+       const up=await sb.from('members').update({photo_url:photoUrl}).eq('id',data.id).select('id,class_id,full_name,birth_date,address,phone,photo_url,notes,active,created_at').single();
+       if(up.error)throw up.error;row=up.data;
+     }
+     const c=classes.find(x=>String(x.id)===String(row.class_id));
+     members.unshift({id:row.id,name:row.full_name,phone:row.phone||'',classId:row.class_id,className:c?.name||'—',dob:row.birth_date||'',age:calcAge(row.birth_date||''),address:row.address||'',photo:row.photo_url||'',notes:row.notes||'',active:row.active!==false,createdAt:row.created_at});
    }
-   localSave();closeModal();renderMembers();renderBirthdays();
- }catch(err){console.error(err);alert('تعذر حفظ بيانات المخدوم: '+(err.message||''))}
+   closeModal();renderMembers();renderBirthdays();
+ }catch(err){console.error('saveMember:',err);alert('تعذر حفظ بيانات المخدوم: '+(err.message||''))}
 }
 function renderMembers(){
  const memberClass=document.getElementById('memberClass');
