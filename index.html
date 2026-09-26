@@ -440,16 +440,8 @@ function setDbStatus(ok,msg){
  el.textContent=ok?'🟢':'🔴';
  el.title=msg||'';
 }
-function localSave(){
- localStorage.setItem('kea_classes',JSON.stringify(classes));
- localStorage.setItem('kea_members',JSON.stringify(members));
- localStorage.setItem('kea_visits',JSON.stringify(visits));
- localStorage.setItem('kea_member_points',JSON.stringify(memberPoints));
-}
-function localLoad(){
- try{classes=JSON.parse(localStorage.getItem('kea_classes')||'[]')||[];members=JSON.parse(localStorage.getItem('kea_members')||'[]')||[];visits=JSON.parse(localStorage.getItem('kea_visits')||'[]')||[];memberPoints=JSON.parse(localStorage.getItem('kea_member_points')||'{}')||{};}catch(e){classes=[];members=[]}
- if(!classes.length) classes=defaultClasses.map(c=>({...c,localOnly:true}));
-}
+function localSave(){/* لا يتم تخزين بيانات الخدمة محليًا. */}
+function localLoad(){/* بيانات الخدمة من Supabase حصراً. */}
 function scheduleRealtimeRefresh(){
   if(!currentProfile || !dbReady) return;
   clearTimeout(realtimeTimer);
@@ -470,18 +462,18 @@ function scheduleRealtimeRefresh(){
   },350);
 }
 function startRealtime(){
-  if(realtimeChannel) sb.removeChannel(realtimeChannel);
-  realtimeChannel=sb.channel('kea-shared-data')
-    .on('postgres_changes',{event:'*',schema:'public',table:'classes'},scheduleRealtimeRefresh)
-    .on('postgres_changes',{event:'*',schema:'public',table:'members'},scheduleRealtimeRefresh)
-    .on('postgres_changes',{event:'*',schema:'public',table:'attendance'},scheduleRealtimeRefresh)
-    .on('postgres_changes',{event:'*',schema:'public',table:'visits'},scheduleRealtimeRefresh)
-    .on('postgres_changes',{event:'*',schema:'public',table:'notifications'},()=>{scheduleRealtimeRefresh();refreshNotificationCenter();})
-    .on('postgres_changes',{event:'*',schema:'public',table:'class_servants'},scheduleRealtimeRefresh)
-    .on('postgres_changes',{event:'*',schema:'public',table:'profiles'},scheduleRealtimeRefresh)
-    .on('postgres_changes',{event:'*',schema:'public',table:'member_points'},scheduleRealtimeRefresh)
-    .on('postgres_changes',{event:'*',schema:'public',table:'member_notes'},()=>{scheduleRealtimeRefresh();if(document.getElementById('notes')?.classList.contains('active'))loadNotesMembers();})
-    .subscribe((status)=>{ if(status==='SUBSCRIBED') setDbStatus(true,'متصل وقاعدة البيانات تتحدث لحظيًا'); });
+ if(realtimeChannel)sb.removeChannel(realtimeChannel);
+ realtimeChannel=sb.channel('kea-shared-data')
+ .on('postgres_changes',{event:'*',schema:'public',table:'classes'},scheduleRealtimeRefresh)
+ .on('postgres_changes',{event:'*',schema:'public',table:'members'},scheduleRealtimeRefresh)
+ .on('postgres_changes',{event:'*',schema:'public',table:'class_servants'},scheduleRealtimeRefresh)
+ .on('postgres_changes',{event:'*',schema:'public',table:'attendance'},()=>{if(document.getElementById('attendance')?.classList.contains('active'))loadAttendanceForDate();if(document.getElementById('attendanceRate')?.classList.contains('active'))loadAttendanceRates();if(document.getElementById('reports')?.classList.contains('active'))loadReports()})
+ .on('postgres_changes',{event:'*',schema:'public',table:'visits'},()=>{if(document.getElementById('visits')?.classList.contains('active'))loadVisits()})
+ .on('postgres_changes',{event:'*',schema:'public',table:'notifications'},()=>{refreshNotificationCenter();renderAbsenceAlert()})
+ .on('postgres_changes',{event:'*',schema:'public',table:'profiles'},()=>{if(currentProfile?.role==='manager'&&document.getElementById('managers')?.classList.contains('active'))loadManagers()})
+ .on('postgres_changes',{event:'*',schema:'public',table:'member_points'},()=>{if(document.getElementById('points')?.classList.contains('active')){loadMemberPoints();renderPoints()}})
+ .on('postgres_changes',{event:'*',schema:'public',table:'member_notes'},()=>{if(document.getElementById('notes')?.classList.contains('active'))loadNotesMembers()})
+ .subscribe(status=>{if(status==='SUBSCRIBED')setDbStatus(true,'متصل وقاعدة البيانات تتحدث لحظيًا')});
 }
 function stopRealtime(){
   if(realtimeChannel){sb.removeChannel(realtimeChannel);realtimeChannel=null;}
@@ -537,11 +529,7 @@ async function loadFromDatabase(){
    const ar=await sb.from('class_servants').select('class_id').eq('user_id',userId);
    if(ar.error){
      console.error('تعذر تحميل فصول الخادم:', ar.error);
-     classes=[];
-     members=[];
-     dbReady=true;
-     updateRoleUI();
-     return;
+     throw ar.error;
    }
    allowedClassIds=[...new Set((ar.data||[]).map(x=>x.class_id).filter(Boolean))];
  }
@@ -577,10 +565,11 @@ async function loadFromDatabase(){
 }
 async function initializeApp(){
  if(!currentProfile)return;
- localLoad();renderClasses();populateClassSelects();renderMembers();initWeeklyPage();initAttendance();initAttendanceRate();initPoints();showPage('home');
+ classes=[];members=[];visits=[];memberPoints={};
+ renderClasses();populateClassSelects();renderMembers();initWeeklyPage();initAttendance();initAttendanceRate();initPoints();showPage('home');
  if(!window.__keaAttendanceDayTimer)window.__keaAttendanceDayTimer=setInterval(syncAttendanceToday,60000);
  try{await loadFromDatabase();renderClasses();populateClassSelects();renderMembers();await loadNotesMembers();initWeeklyPage();initPoints();}
- catch(err){dbReady=false;setDbStatus(false,'تعذر الاتصال بقاعدة البيانات — تم استخدام النسخة المحلية مؤقتًا');console.error('Supabase:',err);renderAbsenceAlert();}
+ catch(err){dbReady=false;classes=[];members=[];visits=[];memberPoints={};setDbStatus(false,'قاعدة البيانات غير متاحة — لن يتم الحفظ محليًا');console.error('Supabase:',err);renderClasses();renderMembers();renderVisits();renderBirthdays();renderAbsenceAlert();}
 }
 async function loadReports(){
  const now=new Date();
@@ -794,7 +783,7 @@ function renderMembers(){
  if(!tbody)return;
  const list=members.filter(m=>(!q||[m.name,m.phone,m.address,m.className].join(' ').toLowerCase().includes(q))&&(cl==='كل الفصول'||String(m.classId)===String(cl)));
  tbody.innerHTML=list.map(m=>`<tr><td class="photo-cell">${m.photo?`<img src="${m.photo}" alt="">`:'<span class="avatar">👤</span>'}</td><td><div class="person"><div><b>${esc(m.name)}</b><small style="display:block;color:#8a98aa;font-size:8px">${esc(m.address||'بدون عنوان')}</small></div></div></td><td>${esc(m.className||'—')}</td><td>${m.dob||'—'}</td><td>${esc(calcAge(m.dob)||'—')}</td><td>${esc(m.phone||'—')}</td><td><span class="badge ${m.active===false?'off':'ok'}">${m.active===false?'غير نشط':'نشط'}</span></td><td><div class="member-actions"><button class="mini-btn" onclick="exportMember('${m.id}')">ملف</button>${currentProfile?.role==='manager'?`<button class="mini-btn" onclick="editMember('${m.id}')">تعديل</button><button class="mini-btn danger" onclick="deleteMember('${m.id}')">حذف</button>`:''}</div></td></tr>`).join('')||'<tr><td colspan="8" style="text-align:center;color:#8b98aa;padding:30px">لا توجد بيانات مطابقة</td></tr>';
-}async function deleteMember(id){const m=members.find(x=>String(x.id)===String(id));if(!m)return;if(!confirm('هل تريد حذف '+m.name+'؟'))return;try{if(dbReady){const {error}=await sb.from('members').delete().eq('id',id);if(error)throw error}members=members.filter(x=>String(x.id)!==String(id));localSave();renderMembers();}catch(err){console.error(err);alert('تعذر حذف المخدوم من قاعدة البيانات.')}}
+}async function deleteMember(id){const m=members.find(x=>String(x.id)===String(id));if(!m)return;if(currentProfile?.role!=='manager'){alert('حذف المخدوم متاح لمدير الخدمة فقط.');return}if(!confirm('هل تريد حذف '+m.name+'؟'))return;if(!dbReady){alert('قاعدة البيانات غير متصلة الآن.');return}try{const {error}=await sb.from('members').delete().eq('id',id);if(error)throw error;members=members.filter(x=>String(x.id)!==String(id));renderMembers()}catch(err){console.error(err);alert('تعذر حذف المخدوم: '+(err.message||''))}}
 function exportMembersCSV(){const rows=[['الاسم','الفصل','تاريخ الميلاد','السن','الهاتف','العنوان'],...members.map(m=>[m.name,m.className,m.dob,calcAge(m.dob)||m.age,m.phone,m.address])];const csv='\ufeff'+rows.map(r=>r.map(csvCell).join(',')).join('\r\n');downloadBlob(csv,'خدمة_الأمير_المخدومين.csv','text/csv;charset=utf-8');}
 function csvCell(v){return '"'+String(v??'').replace(/"/g,'""')+'"'}
 async function exportDatabase(){let data={app:'خدمة الأمير',version:3,exportedAt:new Date().toISOString(),classes,members};if(dbReady){try{const [a,v,n,p]=await Promise.all([sb.from('attendance').select('*'),sb.from('visits').select('*'),sb.from('notifications').select('*'),sb.from('member_points').select('*')]);data.attendance=a.data||[];data.visits=v.data||[];data.notifications=n.data||[];data.member_points=p.data||[]}catch(e){}}downloadBlob(JSON.stringify(data,null,2),'خدمة_الأمير_نسخة_احتياطية.json','application/json;charset=utf-8')}
@@ -974,42 +963,38 @@ function openVisitModal(){
 function closeVisitModal(){document.getElementById('visitModal').classList.remove('open')}
 async function addVisit(){
  const memberId=document.getElementById('visitMember').value;if(!memberId){alert('اختر المخدوم أولًا');return}
+ if(!dbReady){alert('قاعدة البيانات غير متصلة الآن. لم يتم حفظ الزيارة محليًا.');return}
  const base={member_id:memberId,visit_date:document.getElementById('visitDate').value||localToday(),visitor_name:document.getElementById('visitVisitor').value.trim()||null,notes:document.getElementById('visitNotes').value.trim()||null};
  try{
-  if(dbReady){const {data,error}=await sb.from('visits').insert(base).select('id,member_id,visit_date,visitor_name,notes,created_at').single();if(error)throw error;const m=members.find(x=>String(x.id)===String(data.member_id));visits.unshift({id:data.id,memberId:data.member_id,memberName:m?.name||'—',className:m?.className||'—',visitDate:data.visit_date||'',visitorName:data.visitor_name||'',notes:data.notes||'',createdAt:data.created_at});}
-  else {const m=members.find(x=>x.id===memberId);visits.unshift({id:crypto.randomUUID?crypto.randomUUID():String(Date.now()),memberId,memberName:m?.name||'—',className:m?.className||'—',visitDate:base.visit_date,visitorName:base.visitor_name||'',notes:base.notes||'',createdAt:new Date().toISOString()})}
-  localSave();closeVisitModal();renderVisits();alert('تم حفظ الزيارة بنجاح.');
- }catch(err){console.error(err);alert('تعذر حفظ الزيارة: '+(err.message||'تأكد أن لديك صلاحية الافتقاد وأن جدول visits مُعد في Supabase.'))}
+  const {data,error}=await sb.from('visits').insert(base).select('id,member_id,visit_date,visitor_name,notes,created_at').single();if(error)throw error;
+  const m=members.find(x=>String(x.id)===String(data.member_id));visits.unshift({id:data.id,memberId:data.member_id,memberName:m?.name||'—',className:m?.className||'—',visitDate:data.visit_date||'',visitorName:data.visitor_name||'',notes:data.notes||'',createdAt:data.created_at});
+  closeVisitModal();renderVisits();alert('تم حفظ الزيارة بنجاح.');
+ }catch(err){console.error(err);alert('تعذر حفظ الزيارة: '+(err.message||'تأكد من صلاحيات الزيارات.'))}
 }
 async function loadVisits(){
- if(!dbReady){renderVisits();return}
+ if(!dbReady){visits=[];renderVisits();return}
  try{
-   const {data,error}=await sb.from('visits').select('id,member_id,visit_date,visitor_name,notes,created_at').order('visit_date',{ascending:false}).order('created_at',{ascending:false});
-   if(error) throw error;
-   visits=(data||[]).map(v=>{const m=members.find(x=>String(x.id)===String(v.member_id));return {id:v.id,memberId:v.member_id,memberName:m?.name||'—',className:m?.className||'—',visitDate:v.visit_date||'',visitorName:v.visitor_name||'',notes:v.notes||'',createdAt:v.created_at};});
-   localSave();renderVisits();
- }catch(err){console.error('loadVisits:',err);renderVisits();alert('تعذر تحميل الافتقاد والزيارات. إذا كان جدول visits جديدًا، شغّل ملف إعداد الصلاحيات المرفق مرة واحدة.');}
+   const ids=members.map(m=>String(m.id));if(!ids.length){visits=[];renderVisits();return}
+   const {data,error}=await sb.from('visits').select('id,member_id,visit_date,visitor_name,notes,created_at').in('member_id',ids).order('visit_date',{ascending:false}).order('created_at',{ascending:false});
+   if(error)throw error;
+   visits=(data||[]).map(v=>{const m=members.find(x=>String(x.id)===String(v.member_id));return {id:v.id,memberId:v.member_id,memberName:m?.name||'—',className:m?.className||'—',visitDate:v.visit_date||'',visitorName:v.visitor_name||'',notes:v.notes||'',createdAt:v.created_at};});renderVisits();
+ }catch(err){console.error('loadVisits:',err);visits=[];renderVisits();}
 }
 function renderVisits(){
  const body=document.querySelector('#visitsTable tbody');if(!body)return;const sorted=[...visits].sort((a,b)=>String(b.visitDate).localeCompare(String(a.visitDate))||String(b.createdAt).localeCompare(String(a.createdAt)));
  document.getElementById('visitCount').textContent=sorted.length;document.getElementById('visitMembers').textContent=new Set(sorted.map(v=>v.memberId)).size;document.getElementById('visitLastDate').textContent=sorted[0]?.visitDate||'—';
  body.innerHTML=sorted.map((v,i)=>`<tr><td>${i+1}</td><td><b>${esc(v.memberName)}</b></td><td>${esc(v.className||'—')}</td><td>${esc(v.visitDate||'—')}</td><td>${esc(v.visitorName||'—')}</td><td>${esc(v.notes||'—')}</td><td><button class="mini-btn danger" onclick="deleteVisit('${v.id}')">حذف</button></td></tr>`).join('')||'<tr><td colspan="7" style="text-align:center;color:#8b98aa;padding:30px">لا توجد زيارات مسجلة بعد.</td></tr>';
 }
-async function deleteVisit(id){if(!confirm('هل تريد حذف سجل الزيارة؟'))return;try{if(dbReady){const {error}=await sb.from('visits').delete().eq('id',id);if(error)throw error}visits=visits.filter(v=>String(v.id)!==String(id));localSave();renderVisits()}catch(err){console.error(err);alert('تعذر حذف الزيارة.')}}
+async function deleteVisit(id){if(!confirm('هل تريد حذف سجل الزيارة؟'))return;if(!dbReady){alert('قاعدة البيانات غير متصلة الآن.');return}try{const {error}=await sb.from('visits').delete().eq('id',id);if(error)throw error;visits=visits.filter(v=>String(v.id)!==String(id));renderVisits()}catch(err){console.error(err);alert('تعذر حذف الزيارة.')}}
 function openBirthdayModal(){if(!members.length){alert('أضف مخدومًا أولًا ثم سجّل تاريخ ميلاده.');return}populateCareSelects();const id=document.getElementById('birthdayMember').value;const m=members.find(x=>String(x.id)===String(id));document.getElementById('birthdayDate').value=m?.dob||'';document.getElementById('birthdayModal').classList.add('open');document.getElementById('birthdayMember').onchange=()=>{const x=members.find(z=>String(z.id)===String(document.getElementById('birthdayMember').value));document.getElementById('birthdayDate').value=x?.dob||''}}
 function closeBirthdayModal(){document.getElementById('birthdayModal').classList.remove('open')}
 async function saveBirthday(){
  const id=document.getElementById('birthdayMember').value,date=document.getElementById('birthdayDate').value;
+ if(currentProfile?.role!=='manager'){alert('تعديل تاريخ الميلاد متاح لمدير الخدمة فقط.');return}
  if(!id||!date){alert('اختر المخدوم واكتب تاريخ الميلاد.');return}
- try{
-   if(dbReady){
-     const {error}=await sb.from('members').update({birth_date:date}).eq('id',id);
-     if(error) throw error;
-   }
-   members=members.map(m=>String(m.id)===String(id)?{...m,dob:date,age:calcAge(date)}:m);
-   localSave();closeBirthdayModal();renderMembers();renderBirthdays();
-   alert('تم حفظ تاريخ الميلاد بنجاح.');
- }catch(err){console.error('saveBirthday:',err);alert('تعذر حفظ تاريخ الميلاد: '+(err.message||'تأكد أن لديك صلاحية تعديل المخدوم.'))}
+ if(!dbReady){alert('قاعدة البيانات غير متصلة الآن.');return}
+ try{const {error}=await sb.from('members').update({birth_date:date}).eq('id',id);if(error)throw error;members=members.map(m=>String(m.id)===String(id)?{...m,dob:date,age:calcAge(date)}:m);closeBirthdayModal();renderMembers();renderBirthdays();alert('تم حفظ تاريخ الميلاد بنجاح.')}
+ catch(err){console.error('saveBirthday:',err);alert('تعذر حفظ تاريخ الميلاد: '+(err.message||''))}
 }
 function birthdayInfo(m){
  if(!m?.dob)return null;
