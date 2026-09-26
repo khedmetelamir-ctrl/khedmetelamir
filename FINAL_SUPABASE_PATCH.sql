@@ -243,6 +243,26 @@ $$;
 revoke all on function public.save_service_note(uuid,text) from public;
 grant execute on function public.save_service_note(uuid,text) to authenticated;
 
+create or replace function public.delete_service_note(p_member_id uuid)
+returns void
+language plpgsql
+security definer
+set search_path=public
+as $
+begin
+  if not exists (select 1 from public.profiles p where p.id=auth.uid() and p.active=true) then
+    raise exception 'not authorized';
+  end if;
+  if not exists (select 1 from public.members m where m.id=p_member_id) then
+    raise exception 'member not found';
+  end if;
+  delete from public.member_notes where member_id=p_member_id;
+end;
+$;
+
+revoke all on function public.delete_service_note(uuid) from public;
+grant execute on function public.delete_service_note(uuid) to authenticated;
+
 -- Compatibility wrapper for older page code.
 create or replace function public.save_member_note(p_member_id uuid, p_note text)
 returns table(member_id uuid, note_text text, updated_at timestamptz)
