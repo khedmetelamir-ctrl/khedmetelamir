@@ -76,7 +76,7 @@ returns table (
 )
 language sql
 security definer
-set search_path=public
+set search_path=''
 as $fn$
   select m.id,m.class_id,c.name,m.full_name,m.birth_date,m.address,m.phone,m.photo_url,
          coalesce(mn.note_text,m.notes) as notes,m.active,m.created_at
@@ -94,7 +94,7 @@ create or replace function public.save_service_note(p_member_id uuid, p_note tex
 returns table(member_id uuid, note_text text, updated_at timestamptz)
 language plpgsql
 security definer
-set search_path=public
+set search_path=''
 as $fn$
 begin
   if not exists (select 1 from public.profiles p where p.id=auth.uid() and p.active=true) then
@@ -124,7 +124,7 @@ create or replace function public.delete_service_note(p_member_id uuid)
 returns void
 language plpgsql
 security definer
-set search_path=public
+set search_path=''
 as $fn$
 begin
   if not exists (select 1 from public.profiles p where p.id=auth.uid() and p.active=true) then
