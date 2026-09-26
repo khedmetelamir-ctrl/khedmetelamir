@@ -224,21 +224,27 @@ returns table(member_id uuid, note_text text, updated_at timestamptz)
 language plpgsql
 security definer
 set search_path=public
-as $$
+as $fn$
 begin
   if not exists (select 1 from public.profiles p where p.id=auth.uid() and p.active=true) then
     raise exception 'not authorized';
   end if;
-  if not exists (select 1 from public.members m where m.id=p_member_id) then
-    raise exception 'member not found';
+  if not exists (
+    select 1 from public.members m
+    where m.id=p_member_id and public.can_access_class(m.class_id)
+  ) then
+    raise exception 'not authorized for this member';
   end if;
   insert into public.member_notes(member_id,note_text,updated_at,updated_by)
   values(p_member_id,nullif(trim(coalesce(p_note,'')),''),now(),auth.uid())
   on conflict(member_id) do update
-  set note_text=excluded.note_text, updated_at=excluded.updated_at, updated_by=excluded.updated_by;
-  return query select mn.member_id,mn.note_text,mn.updated_at from public.member_notes mn where mn.member_id=p_member_id;
+  set note_text=excluded.note_text,updated_at=excluded.updated_at,updated_by=excluded.updated_by;
+  return query
+    select mn.member_id,mn.note_text,mn.updated_at
+    from public.member_notes mn
+    where mn.member_id=p_member_id;
 end;
-$$;
+$fn$;
 
 revoke all on function public.save_service_note(uuid,text) from public;
 grant execute on function public.save_service_note(uuid,text) to authenticated;
@@ -248,29 +254,33 @@ returns void
 language plpgsql
 security definer
 set search_path=public
-as $
+as $fn$
 begin
   if not exists (select 1 from public.profiles p where p.id=auth.uid() and p.active=true) then
     raise exception 'not authorized';
   end if;
-  if not exists (select 1 from public.members m where m.id=p_member_id) then
-    raise exception 'member not found';
+  if not exists (
+    select 1 from public.members m
+    where m.id=p_member_id and public.can_access_class(m.class_id)
+  ) then
+    raise exception 'not authorized for this member';
   end if;
   delete from public.member_notes where member_id=p_member_id;
 end;
-$;
+$fn$;
 
 revoke all on function public.delete_service_note(uuid) from public;
 grant execute on function public.delete_service_note(uuid) to authenticated;
+
 
 -- Compatibility wrapper for older page code.
 create or replace function public.save_member_note(p_member_id uuid, p_note text)
 returns table(member_id uuid, note_text text, updated_at timestamptz)
 language sql
 security invoker
-as $$
+as $fn$
   select * from public.save_service_note(p_member_id, p_note);
-$$;
+$fn$;
 revoke all on function public.save_member_note(uuid,text) from public;
 grant execute on function public.save_member_note(uuid,text) to authenticated;
 
@@ -292,15 +302,16 @@ returns table (
 language sql
 security definer
 set search_path=public
-as $$
+as $fn$
   select m.id,m.class_id,c.name,m.full_name,m.birth_date,m.address,m.phone,m.photo_url,
          coalesce(mn.note_text,m.notes) as notes,m.active,m.created_at
   from public.members m
   left join public.classes c on c.id=m.class_id
   left join public.member_notes mn on mn.member_id=m.id
-  where exists (select 1 from public.profiles p where p.id=auth.uid() and p.active=true)
+  where m.active=true
+    and public.can_access_class(m.class_id)
   order by m.created_at desc;
-$$;
+$fn$
 revoke all on function public.get_members_for_notes() from public;
 grant execute on function public.get_members_for_notes() to authenticated;
 
