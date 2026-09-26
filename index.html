@@ -266,7 +266,7 @@ main{margin-right:255px;width:calc(100% - 255px);padding:25px 28px 35px}.head-ro
       <label class="field">من تاريخ<input type="date" id="rateStart" onchange="loadAttendanceRates()"></label>
       <label class="field">إلى تاريخ<input type="date" id="rateEnd" onchange="loadAttendanceRates()"></label>
       <label class="field">الفصل<select id="rateClass" onchange="loadAttendanceRates()"><option value="all">كل الفصول</option></select></label>
-      <button class="btn btn-light" onclick="setRateLast12Weeks()">آخر 30 يوم</button>
+      <button class="btn btn-light" onclick="setRateLast30Days()">آخر 30 يوم</button>
     </div>
     <div class="att-summary" style="margin-top:14px"><div class="mini-stat"><b id="rateMembers">0</b><span>إجمالي المخدومين</span></div><div class="mini-stat"><b id="rateWeeks">0</b><span>عدد الأيام</span></div><div class="mini-stat"><b id="rateAvg">0%</b><span>متوسط الحضور</span></div><div class="mini-stat"><b id="rateLow">0</b><span>أقل من 50%</span></div></div>
     <div class="table-wrap"><table id="attendanceRateTable"><thead><tr><th>#</th><th>المخدوم</th><th>الفصل</th><th>حضر كام يوم</th><th>إجمالي الأيام المسجلة</th><th>نسبة الحضور</th><th>الحالة</th></tr></thead><tbody></tbody></table></div>
