@@ -684,10 +684,10 @@ async function saveServiceNote(memberId){
     if(!dbReady) throw new Error('قاعدة البيانات غير متصلة الآن.');
     if(!currentProfile?.active) throw new Error('الحساب غير مفعل.');
     if(value){
-      const {error}=await sb.from('member_notes').upsert({member_id:memberId,note_text:value,updated_at:new Date().toISOString(),updated_by:currentProfile.id},{onConflict:'member_id'});
+      const {error}=await sb.rpc('save_service_note',{p_member_id:memberId,p_note:value});
       if(error)throw error;
     }else{
-      const {error}=await sb.from('member_notes').delete().eq('member_id',memberId);
+      const {error}=await sb.rpc('delete_service_note',{p_member_id:memberId});
       if(error)throw error;
     }
     m.notes=value;
@@ -709,7 +709,7 @@ async function deleteServiceNote(memberId){
   if(status){status.textContent='جارٍ الحذف…';status.className='note-save-status';}
   try{
     if(!dbReady) throw new Error('قاعدة البيانات غير متصلة الآن.');
-    const {error}=await sb.from('member_notes').delete().eq('member_id',memberId);
+    const {error}=await sb.rpc('delete_service_note',{p_member_id:memberId});
     if(error)throw error;
     m.notes='';
     const base=members.find(x=>String(x.id)===String(memberId)); if(base)base.notes='';
