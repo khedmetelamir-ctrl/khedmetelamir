@@ -860,7 +860,7 @@ async function loadAttendanceForDate(){
    const {data,error}=await q;
    if(!error){attendanceRecords=data||[];attendanceRecords.forEach(r=>{attendanceStatus[r.member_id]=r.status;});}
    else {console.error(error);attendanceRecords=[];}
- }else{try{attendanceRecords=JSON.parse(localStorage.getItem('kea_attendance')||'[]').filter(r=>r.attendance_date===date);attendanceRecords.forEach(r=>attendanceStatus[r.member_id]=r.status)}catch(e){attendanceRecords=[]}}
+ }else{attendanceRecords=[]}
  // أي مخدوم بلا سجل في التاريخ المختار يظل «لم يسجل» ولا يُعتبر حاضرًا تلقائيًا.
  renderAttendanceRows(list);updateAttendanceSummary();
 }
@@ -885,7 +885,7 @@ async function checkThreeWeekAbsenceAlerts(){
  const end=new Date();end.setHours(23,59,59,999);const start=new Date(end);start.setDate(start.getDate()-20);const from=localDateInputValue(start),to=localDateInputValue(end);
  let rows=[];
  if(dbReady){const {data,error}=await sb.from('attendance').select('member_id,attendance_date,status').gte('attendance_date',from).lte('attendance_date',to).eq('status','absent');if(error)throw error;rows=data||[]}
- else {try{rows=JSON.parse(localStorage.getItem('kea_attendance')||'[]').filter(r=>r.status==='absent'&&r.attendance_date>=from&&r.attendance_date<=to)}catch(e){rows=[]}}
+ else {return;}
  const grouped={};rows.forEach(r=>{const ws=localDateInputValue(getWeekStartForDate(r.attendance_date));(grouped[r.member_id]??=new Set()).add(ws)});
  for(const [memberId,weeks] of Object.entries(grouped)){
    if(weeks.size>=3){const m=members.find(x=>String(x.id)===String(memberId));if(!m)continue;const sorted=[...weeks].sort();const key=`absence3:${memberId}:${sorted.slice(-3).join('|')}`;const title=`تنبيه غياب: ${m.name}`;const message=`${m.name} لديه غياب في 3 أسابيع مختلفة خلال آخر 21 يومًا.`;
