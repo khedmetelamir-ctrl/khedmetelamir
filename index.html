@@ -808,7 +808,22 @@ function renderMembers(){
 }async function deleteMember(id){const m=members.find(x=>String(x.id)===String(id));if(!m)return;if(currentProfile?.role!=='manager'){alert('حذف المخدوم متاح لمدير الخدمة فقط.');return}if(!confirm('هل تريد حذف '+m.name+'؟'))return;if(!dbReady){alert('قاعدة البيانات غير متصلة الآن.');return}try{const {error}=await sb.from('members').delete().eq('id',id);if(error)throw error;members=members.filter(x=>String(x.id)!==String(id));renderMembers()}catch(err){console.error(err);alert('تعذر حذف المخدوم: '+(err.message||''))}}
 function exportMembersCSV(){const rows=[['الاسم','الفصل','تاريخ الميلاد','السن','الهاتف','العنوان'],...members.map(m=>[m.name,m.className,m.dob,calcAge(m.dob)||m.age,m.phone,m.address])];const csv='\ufeff'+rows.map(r=>r.map(csvCell).join(',')).join('\r\n');downloadBlob(csv,'خدمة_الأمير_المخدومين.csv','text/csv;charset=utf-8');}
 function csvCell(v){return '"'+String(v??'').replace(/"/g,'""')+'"'}
-async function exportDatabase(){let data={app:'خدمة الأمير',version:3,exportedAt:new Date().toISOString(),classes,members};if(dbReady){try{const [a,v,n,p]=await Promise.all([sb.from('attendance').select('*'),sb.from('visits').select('*'),sb.from('notifications').select('*'),sb.from('member_points').select('*')]);data.attendance=a.data||[];data.visits=v.data||[];data.notifications=n.data||[];data.member_points=p.data||[]}catch(e){}}downloadBlob(JSON.stringify(data,null,2),'خدمة_الأمير_نسخة_احتياطية.json','application/json;charset=utf-8')}
+async function exportDatabase(){
+ let data={app:'خدمة الأمير',version:4,exportedAt:new Date().toISOString(),classes,members};
+ if(dbReady){
+  try{
+   const [a,v,n,p,mn]=await Promise.all([
+    sb.from('attendance').select('*'),
+    sb.from('visits').select('*'),
+    sb.from('notifications').select('*'),
+    sb.from('member_points').select('*'),
+    sb.from('member_notes').select('*')
+   ]);
+   data.attendance=a.data||[];data.visits=v.data||[];data.notifications=n.data||[];data.member_points=p.data||[];data.member_notes=mn.data||[];
+  }catch(e){console.error('backup:',e);alert('تعذر تجهيز بعض بيانات النسخة الاحتياطية: '+(e.message||''));return}
+ }
+ downloadBlob(JSON.stringify(data,null,2),'خدمة_الأمير_نسخة_احتياطية.json','application/json;charset=utf-8')
+}
 function exportMember(id){const m=members.find(x=>String(x.id)===String(id));if(!m)return;const html=`<!doctype html><html lang="ar" dir="rtl"><meta charset="utf-8"><title>ملف ${esc(m.name)}</title><style>body{font-family:Arial,sans-serif;padding:30px;color:#10233f}h1{color:#062754}.box{max-width:700px;margin:auto;border:1px solid #ddd;border-radius:18px;padding:25px}.photo{width:140px;height:140px;border-radius:20px;object-fit:cover;border:1px solid #ddd}.row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:20px}.item{padding:12px;background:#f7f9fc;border-radius:10px}.item small{display:block;color:#718096}.print{margin-top:20px;padding:10px 15px}@media print{.print{display:none}}</style><div class="box"><h1>خدمة الأمير — ملف مخدوم</h1>${m.photo?`<img class="photo" src="${m.photo}">`:''}<h2>${esc(m.name)}</h2><div class="row"><div class="item"><small>الفصل</small>${esc(m.className||'—')}</div><div class="item"><small>تاريخ الميلاد</small>${esc(m.dob||'—')}</div><div class="item"><small>السن</small>${esc(calcAge(m.dob)||m.age||'—')}</div><div class="item"><small>رقم الهاتف</small>${esc(m.phone||'—')}</div><div class="item" style="grid-column:1/-1"><small>العنوان</small>${esc(m.address||'—')}</div></div><button class="print" onclick="window.print()">طباعة / حفظ PDF</button></div></html>`;downloadBlob(html,'ملف_'+m.name.replace(/\s+/g,'_')+'.html','text/html;charset=utf-8')}
 function downloadBlob(content,name,type){const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([content],{type}));a.download=name;document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},500)}
 function esc(s){return String(s??'').replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]))}
