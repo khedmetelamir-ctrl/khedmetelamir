@@ -878,7 +878,12 @@ async function refreshNotificationCenter(){
 }
 async function markAllNotificationsRead(){
  if(!dbReady)return;
- try{const {error}=await sb.from('notifications').update({is_read:true}).eq('is_read',false);if(error)throw error;await refreshNotificationCenter();}catch(e){alert('تعذر تحديث الإشعارات: '+(e.message||''))}
+ try{
+  const ids=members.map(m=>String(m.classId)).filter(Boolean);
+  let q=sb.from('notifications').update({is_read:true}).eq('is_read',false);
+  if(currentProfile?.role!=='manager'&&ids.length)q=q.in('class_id',ids);
+  const {error}=await q;if(error)throw error;await refreshNotificationCenter();
+ }catch(e){alert('تعذر تحديث الإشعارات: '+(e.message||''))}
 }
 async function requestNotificationPermission(){if(!('Notification' in window)){alert('المتصفح لا يدعم إشعارات سطح المكتب.');return}const p=await Notification.requestPermission();if(p==='granted'){new Notification('خدمة الأمير',{body:'تم تفعيل إشعارات المتابعة.'});alert('تم تفعيل الإشعارات على هذا الجهاز.')}else alert('لم يتم السماح بالإشعارات. يمكنك تفعيلها من إعدادات المتصفح.')}
 function exportAttendanceCSV(){const date=document.getElementById('attendanceDate')?.value||todayInput();const rows=[['الاسم','الفصل','التاريخ','الحالة','ملاحظة'],...members.filter(m=>attendanceStatus[m.id]).map(m=>[m.name,m.className,date,attendanceStatus[m.id]==='present'?'حاضر':attendanceStatus[m.id]==='absent'?'غائب':'معتذر',document.querySelector(`[data-note-for="${CSS.escape(String(m.id))}"]`)?.value||''])];const csv='\ufeff'+rows.map(r=>r.map(csvCell).join(',')).join('\r\n');downloadBlob(csv,`خدمة_الأمير_حضور_${date}.csv`,'text/csv;charset=utf-8')}
@@ -906,7 +911,7 @@ async function loadAttendanceRates(){
  const list=members.filter(m=>classId==='all'||String(m.classId)===String(classId));
  let rows=[];
  if(dbReady){const {data,error}=await sb.from('attendance').select('member_id,attendance_date,status').gte('attendance_date',start).lte('attendance_date',end);if(error){console.error(error);tb.innerHTML='<tr><td colspan="7" class="att-empty">تعذر قراءة سجلات الحضور.</td></tr>';return;}rows=data||[];}
- else {try{rows=JSON.parse(localStorage.getItem('kea_attendance')||'[]').filter(r=>r.attendance_date>=start&&r.attendance_date<=end)}catch(e){rows=[]}}
+ else {tb.innerHTML='<tr><td colspan="7" class="att-empty">قاعدة البيانات غير متصلة.</td></tr>';return;}
  const map={};
  rows.forEach(r=>{
    if(!map[r.member_id])map[r.member_id]={present:new Set(),recorded:new Set()};
