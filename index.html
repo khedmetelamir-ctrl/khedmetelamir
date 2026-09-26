@@ -259,17 +259,17 @@ main{margin-right:255px;width:calc(100% - 255px);padding:25px 28px 35px}.head-ro
   </div>
 </section>
 <section id="attendanceRate" class="page">
-  <div class="head-row"><div><div class="eyebrow">متابعة أسبوعية</div><h1>نسبة الحضور</h1></div><div class="actions"><button class="btn btn-light" onclick="exportAttendanceRateCSV()">📊 تنزيل القائمة</button><button class="btn btn-primary" onclick="loadAttendanceRates()">🔄 تحديث</button></div></div>
+  <div class="head-row"><div><div class="eyebrow">متابعة يومية</div><h1>نسبة الحضور</h1></div><div class="actions"><button class="btn btn-light" onclick="exportAttendanceRateCSV()">📊 تنزيل القائمة</button><button class="btn btn-primary" onclick="loadAttendanceRates()">🔄 تحديث</button></div></div>
   <div class="card">
-    <div class="weekly-note">📌 يتم حساب <b>عدد الأسابيع التي حضر فيها كل مخدوم</b> من سجلات الحضور الفعلية. إذا كان هناك أكثر من اجتماع في نفس الأسبوع، يُحسب الأسبوع مرة واحدة فقط.</div>
+    <div class="weekly-note">📌 يتم حساب <b>عدد الأيام التي حضر فيها كل مخدوم</b> من سجلات الحضور الفعلية. كل يوم اجتماع يُحسب كيوم مستقل.</div>
     <div class="week-tools">
       <label class="field">من تاريخ<input type="date" id="rateStart" onchange="loadAttendanceRates()"></label>
       <label class="field">إلى تاريخ<input type="date" id="rateEnd" onchange="loadAttendanceRates()"></label>
       <label class="field">الفصل<select id="rateClass" onchange="loadAttendanceRates()"><option value="all">كل الفصول</option></select></label>
-      <button class="btn btn-light" onclick="setRateLast12Weeks()">آخر 12 أسبوع</button>
+      <button class="btn btn-light" onclick="setRateLast12Weeks()">آخر 30 يوم</button>
     </div>
-    <div class="att-summary" style="margin-top:14px"><div class="mini-stat"><b id="rateMembers">0</b><span>إجمالي المخدومين</span></div><div class="mini-stat"><b id="rateWeeks">0</b><span>عدد الأسابيع</span></div><div class="mini-stat"><b id="rateAvg">0%</b><span>متوسط الحضور</span></div><div class="mini-stat"><b id="rateLow">0</b><span>أقل من 50%</span></div></div>
-    <div class="table-wrap"><table id="attendanceRateTable"><thead><tr><th>#</th><th>المخدوم</th><th>الفصل</th><th>حضر كام أسبوع</th><th>إجمالي الأسابيع المسجلة</th><th>نسبة الحضور</th><th>الحالة</th></tr></thead><tbody></tbody></table></div>
+    <div class="att-summary" style="margin-top:14px"><div class="mini-stat"><b id="rateMembers">0</b><span>إجمالي المخدومين</span></div><div class="mini-stat"><b id="rateWeeks">0</b><span>عدد الأيام</span></div><div class="mini-stat"><b id="rateAvg">0%</b><span>متوسط الحضور</span></div><div class="mini-stat"><b id="rateLow">0</b><span>أقل من 50%</span></div></div>
+    <div class="table-wrap"><table id="attendanceRateTable"><thead><tr><th>#</th><th>المخدوم</th><th>الفصل</th><th>حضر كام يوم</th><th>إجمالي الأيام المسجلة</th><th>نسبة الحضور</th><th>الحالة</th></tr></thead><tbody></tbody></table></div>
   </div>
 </section>
 <section id="visits" class="page">
@@ -867,18 +867,17 @@ function exportAttendanceCSV(){const date=document.getElementById('attendanceDat
 function initAttendanceRate(){
  const a=document.getElementById('rateStart'),b=document.getElementById('rateEnd');
  if(!a||!b)return;
- if(!a.value||!b.value)setRateLast12Weeks();
+ if(!a.value||!b.value)setRateLast30Days();
  populateRateClassSelect();
 }
 function populateRateClassSelect(){
  const el=document.getElementById('rateClass');if(!el)return;
  const old=el.value||'all';el.innerHTML='<option value="all">كل الفصول</option>'+classes.map(c=>`<option value="${esc(c.id)}">${esc(c.name)}</option>`).join('');el.value=[...el.options].some(o=>o.value===old)?old:'all';
 }
-function setRateLast12Weeks(){
- const end=new Date();end.setHours(0,0,0,0);const start=new Date(end);start.setDate(start.getDate()-83);
+function setRateLast30Days(){
+ const end=new Date();end.setHours(0,0,0,0);const start=new Date(end);start.setDate(start.getDate()-29);
  const a=document.getElementById('rateStart'),b=document.getElementById('rateEnd');if(a)a.value=localDateInputValue(start);if(b)b.value=localDateInputValue(end);populateRateClassSelect();
 }
-function weekKeyFromDate(s){const d=parseLocalDate(s);if(!d)return '';return localDateInputValue(getWeekStartForDate(s));}
 async function loadAttendanceRates(){
  const tb=document.querySelector('#attendanceRateTable tbody');if(!tb)return;
  initAttendanceRate();
@@ -891,10 +890,10 @@ async function loadAttendanceRates(){
  const map={};
  rows.forEach(r=>{
    if(!map[r.member_id])map[r.member_id]={present:new Set(),recorded:new Set()};
-   const wk=weekKeyFromDate(r.attendance_date);if(!wk)return;
-   map[r.member_id].recorded.add(wk);if(r.status==='present')map[r.member_id].present.add(wk);
+   map[r.member_id].recorded.add(r.attendance_date);
+   if(r.status==='present')map[r.member_id].present.add(r.attendance_date);
  });
- let totalPct=0,low=0;
+ let totalPct=0,low=0,totalDays=new Set(rows.map(r=>r.attendance_date)).size;
  const output=list.map((m,i)=>{
    const x=map[m.id]||{present:new Set(),recorded:new Set()};
    const attended=x.present.size, recorded=x.recorded.size, pct=recorded?Math.round(attended/recorded*100):0;
@@ -903,11 +902,11 @@ async function loadAttendanceRates(){
    return `<tr><td>${i+1}</td><td><div class="person">${m.photo?`<img class="photo-cell" src="${esc(m.photo)}" style="width:34px;height:34px;border-radius:10px;object-fit:cover">`:`<span class="avatar">${esc((m.name||'؟').charAt(0))}</span>`}<b>${esc(m.name)}</b></div></td><td>${esc(m.className||'—')}</td><td><strong>${attended}</strong></td><td>${recorded}</td><td><div class="rate-cell"><strong>${pct}%</strong><div class="rate-bar"><span style="width:${pct}%"></span></div></div></td><td><span class="rate-badge">${badge}</span></td></tr>`;
  }).join('');
  tb.innerHTML=output||'<tr><td colspan="7" class="att-empty">لا يوجد مخدومون في الفترة أو الفصل المحدد.</td></tr>';
- document.getElementById('rateMembers').textContent=list.length;document.getElementById('rateWeeks').textContent=Math.max(1,Math.floor((parseLocalDate(end)-parseLocalDate(start))/604800000)+1);document.getElementById('rateAvg').textContent=list.length?Math.round(totalPct/list.length)+'%':'0%';document.getElementById('rateLow').textContent=low;
+ document.getElementById('rateMembers').textContent=list.length;document.getElementById('rateWeeks').textContent=totalDays;document.getElementById('rateAvg').textContent=list.length?Math.round(totalPct/list.length)+'%':'0%';document.getElementById('rateLow').textContent=low;
  window.__attendanceRateData=list.map(m=>{const x=map[m.id]||{present:new Set(),recorded:new Set()};const attended=x.present.size,recorded=x.recorded.size,pct=recorded?Math.round(attended/recorded*100):0;return [m.name,m.className||'',attended,recorded,pct+'%'];});
 }
 function exportAttendanceRateCSV(){
- const data=window.__attendanceRateData||[];const rows=[['الاسم','الفصل','حضر كام أسبوع','إجمالي الأسابيع المسجلة','نسبة الحضور'],...data];const csv='\ufeff'+rows.map(r=>r.map(csvCell).join(',')).join('\r\n');const s=document.getElementById('rateStart')?.value||'',e=document.getElementById('rateEnd')?.value||'';downloadBlob(csv,`خدمة_الأمير_نسبة_الحضور_${s}_${e}.csv`,'text/csv;charset=utf-8');}
+ const data=window.__attendanceRateData||[];const rows=[['الاسم','الفصل','حضر كام يوم','إجمالي الأيام المسجلة','نسبة الحضور'],...data];const csv='\ufeff'+rows.map(r=>r.map(csvCell).join(',')).join('\r\n');const s=document.getElementById('rateStart')?.value||'',e=document.getElementById('rateEnd')?.value||'';downloadBlob(csv,`خدمة_الأمير_نسبة_الحضور_${s}_${e}.csv`,'text/csv;charset=utf-8');}
 
 // ---- Weekly New Members ----
 function pad2(n){return String(n).padStart(2,'0')}
