@@ -578,6 +578,7 @@ async function loadFromDatabase(){
 async function initializeApp(){
  if(!currentProfile)return;
  localLoad();renderClasses();populateClassSelects();renderMembers();initWeeklyPage();initAttendance();initAttendanceRate();initPoints();showPage('home');
+ if(!window.__keaAttendanceDayTimer)window.__keaAttendanceDayTimer=setInterval(syncAttendanceToday,60000);
  try{await loadFromDatabase();renderClasses();populateClassSelects();renderMembers();await loadNotesMembers();initWeeklyPage();initPoints();}
  catch(err){dbReady=false;setDbStatus(false,'تعذر الاتصال بقاعدة البيانات — تم استخدام النسخة المحلية مؤقتًا');console.error('Supabase:',err);renderAbsenceAlert();}
 }
@@ -817,10 +818,13 @@ function openClassMembers(id){showPage('members');const select=document.getEleme
 
 // ---- Attendance ----
 function todayInput(){const d=new Date();return `${d.getFullYear()}-${pad2(d.getMonth()+1)}-${pad2(d.getDate())}`}
-function initAttendance(){const d=document.getElementById('attendanceDate');if(d&&!d.value)d.value=todayInput();populateAttendanceClass();}
+function initAttendance(){const d=document.getElementById('attendanceDate');if(d){d.value=todayInput();d.setAttribute('max',todayInput());d.setAttribute('disabled','disabled');}populateAttendanceClass();}
+function syncAttendanceToday(){const d=document.getElementById('attendanceDate');if(!d)return;const today=todayInput();if(d.value!==today){d.value=today;if(document.getElementById('attendance')?.classList.contains('active'))loadAttendanceForDate();}}
 function populateAttendanceClass(){const el=document.getElementById('attendanceClass');if(!el)return;const old=el.value||'all';el.innerHTML='<option value="all">كل الفصول</option>'+classes.map(c=>`<option value="${esc(c.id)}">${esc(c.name)}</option>`).join('');el.value=[...el.options].some(o=>o.value===old)?old:'all'}
 async function loadAttendanceForDate(){
- const date=document.getElementById('attendanceDate')?.value||todayInput();
+ const today=todayInput();
+ const date=today;
+ const dateInput=document.getElementById('attendanceDate');if(dateInput)dateInput.value=today;
  populateAttendanceClass();
  const classId=document.getElementById('attendanceClass')?.value||'all';
  const list=members.filter(m=>classId==='all'||String(m.classId)===String(classId));
@@ -843,8 +847,8 @@ async function saveAttendance(){
  const payload=rows.filter(r=>attendanceStatus[r.dataset.memberId]).map(r=>({member_id:r.dataset.memberId,attendance_date:date,status:attendanceStatus[r.dataset.memberId],notes:r.querySelector('.att-note-input')?.value.trim()||null}));
  if(!payload.length){alert('سجل حالة مخدوم واحد على الأقل.');return}
  try{
-   if(dbReady){const {error}=await sb.from('attendance').upsert(payload,{onConflict:'member_id,attendance_date'});if(error)throw error;}
-   else {let all=[];try{all=JSON.parse(localStorage.getItem('kea_attendance')||'[]')}catch(e){}payload.forEach(x=>{const i=all.findIndex(r=>r.member_id===x.member_id&&r.attendance_date===x.attendance_date);if(i>=0)all[i]=x;else all.push({...x,id:crypto.randomUUID?crypto.randomUUID():Date.now()});});localStorage.setItem('kea_attendance',JSON.stringify(all));}
+   if(!dbReady)throw new Error('قاعدة البيانات غير متصلة الآن. لم يتم الحفظ محليًا حتى لا تضيع البيانات.');
+   const {error}=await sb.from('attendance').upsert(payload,{onConflict:'member_id,attendance_date'});if(error)throw error;
    await checkThreeWeekAbsenceAlerts();
    alert('تم حفظ الحضور والغياب بنجاح.');
    await loadAttendanceForDate();
@@ -917,19 +921,21 @@ async function loadAttendanceRates(){
  const map={};
  rows.forEach(r=>{
    if(!map[r.member_id])map[r.member_id]={present:new Set(),recorded:new Set()};
-   map[r.member_id].recorded.add(r.attendance_date);
-   if(r.status==='present')map[r.member_id].present.add(r.attendance_date);
+   if(r.status==='present'||r.status==='absent'){
+     map[r.member_id].recorded.add(r.attendance_date);
+     if(r.status==='present')map[r.member_id].present.add(r.attendance_date);
+   }
  });
- let totalPct=0,low=0,totalDays=new Set(rows.map(r=>r.attendance_date)).size;
+ let totalPct=0,rateMembers=0,low=0,totalDays=new Set(rows.map(r=>r.attendance_date)).size;
  const output=list.map((m,i)=>{
    const x=map[m.id]||{present:new Set(),recorded:new Set()};
    const attended=x.present.size, recorded=x.recorded.size, pct=recorded?Math.round(attended/recorded*100):0;
-   totalPct+=pct;if(pct<50&&recorded)low++;
+   if(recorded){totalPct+=pct;rateMembers++;if(pct<50)low++;}
    const badge=recorded===0?'لم يسجل':pct>=80?'ممتاز':pct>=60?'جيد':pct>=50?'متوسط':'يحتاج متابعة';
    return `<tr><td>${i+1}</td><td><div class="person">${m.photo?`<img class="photo-cell" src="${esc(m.photo)}" style="width:34px;height:34px;border-radius:10px;object-fit:cover">`:`<span class="avatar">${esc((m.name||'؟').charAt(0))}</span>`}<b>${esc(m.name)}</b></div></td><td>${esc(m.className||'—')}</td><td><strong>${attended}</strong></td><td>${recorded}</td><td><div class="rate-cell"><strong>${pct}%</strong><div class="rate-bar"><span style="width:${pct}%"></span></div></div></td><td><span class="rate-badge">${badge}</span></td></tr>`;
  }).join('');
  tb.innerHTML=output||'<tr><td colspan="7" class="att-empty">لا يوجد مخدومون في الفترة أو الفصل المحدد.</td></tr>';
- document.getElementById('rateMembers').textContent=list.length;document.getElementById('rateWeeks').textContent=totalDays;document.getElementById('rateAvg').textContent=list.length?Math.round(totalPct/list.length)+'%':'0%';document.getElementById('rateLow').textContent=low;
+ document.getElementById('rateMembers').textContent=list.length;document.getElementById('rateWeeks').textContent=totalDays;document.getElementById('rateAvg').textContent=rateMembers?Math.round(totalPct/rateMembers)+'%':'0%';document.getElementById('rateLow').textContent=low;
  window.__attendanceRateData=list.map(m=>{const x=map[m.id]||{present:new Set(),recorded:new Set()};const attended=x.present.size,recorded=x.recorded.size,pct=recorded?Math.round(attended/recorded*100):0;return [m.name,m.className||'',attended,recorded,pct+'%'];});
 }
 function exportAttendanceRateCSV(){
