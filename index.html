@@ -890,7 +890,6 @@ async function checkThreeWeekAbsenceAlerts(){
  for(const [memberId,weeks] of Object.entries(grouped)){
    if(weeks.size>=3){const m=members.find(x=>String(x.id)===String(memberId));if(!m)continue;const sorted=[...weeks].sort();const key=`absence3:${memberId}:${sorted.slice(-3).join('|')}`;const title=`تنبيه غياب: ${m.name}`;const message=`${m.name} لديه غياب في 3 أسابيع مختلفة خلال آخر 21 يومًا.`;
      if(dbReady){const {error}=await sb.from('notifications').upsert({member_id:memberId,class_id:m.classId||null,type:'absence_3_weeks',title,message,notification_key:key,is_read:false},{onConflict:'notification_key'});if(error)console.error(error)}
-     else {let ns=[];try{ns=JSON.parse(localStorage.getItem('kea_notifications')||'[]')}catch(e){}if(!ns.some(n=>n.notification_key===key))ns.unshift({id:Date.now()+Math.random(),member_id:memberId,class_id:m.classId,type:'absence_3_weeks',title,message,notification_key:key,is_read:false,created_at:new Date().toISOString()});localStorage.setItem('kea_notifications',JSON.stringify(ns));}
    }
  }
  renderAbsenceAlert();
