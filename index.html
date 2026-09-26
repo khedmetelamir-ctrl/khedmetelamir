@@ -597,9 +597,7 @@ async function loadReports(){
      const r=await sb.from('attendance').select('member_id,attendance_date,status').gte('attendance_date',start).lte('attendance_date',end);
      if(r.error)throw r.error;att=r.data||[];
    }catch(e){console.error('reports attendance:',e)}
- }else{
-   try{att=JSON.parse(localStorage.getItem('kea_attendance')||'[]').filter(r=>r.attendance_date>=start&&r.attendance_date<=end)}catch(e){att=[]}
- }
+ }else{att=[];}
  const visibleMemberIds=new Set(members.map(m=>String(m.id)));
  att=att.filter(r=>visibleMemberIds.has(String(r.member_id)));
  const present=att.filter(r=>r.status==='present').length;
