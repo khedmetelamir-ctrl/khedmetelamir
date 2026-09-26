@@ -1,0 +1,25 @@
+name: Site checks
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+jobs:
+  javascript-syntax:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Check embedded JavaScript
+        run: |
+          node <<'NODE'
+          const fs=require('fs');
+          const html=fs.readFileSync('index.html','utf8');
+          const scripts=[...html.matchAll(/<script\b[^>]*>([\s\S]*?)<\/script>/gi)].map(m=>m[1]).filter(s=>s.trim());
+          if(!scripts.length) throw new Error('No scripts found');
+          scripts.forEach((code,i)=>{try{new Function(code)}catch(e){console.error('script '+i,e);process.exitCode=1}});
+          if(process.exitCode) process.exit(1);
+          console.log('Embedded JavaScript syntax: OK');
+          NODE
