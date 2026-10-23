@@ -141,6 +141,7 @@ main{margin-right:255px;width:calc(100% - 255px);padding:25px 28px 35px}.head-ro
     <button class="nav" data-page="search"><i class="ico">⌕</i><span>البحث والتقارير</span></button>
     <button class="nav" data-page="settings"><i class="ico">⚙</i><span>الإعدادات</span></button>
     <button class="nav manager-only" id="navManagers" data-page="managers" title="إدارة الخدام" aria-label="إدارة الخدام"><i class="ico">🧑‍🤝‍🧑</i><span>إدارة الخدام</span></button>
+    <button class="nav" data-page="verses"><i class="ico">✝</i><span>آية اليوم</span></button>
     <button class="nav" data-page="date"><i class="ico">📅</i><span>التاريخ</span></button>
   </nav>
   <div class="side-footer">✝<br><br>خدمة الأمير<br>محبتنا .. تكمل رسالتنا</div>
@@ -337,6 +338,21 @@ main{margin-right:255px;width:calc(100% - 255px);padding:25px 28px 35px}.head-ro
 </section>
 <section id="settings" class="page"><div class="card empty"><div class="big">⚙</div><h2>الإعدادات</h2><p>إدارة قاعدة البيانات والنسخ الاحتياطي وإعدادات الخدمة.</p><div class="notification-box" style="max-width:560px;margin:15px auto;text-align:right">🟢 الموقع متصل بقاعدة بيانات Supabase. يتم حفظ الفصول والمخدومين على قاعدة البيانات، مع الاحتفاظ بنسخة محلية مؤقتة للعمل عند انقطاع الاتصال.</div><div class="export-row" style="justify-content:center"><button class="btn btn-primary" onclick="exportDatabase()">💾 تصدير نسخة احتياطية كاملة</button><label class="btn btn-light" style="cursor:pointer">📥 استرجاع نسخة احتياطية<input id="restoreFile" type="file" accept="application/json,.json" style="display:none" onchange="restoreDatabase(event)"></label></div><p style="font-size:9px;color:#8a96a6;margin-top:12px">النسخة الاحتياطية تشمل الفصول والمخدومين والحضور والزيارات والتنبيهات. يفضّل أن يحتفظ مدير الخدمة بنسخة دورية.</p></div></section>
 
+<section id="verses" class="page">
+  <div class="head-row"><div><div class="eyebrow">كلمة تشجّعك في الخدمة</div><h1>آية اليوم ✝</h1></div></div>
+  <div class="card" style="margin-top:14px">
+    <div class="card-head"><h3 id="dailyVerseHeading">آية اليوم</h3><small>من ملف الـ٢٠٠ آية المرفق</small></div>
+    <blockquote id="dailyVerseText" style="font-size:20px;line-height:2;margin:8px 0 14px;color:var(--navy);font-weight:700">جارٍ تحميل الآيات…</blockquote>
+    <div id="dailyVerseReference" style="color:var(--muted);font-size:13px"></div>
+    <p style="font-size:11px;line-height:1.8;color:var(--muted);margin-top:16px">تتغير الآية تلقائيًا كل يوم حسب تاريخ القاهرة، وتدور القائمة على الآيات الـ٢٠٠. هذا القسم يعرض الآية داخل الموقع ولا يعني تفعيل إشعارات الهاتف.</p>
+  </div>
+  <div class="card" style="margin-top:14px">
+    <div class="card-head"><h3>البحث في الآيات الـ٢٠٠</h3><small id="versesCount">—</small></div>
+    <input id="versesSearch" type="search" placeholder="ابحث بكلمة أو مرجع كتابي…" aria-label="البحث في الآيات" style="width:100%;padding:11px;border:1px solid var(--line);border-radius:10px;background:#fff">
+    <div id="versesList" style="display:grid;gap:10px;margin-top:14px"></div>
+  </div>
+</section>
+
 <section id="date" class="page">
   <div class="head-row"><div><div class="eyebrow">التقويم القبطي</div><h1>التاريخ</h1></div><div class="date-tools"><label style="font-size:10px;color:var(--muted)">السنة القبطية</label><select id="copticYearSelect" onchange="renderCopticYear()"></select></div></div>
   <div class="date-hero">
@@ -408,6 +424,7 @@ function toggleMobileMenu(){const a=document.querySelector('aside'),o=document.g
 function closeMobileMenu(){const a=document.querySelector('aside'),o=document.getElementById('mobileOverlay');if(a)a.classList.remove('mobile-open');if(o)o.classList.remove('open')}
 document.addEventListener('click',e=>{if(e.target.closest('.nav')) closeMobileMenu()});
 </script>
+<script src="verses-data.js"></script>
 <script>
 
 
@@ -712,7 +729,38 @@ async function deleteServiceNote(memberId){
   }
 }
 
-function showPage(id){if(id==='managers' && currentProfile?.role!=='manager'){alert('إدارة الخدام متاحة لمدير الخدمة فقط.');return}pages.forEach(p=>p.classList.toggle('active',p.id===id));navs.forEach(n=>n.classList.toggle('active',n.dataset.page===id));if(id==='members')renderMembers();if(id==='notes'){loadNotesMembers();}if(id==='points'){populatePointsClass();renderPoints();}if(id==='classes')renderClasses();if(id==='date')renderDatePage();if(id==='managers')loadManagers();if(id==='weekly')renderWeeklyMembers();if(id==='attendance')loadAttendanceForDate();if(id==='visits')loadVisits();if(id==='birthdays')renderBirthdays();if(id==='attendanceRate'){initAttendanceRate();loadAttendanceRates();}if(id==='reports'){loadReports();}window.scrollTo({top:0,behavior:'smooth'})}
+let serviceVersesRendered=false;
+function cairoDateKey(){return new Intl.DateTimeFormat('en-CA',{timeZone:'Africa/Cairo',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date())}
+function escapeVerseHtml(value){return String(value??'').replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]))}
+function getDailyVerseIndex(){
+ const parts=cairoDateKey().split('-').map(Number), date=new Date(Date.UTC(parts[0],parts[1]-1,parts[2]));
+ const start=new Date(Date.UTC(parts[0],0,1)); const day=Math.floor((date-start)/86400000);
+ return day%200;
+}
+async function renderServiceVerses(){
+ const list=document.getElementById('versesList'), search=document.getElementById('versesSearch');
+ if(!list)return;
+ const all=await (window.SERVICE_VERSES_READY||Promise.resolve([]));
+ if(!Array.isArray(all)||all.length!==200){
+  document.getElementById('dailyVerseText').textContent='تعذّر تحميل ملف الآيات. جرّب تحديث الصفحة.';
+  list.textContent='ملف الآيات غير متاح حاليًا.';
+  return;
+ }
+ const daily=all[getDailyVerseIndex()];
+ document.getElementById('dailyVerseHeading').textContent='آية اليوم — '+cairoDateKey();
+ document.getElementById('dailyVerseText').textContent=daily.t;
+ document.getElementById('dailyVerseReference').textContent=daily.r||'';
+ document.getElementById('versesCount').textContent=all.length+' آية';
+ const draw=()=>{
+  const q=(search.value||'').trim().toLocaleLowerCase('ar');
+  const matches=all.filter(v=>!q||(v.t+' '+v.r+' '+v.n).toLocaleLowerCase('ar').includes(q));
+  document.getElementById('versesCount').textContent=matches.length+' من '+all.length+' آية';
+  list.innerHTML=matches.map(v=>'<article style="padding:12px;border:1px solid var(--line);border-radius:10px;background:#fff"><b style="color:var(--navy)">آية '+v.n+'</b><p style="line-height:1.9;margin:7px 0">'+escapeVerseHtml(v.t)+'</p><small style="color:var(--muted)">'+escapeVerseHtml(v.r)+'</small></article>').join('')||'<p style="color:var(--muted)">لا توجد آيات مطابقة للبحث.</p>';
+ };
+ if(!search.dataset.bound){search.addEventListener('input',draw);search.dataset.bound='1'}
+ draw();serviceVersesRendered=true;
+}
+function showPage(id){if(id==='managers' && currentProfile?.role!=='manager'){alert('إدارة الخدام متاحة لمدير الخدمة فقط.');return}pages.forEach(p=>p.classList.toggle('active',p.id===id));navs.forEach(n=>n.classList.toggle('active',n.dataset.page===id));if(id==='members')renderMembers();if(id==='notes'){loadNotesMembers();}if(id==='points'){populatePointsClass();renderPoints();}if(id==='classes')renderClasses();if(id==='date')renderDatePage();if(id==='verses')renderServiceVerses();if(id==='managers')loadManagers();if(id==='weekly')renderWeeklyMembers();if(id==='attendance')loadAttendanceForDate();if(id==='visits')loadVisits();if(id==='birthdays')renderBirthdays();if(id==='attendanceRate'){initAttendanceRate();loadAttendanceRates();}if(id==='reports'){loadReports();}window.scrollTo({top:0,behavior:'smooth'})}
 navs.forEach(n=>n.addEventListener('click',()=>showPage(n.dataset.page)));
 function openAccountModal(){
   if(!currentProfile)return;
