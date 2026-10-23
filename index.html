@@ -151,6 +151,11 @@ main{margin-right:255px;width:calc(100% - 255px);padding:25px 28px 35px}.head-ro
 <section id="home" class="page active">
   <div class="head-row"><div><div class="eyebrow" id="homeTodayGregorian"></div><h1>مرحباً بك في خدمة الأمير 👋</h1></div><div class="actions"><button class="btn btn-light" onclick="showPage('reports')">التقارير</button><button class="btn btn-primary" onclick="openModal()">+ إضافة مخدوم</button></div></div>
   <div class="hero"><div class="hero-copy"><span class="tag">آية الخدمة</span><h2>أُبَارِكُ ٱلرَّبَّ فِي كُلِّ حِينٍ. دَائِمًا تَسْبِيحُهُ فِي فَمِي</h2></div><img class="hero-logo" src="logo.png" alt="لوجو خدمة الأمير"></div>
+  <div class="card" id="homeDailyVerseCard" style="margin-top:16px;border-right:4px solid var(--gold)">
+    <div class="card-head"><div><h3>✝ آية اليوم</h3><small id="homeDailyVerseDate">حسب تاريخ القاهرة</small></div><button class="link" onclick="showPage('verses')">كل الآيات الـ٢٠٠ ←</button></div>
+    <blockquote id="homeDailyVerseText" style="font-size:18px;line-height:2;margin:8px 0;color:var(--navy);font-weight:700">جارٍ تحميل آية اليوم…</blockquote>
+    <div id="homeDailyVerseReference" style="color:var(--muted);font-size:12px"></div>
+  </div>
 
   <div class="stats">
     <div class="stat"><span class="stat-icon c-blue">👥</span><div><b>إجمالي المخدومين</b><strong id="homeTotalMembers">0</strong><span class="trend up">من قاعدة البيانات</span></div></div>
@@ -760,6 +765,24 @@ async function renderServiceVerses(){
  if(!search.dataset.bound){search.addEventListener('input',draw);search.dataset.bound='1'}
  draw();serviceVersesRendered=true;
 }
+async function renderHomeDailyVerse(){
+ const text=document.getElementById('homeDailyVerseText');
+ if(!text)return;
+ try{
+  const all=await (window.SERVICE_VERSES_READY||Promise.resolve([]));
+  if(!Array.isArray(all)||all.length!==200)throw new Error('verse data unavailable');
+  const key=cairoDateKey();
+  const parts=key.split('-').map(Number);
+  const day=Math.floor((Date.UTC(parts[0],parts[1]-1,parts[2])-Date.UTC(parts[0],0,1))/86400000);
+  const verse=all[day%200];
+  text.textContent=verse.t;
+  document.getElementById('homeDailyVerseDate').textContent='آية اليوم • '+key;
+  document.getElementById('homeDailyVerseReference').textContent=verse.r||'';
+ }catch(e){
+  text.textContent='تعذّر تحميل آية اليوم. افتح قسم «آية اليوم» أو حدّث الصفحة.';
+  console.error('Homepage daily verse failed to load',e);
+ }
+}
 function showPage(id){if(id==='managers' && currentProfile?.role!=='manager'){alert('إدارة الخدام متاحة لمدير الخدمة فقط.');return}pages.forEach(p=>p.classList.toggle('active',p.id===id));navs.forEach(n=>n.classList.toggle('active',n.dataset.page===id));if(id==='members')renderMembers();if(id==='notes'){loadNotesMembers();}if(id==='points'){populatePointsClass();renderPoints();}if(id==='classes')renderClasses();if(id==='date')renderDatePage();if(id==='verses')renderServiceVerses();if(id==='managers')loadManagers();if(id==='weekly')renderWeeklyMembers();if(id==='attendance')loadAttendanceForDate();if(id==='visits')loadVisits();if(id==='birthdays')renderBirthdays();if(id==='attendanceRate'){initAttendanceRate();loadAttendanceRates();}if(id==='reports'){loadReports();}window.scrollTo({top:0,behavior:'smooth'})}
 navs.forEach(n=>n.addEventListener('click',()=>showPage(n.dataset.page)));
 function openAccountModal(){
@@ -1288,6 +1311,7 @@ async function assignServant(e){e.preventDefault();const email=document.getEleme
 // initialize
 updateDailyDateUI();
 setInterval(updateDailyDateUI,60000);
+renderHomeDailyVerse();
 if("serviceWorker" in navigator) navigator.serviceWorker.register("sw.js").catch(()=>{});
 initializeAuth();
 switchAuth('login');
