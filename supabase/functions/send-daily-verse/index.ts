@@ -27,8 +27,11 @@ Deno.serve(async (req) => {
     const verses = JSON.parse(match[1]);
     if (!Array.isArray(verses) || verses.length !== 300) throw new Error("Expected exactly 300 existing verses");
     const cairoDate = new Intl.DateTimeFormat("en-CA", { timeZone: "Africa/Cairo", year: "numeric", month: "2-digit", day: "2-digit" }).format(new Date());
-    const dayNumber = Math.floor(Date.parse(cairoDate + "T00:00:00Z") / 86400000);
-    const verse = verses[((dayNumber % verses.length) + verses.length) % verses.length];
+    const [year, month, day] = cairoDate.split("-").map(Number);
+    const currentDate = Date.UTC(year, month - 1, day);
+    const yearStart = Date.UTC(year, 0, 1);
+    const dayOfYear = Math.floor((currentDate - yearStart) / 86400000);
+    const verse = verses[dayOfYear % verses.length];
     const { data: subscriptions, error } = await supabase.from("daily_verse_push_subscriptions").select("id, subscription");
     if (error) throw error;
     let sent = 0, failed = 0;
