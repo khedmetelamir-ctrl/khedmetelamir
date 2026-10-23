@@ -152,7 +152,7 @@ main{margin-right:255px;width:calc(100% - 255px);padding:25px 28px 35px}.head-ro
   <div class="head-row"><div><div class="eyebrow" id="homeTodayGregorian"></div><h1>مرحباً بك في خدمة الأمير 👋</h1></div><div class="actions"><button class="btn btn-light" onclick="showPage('reports')">التقارير</button><button class="btn btn-primary" onclick="openModal()">+ إضافة مخدوم</button></div></div>
   <div class="hero"><div class="hero-copy"><span class="tag">آية الخدمة</span><h2>أُبَارِكُ ٱلرَّبَّ فِي كُلِّ حِينٍ. دَائِمًا تَسْبِيحُهُ فِي فَمِي</h2></div><img class="hero-logo" src="logo.png" alt="لوجو خدمة الأمير"></div>
   <div class="card" id="homeDailyVerseCard" style="margin-top:16px;border-right:4px solid var(--gold)">
-    <div class="card-head"><div><h3>✝ آية اليوم</h3><small id="homeDailyVerseDate">حسب تاريخ القاهرة</small></div><button class="link" onclick="showPage('verses')">كل الآيات الـ٢٠٠ ←</button></div>
+    <div class="card-head"><div><h3>✝ آية اليوم</h3><small id="homeDailyVerseDate">حسب تاريخ القاهرة</small></div><button class="link" onclick="showPage('verses')">كل الآيات الـ٣٠٠ ←</button></div>
     <blockquote id="homeDailyVerseText" style="font-size:18px;line-height:2;margin:8px 0;color:var(--navy);font-weight:700">جارٍ تحميل آية اليوم…</blockquote>
     <div id="homeDailyVerseReference" style="color:var(--muted);font-size:12px"></div>
   </div>
@@ -346,13 +346,13 @@ main{margin-right:255px;width:calc(100% - 255px);padding:25px 28px 35px}.head-ro
 <section id="verses" class="page">
   <div class="head-row"><div><div class="eyebrow">كلمة تشجّعك في الخدمة</div><h1>آية اليوم ✝</h1></div></div>
   <div class="card" style="margin-top:14px">
-    <div class="card-head"><h3 id="dailyVerseHeading">آية اليوم</h3><small>من ملف الـ٢٠٠ آية المرفق</small></div>
+    <div class="card-head"><h3 id="dailyVerseHeading">آية اليوم</h3><small>من ملف الـ٣٠٠ آية</small></div>
     <blockquote id="dailyVerseText" style="font-size:20px;line-height:2;margin:8px 0 14px;color:var(--navy);font-weight:700">جارٍ تحميل الآيات…</blockquote>
     <div id="dailyVerseReference" style="color:var(--muted);font-size:13px"></div>
-    <p style="font-size:11px;line-height:1.8;color:var(--muted);margin-top:16px">تتغير الآية تلقائيًا كل يوم حسب تاريخ القاهرة، وتدور القائمة على الآيات الـ٢٠٠. هذا القسم يعرض الآية داخل الموقع ولا يعني تفعيل إشعارات الهاتف.</p>
+    <p style="font-size:11px;line-height:1.8;color:var(--muted);margin-top:16px">تتغير الآية تلقائيًا كل يوم حسب تاريخ القاهرة، وتدور القائمة على الآيات الـ٣٠٠. هذا القسم يعرض الآية داخل الموقع ولا يعني تفعيل إشعارات الهاتف.</p>
   </div>
   <div class="card" style="margin-top:14px">
-    <div class="card-head"><h3>البحث في الآيات الـ٢٠٠</h3><small id="versesCount">—</small></div>
+    <div class="card-head"><h3>البحث في الآيات الـ٣٠٠</h3><small id="versesCount">—</small></div>
     <input id="versesSearch" type="search" placeholder="ابحث بكلمة أو مرجع كتابي…" aria-label="البحث في الآيات" style="width:100%;padding:11px;border:1px solid var(--line);border-radius:10px;background:#fff">
     <div id="versesList" style="display:grid;gap:10px;margin-top:14px"></div>
   </div>
@@ -740,13 +740,13 @@ function escapeVerseHtml(value){return String(value??'').replace(/[&<>"']/g,ch=>
 function getDailyVerseIndex(){
  const parts=cairoDateKey().split('-').map(Number), date=new Date(Date.UTC(parts[0],parts[1]-1,parts[2]));
  const start=new Date(Date.UTC(parts[0],0,1)); const day=Math.floor((date-start)/86400000);
- return day%200;
+ return day%300;
 }
 async function renderServiceVerses(){
  const list=document.getElementById('versesList'), search=document.getElementById('versesSearch');
  if(!list)return;
  const all=await (window.SERVICE_VERSES_READY||Promise.resolve([]));
- if(!Array.isArray(all)||all.length!==200){
+ if(!Array.isArray(all)||all.length!==300){
   document.getElementById('dailyVerseText').textContent='تعذّر تحميل ملف الآيات. جرّب تحديث الصفحة.';
   list.textContent='ملف الآيات غير متاح حاليًا.';
   return;
@@ -770,11 +770,11 @@ async function renderHomeDailyVerse(){
  if(!text)return;
  try{
   const all=await (window.SERVICE_VERSES_READY||Promise.resolve([]));
-  if(!Array.isArray(all)||all.length!==200)throw new Error('verse data unavailable');
+  if(!Array.isArray(all)||all.length!==300)throw new Error('verse data unavailable');
   const key=cairoDateKey();
   const parts=key.split('-').map(Number);
   const day=Math.floor((Date.UTC(parts[0],parts[1]-1,parts[2])-Date.UTC(parts[0],0,1))/86400000);
-  const verse=all[day%200];
+  const verse=all[day%300];
   text.textContent=verse.t;
   document.getElementById('homeDailyVerseDate').textContent='آية اليوم • '+key;
   document.getElementById('homeDailyVerseReference').textContent=verse.r||'';
